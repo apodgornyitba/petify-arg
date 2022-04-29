@@ -8,25 +8,25 @@
         <v-btn
             text
             color="white"
-        >Registrate</v-btn>
+        >Mi perfil</v-btn>
       </v-col>
       <v-col>
         <v-btn
             text
             color="white"
-        >Registrate</v-btn>
+        >Adoptá</v-btn>
       </v-col>
       <v-col>
         <v-btn
             text
             color="white"
-        >Registrate</v-btn>
+        >Refugios</v-btn>
       </v-col>
       <v-col>
         <v-btn
             text
             color="white"
-        >Registrate</v-btn>
+        >Doná</v-btn>
       </v-col>
     </v-row>
   </v-toolbar>
