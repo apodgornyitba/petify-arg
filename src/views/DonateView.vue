@@ -1,8 +1,5 @@
 <template>
-  <v-app>
-    <v-main>
-      <AppHeader/>
-      <ToolBar/>
+  <v-contaner>
       <DonateUpperBody/>
       <DonateLowerBody/>
     </v-main>
@@ -16,7 +13,7 @@ import DonateUpperBody from "@/components/DonateUpperBody";
 import DonateLowerBody from "@/components/DonateLowerBody";
 export default {
   name: "DonateView",
-  components: {DonateLowerBody, DonateUpperBody, ToolBar, AppHeader}
+  components: {DonateLowerBody, DonateUpperBody }
 }
 </script>
 

@@ -1,10 +1,6 @@
 <template>
-  <v-app>
-    <v-main>
-      <AppHeader/>
-      <ToolBar/>
-    </v-main>
-  </v-app>
+  <v-contaner>
+  </v-contaner>
 </template>
 
 <script>

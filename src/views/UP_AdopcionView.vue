@@ -14,7 +14,7 @@ import ToolBar from "@/components/Toolbar";
 import ProfileToolBar from "@/components/ProfileToolBar";
 export default {
   name: "UP_AdopcionView",
-  components: {ProfileToolBar, ToolBar, AppHeader}
+  components: {SelectFields}
 }
 </script>
 

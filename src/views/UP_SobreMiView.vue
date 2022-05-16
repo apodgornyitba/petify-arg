@@ -14,7 +14,7 @@ import ToolBar from "@/components/Toolbar";
 import ProfileToolBar from "@/components/ProfileToolBar";
 export default {
   name: "UP_SobreMiView",
-  components: {ProfileToolBar, ToolBar, AppHeader}
+  components: {TextFields}
 }
 </script>
 
