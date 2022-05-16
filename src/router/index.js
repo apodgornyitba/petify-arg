@@ -40,8 +40,8 @@ const routes = [
     component: AdoptView
   },
   {
-    path: '/donate',
-    name: 'donate',
+    path: '/donaterefugio',
+    name: 'donaterefugio',
     component: DonateView
   },
   {

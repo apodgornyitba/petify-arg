@@ -22,7 +22,7 @@
         <v-btn
             text
             color="white"
-            to="/donate"
+            to="/donaterefugio"
         >Doná</v-btn>
       </v-col>
     </v-row>
