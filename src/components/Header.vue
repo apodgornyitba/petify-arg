@@ -3,10 +3,12 @@
              padless color="#EFEEF1"
              elevation="0"
   ><div class="d-flex align-center">
+    <a href="/">
     <v-img :src="require('../assets/petifyLogo.jpeg')"
            max-height="160"
            max-width="160"
   />
+      </a>
   </div>
 
     <v-spacer>
@@ -15,6 +17,7 @@
     <v-btn
         text
         padless color="#2A537A"
+        to="/register"
     >Registrate</v-btn>
     <h2>
       |
@@ -22,6 +25,7 @@
     <v-btn
         text
         padless color="#2A537A"
+        to="/signin"
     >Ingresá</v-btn>
   </v-app-bar>
 </template>

@@ -29,6 +29,7 @@
           padless color="#2A537A"
           width="150"
              height="100"
+             to="/perros"
       >
         <v-icon size="40px">
           mdi-dog</v-icon>
@@ -41,6 +42,7 @@
         padless color="#2A537A"
            width="150"
            height="100"
+           to="/gatos"
     >
       <v-icon size="40px">mdi-cat</v-icon>
       Gatos</v-btn>
@@ -51,6 +53,7 @@
         padless color="#2A537A"
            width="150"
            height="100"
+           to="/refugios"
     ><v-icon size="40px">mdi-home-map-marker</v-icon>
       Refugios</v-btn>
     </v-col>

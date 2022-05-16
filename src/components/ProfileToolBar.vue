@@ -1,29 +1,28 @@
 <template>
   <v-toolbar
-    elevation="0"
-    padless color="#2A537A"
+      elevation="0"
   >
     <v-row class="text-center">
       <v-col>
         <v-btn
             text
-            color="white"
-            to="/userprofile"
-        >Mi perfil</v-btn>
+            padless color="#689FD2"
+            to="/sobremi"
+        >Sobre mi</v-btn>
       </v-col>
       <v-col>
         <v-btn
             text
-            color="white"
-            to="/adopt"
-        >Adoptá</v-btn>
+            padless color="#689FD2"
+            to="/adopcion"
+        >Perfil de adopción</v-btn>
       </v-col>
       <v-col>
         <v-btn
             text
-            color="white"
-            to="/donate"
-        >Doná</v-btn>
+            padless color="#689FD2"
+            to="/configuracion"
+        >Configuración</v-btn>
       </v-col>
     </v-row>
   </v-toolbar>
@@ -31,7 +30,7 @@
 
 <script>
 export default {
-  name: "ToolBar"
+  name: "ProfileToolBar"
 }
 </script>
 

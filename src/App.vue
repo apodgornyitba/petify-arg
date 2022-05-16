@@ -1,37 +1,13 @@
 <template>
-  <v-app>
-    <v-main>
-      <AppHeader></AppHeader>
-      <ToolBar/>
-      <UpperBody/>
-      <LowerBody/>
-      <HelloWorld/>
-    </v-main>
-  </v-app>
+  <div id="app">
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </nav>
+    <router-view/>
+  </div>
 </template>
-<script>
-import AppHeader from './components/Header';
-import HelloWorld from './components/HelloWorld';
-import ToolBar from './components/Toolbar';
-import UpperBody from "@/components/UpperBody";
-import LowerBody from './components/LowerBody';
 
-export default {
-  name: 'App',
-
-  components: {
-    LowerBody,
-    UpperBody,
-    HelloWorld,
-    AppHeader,
-    ToolBar,
-  },
-
-  data: () => ({
-    //
-  }),
-};
-</script>
 <style lang="scss">
 
 #app {

@@ -1,4 +1,4 @@
-# petify-arg
+# petify2
 
 ## Project setup
 ```
