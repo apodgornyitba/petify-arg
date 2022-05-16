@@ -2,7 +2,12 @@
   <v-container>
     <v-row>
       <v-col align="center">
-      <TextFields label="Nombre del refugio"/>
+        <TextFields label="Nombre del refugio"/>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col align="center">
+        <TextFields label="Nombre del animal"/>
       </v-col>
     </v-row>
     <v-row>
@@ -24,11 +29,10 @@
     </v-row>
   </v-container>
 </template>
-
 <script>
 import TextFields from "@/components/TextFields";
 export default {
-  name: "DonateLowerBody",
+  name: "DonateAnimalLowerBody",
   components: {TextFields}
 }
 </script>

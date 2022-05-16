@@ -1,23 +1,25 @@
 <template>
-  <v-row>
-  <v-col
-      md="6"
-      cols="12">
     <v-text-field
         outlined
         filled
-        label="buscar"
+        :label="this.label"
     ></v-text-field>
-  </v-col>
-  </v-row>
 </template>
 
 <script>
 export default {
-  name: "TextFields"
+  name: "TextFields",
+  props: {
+    label:{
+      type: String,
+    },
+  }
+
 }
 </script>
 
 <style scoped>
-
+.v-text-field{
+  width: 500px;
+}
 </style>

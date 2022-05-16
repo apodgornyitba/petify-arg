@@ -22,7 +22,7 @@
         <v-btn x-large
             text
             padless color="#689FD2"
-            to="/adopcion"
+            to="/donateanimal"
         >Animal</v-btn>
       </v-col>
     </v-row>
