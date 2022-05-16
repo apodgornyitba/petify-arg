@@ -8,8 +8,7 @@
 </template>
 
 <script>
-import AppHeader from "@/components/Header";
-import ToolBar from "@/components/Toolbar";
+
 export default {
   name: "GatosView",
   components: {}

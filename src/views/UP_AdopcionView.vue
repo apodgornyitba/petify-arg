@@ -9,12 +9,10 @@
 </template>
 
 <script>
-import AppHeader from "@/components/Header";
-import ToolBar from "@/components/Toolbar";
-import ProfileToolBar from "@/components/ProfileToolBar";
+
 export default {
   name: "UP_AdopcionView",
-  components: {SelectFields}
+  // components: {SelectFields}
 }
 </script>
 

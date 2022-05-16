@@ -12,6 +12,7 @@
 
 #app {
   font-family: 'Arima Madurai', cursive;
+  background-color: #EFEEF1;
 }
 
 

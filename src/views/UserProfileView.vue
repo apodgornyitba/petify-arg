@@ -1,8 +1,7 @@
 <template>
-  <v-contaner>
+  <v-container>
       <ProfileToolBar/>
-    </v-main>
-  </v-app>
+    </v-container>
 </template>
 
 <script>
