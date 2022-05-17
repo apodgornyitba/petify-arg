@@ -63,16 +63,16 @@
       <v-col class="align-center text-center justify-center">
         <v-card>
           <v-row class="align-center text-center justify-center">
-            <v-col class="align-center text-center justify-center" cols="3">
+            <v-col class="align-center text-center justify-center" cols="6">
               <v-text-field
-                  label="Nombre"
+                  label="Nombre del Refugio"
               ></v-text-field>
             </v-col>
-            <v-col class="align-center text-center justify-center" cols="3">
-              <v-text-field
-                  label="Apellido"
-              ></v-text-field>
-            </v-col>
+<!--            <v-col class="align-center text-center justify-center" cols="3">-->
+<!--              <v-text-field-->
+<!--                  label="Apellido"-->
+<!--              ></v-text-field>-->
+<!--            </v-col>-->
           </v-row>
           <v-row class="align-center text-center justify-center">
             <v-col class="align-center text-center justify-center" cols="3">
