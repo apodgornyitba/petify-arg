@@ -5,6 +5,22 @@
     <ToolBar/>
       <UpperBody/>
       <LowerBody/>
+      <v-container>
+        <v-row class="align-left" style="margin-top: 20px; margin-bottom: 20px">
+          <v-col>
+          <v-img :src="require('../assets/perrito1.jpg')" max-width="250px"/>
+          </v-col>
+          <v-col>
+          <v-img :src="require('../assets/perrito2.jpg')" max-width="250px"/>
+          </v-col>
+          <v-col>
+          <v-img :src="require('../assets/perrito3.jpg')" max-width="250px"/>
+          </v-col>
+          <v-col>
+            <v-img :src="require('../assets/perrito5.jpg')" max-width="250px"/>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>
