@@ -1,11 +1,7 @@
 <template>
-  <div class="about me">
-    <v-row style="margin-top: 50px"/>
-    <ToolBar/>
-    <ProfileToolBar/>
-    <v-container>
-      <h3>¿Cuál es tu nombre?</h3>
-      <v-row/>
+  <div>
+    <v-container class="justify-center align-center">
+      <v-row style="margin-bottom: -30px"> <v-col> <h3>¿Cuál es tu nombre?</h3> </v-col> </v-row>
       <v-row>
         <v-col>
           <TextFields label="Nombre"></TextFields>
@@ -14,22 +10,26 @@
           <TextFields label="Apellido"></TextFields>
         </v-col>
       </v-row>
-    </v-container>
-    <v-container>
-      <h3>¿Dónde vivís?</h3>
-      <v-row></v-row>
-      <v-row></v-row>
+      <v-row style="margin-bottom: -30px; margin-top: -30px"> <v-col><h3>¿Dónde vivís?</h3></v-col> </v-row>
       <v-row>
+        <v-col>
         <TextFields label="País"></TextFields>
+        </v-col>
       </v-row>
       <v-row>
+        <v-col style="margin-top: -50px">
         <TextFields label="Provincia"></TextFields>
+        </v-col>
       </v-row>
       <v-row>
+        <v-col style="margin-top: -50px">
         <TextFields label="Localidad"></TextFields>
+        </v-col>
       </v-row>
       <v-row>
+        <v-col style="margin-top: -50px">
         <TextFields label="Código Postal"></TextFields>
+        </v-col>
       </v-row>
     </v-container>
   </div>
@@ -37,12 +37,10 @@
 
 <script>
 
-import ToolBar from "@/components/Toolbar";
-import ProfileToolBar from "@/components/ProfileToolBar";
 import TextFields from "@/components/TextFields";
 export default {
-  name: "UP_SobreMiView",
-  components: {ProfileToolBar, ToolBar, TextFields}
+  name: "SobreMi",
+  components: {TextFields}
 }
 </script>
 

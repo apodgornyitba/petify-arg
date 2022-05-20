@@ -4,16 +4,17 @@ import HomeView from '../views/HomeView.vue'
 import UserProfileView from "@/views/UserProfileView";
 import AdoptView from "@/views/AdoptView";
 import DonateView from "@/views/DonateView";
-import DonateAnimalView from "@/views/DonateAnimalView";
 import GatosView from "@/views/GatosView";
 import PerrosView from "@/views/PerrosView";
 import RefugiosView from "@/views/RefugiosView";
 import RegisterView from "@/views/RegisterView";
 import SignInView from "@/views/SignInView";
-import UP_SobreMiView from "@/views/UP_SobreMiView";
-import UP_AdopcionView from "@/views/UP_AdopcionView";
-import UP_ConfiguracionView from "@/views/UP_ConfiguracionView";
+import UP_SobreMiView from "@/components/SobreMiLowerBody";
+import UP_AdopcionView from "@/components/AdopcionLowerBody";
+import UP_ConfiguracionView from "@/components/ConfiguracionLowerBody";
 import OlvideMiContrasena from "@/views/OlvideMiContrasena";
+import PageNotFound from "@/views/PageNotFound";
+import PruebaView from "@/views/PruebaView";
 
 Vue.use(VueRouter)
 
@@ -46,11 +47,7 @@ const routes = [
     name: 'donaterefugio',
     component: DonateView
   },
-  {
-    path: '/donateanimal',
-    name: 'donateanimal',
-    component: DonateAnimalView
-  },
+
   {
     path: '/gatos',
     name: 'gatos',
@@ -95,8 +92,18 @@ const routes = [
     path: '/configuracion',
     name: 'configuracion',
     component: UP_ConfiguracionView
-  }
-//  COMENTARIO aca hay que agregar el path de la pestaña que agreguemos para los links de login
+  },
+  {
+    path:'/prueba',
+    name:'prueba',
+    component: PruebaView
+  },
+  // 404: Not found
+  {
+    name: 'PageNotFound',
+    path: '/:pathMatch(.*)*',
+    component: PageNotFound
+  },
 
 ]
 

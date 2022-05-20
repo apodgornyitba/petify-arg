@@ -20,6 +20,7 @@
       </v-row>
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center" cols="3">
+          <!-- COMENTARIO: FALTA CODEAR EL BOTON PARA COMPRAR CON LA INFO DE LA BASE DE DATOS Y QUE VUELVA A LA PAGINA PRINCIPAL -->
           <v-btn
               color="#689FD2"
               class="white--text"

@@ -1,54 +1,75 @@
 <template>
-  <div class="about me">
-    <v-row style="margin-top: 50px"/>
-    <ToolBar/>
-    <ProfileToolBar/>
-    <v-container>
+  <div>
+    <v-container class="justify-center align-center">
       <v-row>
       <v-col>
+        <v-row style="margin-bottom: -30px "> <v-col>
         <h3>Contanos un poco sobre vos</h3>
-        <v-row></v-row>
-        <v-row></v-row>
+        </v-col> </v-row>
         <v-row>
+          <v-col>
           <SelectFields label="Mascota deseada"></SelectFields>
+          </v-col>
         </v-row>
         <v-row>
+          <v-col style="margin-top: -50px">
           <SelectFields label="Futuro/s dueño/s"></SelectFields>
+          </v-col>
         </v-row>
         <v-row>
+          <v-col style="margin-top: -50px">
           <SelectFields label="Mascota/s actual/es"></SelectFields>
+          </v-col>
         </v-row>
         <v-row>
+          <v-col style="margin-top: -50px">
           <SelectFields label="Mascota/s previa/s"></SelectFields>
+          </v-col>
         </v-row>
         <v-row>
+          <v-col style="margin-top: -50px">
           <SelectFields label="Espacio disponible"></SelectFields>
+          </v-col>
         </v-row>
         <v-row>
+          <v-col style="margin-top: -50px">
           <SelectFields label="Espacio alrededor"></SelectFields>
+          </v-col>
         </v-row>
       </v-col>
       <v-col>
+        <v-row style="margin-bottom: -30px"> <v-col>
         <h3>Mi mascota ideal</h3>
-        <v-row></v-row>
-        <v-row></v-row>
+        </v-col></v-row>
         <v-row>
+          <v-col>
           <SelectFields label="Preferencia de edad"></SelectFields>
+          </v-col>
         </v-row>
         <v-row>
+          <v-col style="margin-top: -50px">
           <SelectFields label="Preferencia de género"></SelectFields>
+          </v-col>
         </v-row>
         <v-row>
+          <v-col style="margin-top: -50px">
           <SelectFields label="Preferencia de tamaño"></SelectFields>
+          </v-col>
         </v-row>
         <v-row>
+          <v-col style="margin-top: -50px">
           <SelectFields label="Personalidad"></SelectFields>
+          </v-col>
         </v-row>
         <v-row>
+          <v-col style="margin-top: -50px">
           <SelectFields label="Necesidades"></SelectFields>
+          </v-col>
         </v-row>
         <v-row>
+          <v-col style="margin-top: -50px">
           <SelectFields label="Adopción con necesidades especiales"></SelectFields>
+          </v-col>
         </v-row>
       </v-col>
       </v-row>
@@ -57,12 +78,11 @@
 </template>
 
 <script>
-import ToolBar from "@/components/Toolbar";
-import ProfileToolBar from "@/components/ProfileToolBar";
+
 import SelectFields from "@/components/SelectFields";
 export default {
-  name: "UP_AdopcionView",
-  components: {ProfileToolBar, ToolBar, SelectFields}
+  name: "AdopcionLowerBody",
+  components: {SelectFields}
 }
 </script>
 

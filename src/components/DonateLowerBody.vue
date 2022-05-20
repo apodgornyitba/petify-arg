@@ -7,7 +7,7 @@
     </v-row>
     <v-row>
       <v-col align="center">
-        <TextFields label="Tipo de ayuda"/>
+        <SelectFields label="Tipo de ayuda"/>
       </v-col>
     </v-row>
     <v-row>
@@ -27,9 +27,10 @@
 
 <script>
 import TextFields from "@/components/TextFields";
+import SelectFields from "@/components/SelectFields";
 export default {
   name: "DonateLowerBody",
-  components: {TextFields}
+  components: {SelectFields, TextFields}
 }
 </script>
 

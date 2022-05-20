@@ -23,7 +23,7 @@
             text
             color="white"
             to="/donaterefugio"
-        >Doná</v-btn>
+        >Quiero ayudar</v-btn>
       </v-col>
     </v-row>
   </v-toolbar>

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <div>
     <ToolBar/>
     <v-container fluid class="hero">
       <v-text-field
@@ -64,7 +64,7 @@
           </v-col>
         </v-row>
       </v-container>
-  </v-container>
+  </div>
 </template>
 <script>
 

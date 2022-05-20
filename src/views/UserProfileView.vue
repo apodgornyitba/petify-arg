@@ -1,15 +1,64 @@
 <template>
-  <v-container>
-      <ProfileToolBar/>
-  </v-container>
+  <div>
+    <ToolBar/>
+    <v-card>
+      <v-tabs
+          v-model="tab"
+          background-color="#D1E4F0"
+          color="#2A537A"
+          class="black--text"
+          centered
+          dark
+
+      >
+        <v-tab
+            v-for="item in items"
+            :key="item.tab"
+        >
+          {{ item.tab }}
+        </v-tab>
+      </v-tabs>
+
+      <v-tabs-items v-model="tab">
+        <v-tab-item>
+          <v-card outlined tile color="#EFEEF1">
+            <SobreMi/>
+          </v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card outlined tile  color="#EFEEF1">
+            <AdopcionLowerBody/>
+          </v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card outlined tile  color="#EFEEF1">
+            <ConfiguracionLB/>
+          </v-card>
+        </v-tab-item>
+      </v-tabs-items>
+    </v-card>
+  </div>
 </template>
 
 
 <script>
-import ProfileToolBar from "@/components/ProfileToolBar";
+import ToolBar from "@/components/Toolbar";
+import AdopcionLowerBody from "@/components/AdopcionLowerBody";
+import SobreMi from "@/components/SobreMiLowerBody";
+import ConfiguracionLB from "@/components/ConfiguracionLowerBody";
 export default {
   name: "UserProfileView",
-  components: {ProfileToolBar}
+  components: {ConfiguracionLB, AdopcionLowerBody, SobreMi, ToolBar},
+  data () {
+    return {
+      tab: null,
+      items: [
+        { tab: 'Sobre mi', content: 'Tab 1 Content' },
+        { tab: 'Perfil de adopción', content: 'Tab 2 Content' },
+        { tab: 'Configuración', content: 'Tab 3 Content' },
+      ],
+    }
+  },
 }
 </script>
 
