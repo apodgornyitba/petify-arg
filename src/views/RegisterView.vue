@@ -66,11 +66,7 @@
                     label="Nombre del Refugio"
                 ></v-text-field>
               </v-col>
-  <!--            <v-col class="align-center text-center justify-center" cols="3">-->
-  <!--              <v-text-field-->
-  <!--                  label="Apellido"-->
-  <!--              ></v-text-field>-->
-  <!--            </v-col>-->
+
             </v-row>
             <v-row class="align-center text-center justify-center">
               <v-col class="align-center text-center justify-center" cols="5">
@@ -119,7 +115,10 @@
 export default {
   name: "RegisterView",
   components: {},
-  usuario: true,
+  data: () => ({
+    usuario: true
+  }),
+
   methods: {
     habilitarusuario() {
       this.usuario = true;
