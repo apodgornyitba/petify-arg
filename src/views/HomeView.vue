@@ -1,6 +1,5 @@
 <template>
-  <v-app>
-    <v-main>
+  <v-container>
     <AppHeader/>
     <ToolBar/>
       <UpperBody/>
@@ -21,8 +20,7 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-main>
-  </v-app>
+  </v-container>
 </template>
 <script>
 

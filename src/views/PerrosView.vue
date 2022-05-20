@@ -1,25 +1,5 @@
-<!--<template>-->
-<!--  <v-app>-->
-<!--    <v-main>-->
-
-<!--    </v-main>-->
-<!--  </v-app>-->
-<!--</template>-->
-
-<!--<script>-->
-<!--export default {-->
-<!--  name: "PerrosView",-->
-<!--  // components: {ToolBar, AppHeader}-->
-<!--}-->
-<!--</script>-->
-
-<!--<style scoped>-->
-
-<!--</style>-->
-
 <template>
-  <v-app>
-    <v-main>
+  <v-container>
       <AppHeader/>
       <ToolBar/>
       <v-container>
@@ -27,8 +7,7 @@
           <v-img :src="require('../assets/working.jpg')" max-width="500px"/>
         </v-row>
       </v-container>
-    </v-main>
-  </v-app>
+  </v-container>
 </template>
 
 <script>

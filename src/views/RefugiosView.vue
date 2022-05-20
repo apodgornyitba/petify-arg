@@ -1,6 +1,5 @@
 <template>
-  <v-app>
-    <v-main>
+  <v-container>
       <AppHeader/>
       <ToolBar/>
       <v-container>
@@ -8,8 +7,7 @@
           <v-img :src="require('../assets/working.jpg')" max-width="500px"/>
         </v-row>
       </v-container>
-    </v-main>
-  </v-app>
+  </v-container>
 </template>
 
 <script>

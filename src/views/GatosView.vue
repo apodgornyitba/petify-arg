@@ -1,27 +1,5 @@
-<!--<template>-->
-<!--  <v-app>-->
-<!--    <v-main>-->
-<!--      <AppHeader/>-->
-<!--      <ToolBar/>-->
-<!--    </v-main>-->
-<!--  </v-app>-->
-<!--</template>-->
-
-<!--<script>-->
-
-<!--export default {-->
-<!--  name: "GatosView",-->
-<!--  components: {}-->
-<!--}-->
-<!--</script>-->
-
-<!--<style scoped>-->
-
-<!--</style>-->
-
 <template>
-  <v-app>
-    <v-main>
+  <v-container>
       <AppHeader/>
       <ToolBar/>
       <v-container>
@@ -29,8 +7,8 @@
           <v-img :src="require('../assets/working.jpg')" max-width="500px"/>
         </v-row>
       </v-container>
-    </v-main>
-  </v-app>
+  </v-container>
+
 </template>
 
 <script>

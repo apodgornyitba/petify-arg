@@ -1,6 +1,5 @@
 <template>
-  <v-app>
-    <v-main>
+  <v-container>
       <AppHeader/>
 <!--      <ToolBar/>-->
     <v-container>
@@ -53,8 +52,7 @@
         </v-col>
       </v-row>
     </v-container>
-    </v-main>
-  </v-app>
+  </v-container>
 </template>
 
 <script>

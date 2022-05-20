@@ -1,10 +1,8 @@
 <template>
-  <v-app>
-    <v-main>
+  <v-container>
       <AppHeader/>
       <ProfileToolBar/>
-    </v-main>
-  </v-app>
+  </v-container>
 </template>
 
 

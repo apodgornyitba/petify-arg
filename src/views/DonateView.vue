@@ -1,12 +1,12 @@
 <template>
-  <v-app>
-    <v-main>
-      <AppHeader/>
-      <ToolBar/>
-      <DonateUpperBody/>
-      <DonateLowerBody/>
-    </v-main>
-  </v-app>
+  <v-container>
+    <AppHeader/>
+    <ToolBar/>
+    <v-container>
+        <DonateUpperBody/>
+        <DonateLowerBody/>
+    </v-container>
+  </v-container>
 </template>
 
 <script>
