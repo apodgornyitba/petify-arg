@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    <AppHeader/>
     <ToolBar/>
       <UpperBody/>
       <LowerBody/>
@@ -24,8 +23,6 @@
 </template>
 <script>
 
-
-import AppHeader from "@/components/Header";
 import LowerBody from "@/components/LowerBody";
 import UpperBody from "@/components/UpperBody";
 import ToolBar from "@/components/Toolbar";
@@ -36,7 +33,6 @@ export default {
     ToolBar,
     UpperBody,
     LowerBody,
-    AppHeader,
   },
 
   data: () => ({

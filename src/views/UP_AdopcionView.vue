@@ -1,6 +1,5 @@
 <template>
   <div class="about me">
-    <AppHeader/>
     <v-row style="margin-top: 50px"/>
     <ToolBar/>
     <ProfileToolBar/>
@@ -58,13 +57,12 @@
 </template>
 
 <script>
-import AppHeader from "@/components/Header";
 import ToolBar from "@/components/Toolbar";
 import ProfileToolBar from "@/components/ProfileToolBar";
 import SelectFields from "@/components/SelectFields";
 export default {
   name: "UP_AdopcionView",
-  components: {ProfileToolBar, ToolBar, AppHeader, SelectFields}
+  components: {ProfileToolBar, ToolBar, SelectFields}
 }
 </script>
 

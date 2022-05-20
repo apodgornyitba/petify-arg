@@ -1,6 +1,5 @@
 <template>
   <div class="about me">
-    <AppHeader/>
     <v-row style="margin-top: 50px"/>
     <ToolBar/>
     <ProfileToolBar/>
@@ -37,13 +36,13 @@
 </template>
 
 <script>
-import AppHeader from "@/components/Header";
+
 import ToolBar from "@/components/Toolbar";
 import ProfileToolBar from "@/components/ProfileToolBar";
 import TextFields from "@/components/TextFields";
 export default {
   name: "UP_SobreMiView",
-  components: {ProfileToolBar, ToolBar, AppHeader, TextFields}
+  components: {ProfileToolBar, ToolBar, TextFields}
 }
 </script>
 

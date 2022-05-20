@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    <AppHeader/>
     <ToolBar/>
     <v-container>
       <v-row class="align-center text-center justify-center" style="margin-top: 20px; margin-bottom: 20px">
@@ -11,11 +10,10 @@
 </template>
 
 <script>
-import AppHeader from "@/components/Header";
 import ToolBar from "@/components/Toolbar";
 export default {
   name: "AdoptView",
-  components: {ToolBar, AppHeader}
+  components: {ToolBar}
 }
 </script>
 

@@ -1,6 +1,5 @@
 <template>
   <v-container>
-      <AppHeader/>
     <v-container>
       <v-row class="align-center text-center justify-center" style="margin-top: 20px; margin-bottom: 20px">
         <v-img :src="require('../assets/petifyLogo.jpeg')" max-width="300px"/>
@@ -117,10 +116,9 @@
 </template>
 
 <script>
-import AppHeader from "@/components/Header";
 export default {
   name: "RegisterView",
-  components: {AppHeader},
+  components: {},
 }
 </script>
 

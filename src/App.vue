@@ -1,11 +1,17 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app id="app">
+    <AppHeader/>
+    <v-main>
+      <v-container
+          fluid
+          fill-height
+          fill-width
+          class="justify-center align-center"
+      >
+        <router-view/>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <style lang="scss">
