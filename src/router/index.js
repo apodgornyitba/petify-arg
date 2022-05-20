@@ -15,6 +15,7 @@ import UP_ConfiguracionView from "@/components/ConfiguracionLowerBody";
 import OlvideMiContrasena from "@/views/OlvideMiContrasena";
 import PageNotFound from "@/views/PageNotFound";
 import PruebaView from "@/views/PruebaView";
+import ElijoUnPerroView from "@/views/ElijoUnPerroView";
 
 Vue.use(VueRouter)
 
@@ -98,6 +99,12 @@ const routes = [
     name:'prueba',
     component: PruebaView
   },
+  {
+    path:'/elijoPerro',
+    name:'elijoPerro',
+    component: ElijoUnPerroView
+  },
+
   // 404: Not found
   {
     name: 'PageNotFound',
