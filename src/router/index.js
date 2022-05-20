@@ -90,6 +90,7 @@ const routes = [
     name: 'configuracion',
     component: UP_ConfiguracionView
   }
+//  COMENTARIO aca hay que agregar el path de la pestaña que agreguemos para los links de login
 
 ]
 

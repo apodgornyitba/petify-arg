@@ -32,20 +32,14 @@
       </v-row>
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center" style="margin-top: -10px" cols="3">
-          <a
-              href="https://google.com"
-              target="_blank"
-          >Olvidé mi contraseña</a>
+          <a href="/configuracion">Olvidé mi contraseña</a>
         </v-col>
       </v-row>
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center" cols="3">
           <p class="subheading font-weight-regular">
             ¿No tenés cuenta?
-            <a
-                href="https://google.com"
-                target="_blank"
-            >Registrate aquí</a>
+            <a href="/configuracion">Registrate aquí</a>
           </p>
         </v-col>
       </v-row>
