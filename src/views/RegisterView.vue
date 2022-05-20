@@ -12,14 +12,14 @@
             color="#2A537A"
             x-large
         >
-          <v-btn width="600px">       USUARIO       </v-btn>
-          <v-btn width="600px">        REFUGIO        </v-btn>
+          <v-btn width="600px" @click="habilitarusuario" >       USUARIO       </v-btn>
+          <v-btn width="600px" @click="habilitarrefugio" >        REFUGIO        </v-btn>
         </v-btn-toggle>
         </v-col>
       </v-row>
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center">
-      <v-card>
+      <v-card :disabled="!usuario">
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center" cols="3">
           <v-text-field
@@ -59,7 +59,7 @@
       </v-card>
         </v-col>
         <v-col class="align-center text-center justify-center">
-          <v-card>
+          <v-card :disabled="usuario">
             <v-row class="align-center text-center justify-center">
               <v-col class="align-center text-center justify-center" cols="6">
                 <v-text-field
@@ -119,6 +119,15 @@
 export default {
   name: "RegisterView",
   components: {},
+  usuario: true,
+  methods: {
+    habilitarusuario() {
+      this.usuario = true;
+    },
+    habilitarrefugio() {
+      this.usuario = false;
+    },
+  }
 }
 </script>
 

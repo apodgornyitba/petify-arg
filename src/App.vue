@@ -2,17 +2,18 @@
   <v-app id="app">
     <AppHeader/>
     <v-main>
-      <v-container
-          fluid
-          fill-height
-          fill-width
-          class="justify-center align-center"
-      >
         <router-view/>
-      </v-container>
     </v-main>
   </v-app>
 </template>
+
+<script>
+
+import AppHeader from "@/components/Header";
+export default {
+  components: {AppHeader}
+}
+</script>
 
 <style lang="scss">
 

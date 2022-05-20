@@ -13,6 +13,7 @@ import SignInView from "@/views/SignInView";
 import UP_SobreMiView from "@/views/UP_SobreMiView";
 import UP_AdopcionView from "@/views/UP_AdopcionView";
 import UP_ConfiguracionView from "@/views/UP_ConfiguracionView";
+import OlvideMiContrasena from "@/views/OlvideMiContrasena";
 
 Vue.use(VueRouter)
 
@@ -69,6 +70,11 @@ const routes = [
     path: '/register',
     name: 'register',
     component: RegisterView
+  },
+  {
+    path: '/recuperaciondecuenta',
+    name: 'recuperaciondecuenta',
+    component: OlvideMiContrasena
   },
   {
     path: '/signin',
