@@ -21,36 +21,36 @@
         <v-col class="align-center text-center justify-center">
       <v-card :disabled="!usuario">
       <v-row class="align-center text-center justify-center">
-        <v-col class="align-center text-center justify-center" cols="3">
+        <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
               label="Nombre"
           ></v-text-field>
         </v-col>
-        <v-col class="align-center text-center justify-center" cols="3">
+        <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
               label="Apellido"
           ></v-text-field>
         </v-col>
       </v-row>
       <v-row class="align-center text-center justify-center">
-          <v-col class="align-center text-center justify-center" cols="3">
+          <v-col class="align-center text-center justify-center" cols="5">
             <v-text-field
                 label="Nombre de usuario"
             ></v-text-field>
           </v-col>
-        <v-col class="align-center text-center justify-center" cols="3">
+        <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
               label="email"
           ></v-text-field>
         </v-col>
       </v-row>
       <v-row class="align-center text-center justify-center">
-        <v-col class="align-center text-center justify-center" cols="3">
+        <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
               label="Contraseña"
           ></v-text-field>
         </v-col>
-        <v-col class="align-center text-center justify-center" cols="3">
+        <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
               label="Confirmar contraseña"
           ></v-text-field>
@@ -61,7 +61,7 @@
         <v-col class="align-center text-center justify-center">
           <v-card :disabled="usuario">
             <v-row class="align-center text-center justify-center">
-              <v-col class="align-center text-center justify-center" cols="6">
+              <v-col class="align-center text-center justify-center" cols="10">
                 <v-text-field
                     label="Nombre del Refugio"
                 ></v-text-field>
@@ -73,24 +73,24 @@
   <!--            </v-col>-->
             </v-row>
             <v-row class="align-center text-center justify-center">
-              <v-col class="align-center text-center justify-center" cols="3">
+              <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
                     label="Nombre de usuario"
                 ></v-text-field>
               </v-col>
-              <v-col class="align-center text-center justify-center" cols="3">
+              <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
                     label="email"
                 ></v-text-field>
               </v-col>
             </v-row>
             <v-row class="align-center text-center justify-center">
-              <v-col class="align-center text-center justify-center" cols="3">
+              <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
                     label="Contraseña"
                 ></v-text-field>
               </v-col>
-              <v-col class="align-center text-center justify-center" cols="3">
+              <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
                     label="Confirmar contraseña"
                 ></v-text-field>
@@ -100,7 +100,7 @@
         </v-col>
       </v-row>
       <v-row class="align-center text-center justify-center">
-        <v-col class="align-center text-center justify-center" cols="3">
+        <v-col class="align-center text-center justify-center" cols="5">
           <v-btn
               color="#689FD2"
               class="white--text"
