@@ -19,6 +19,7 @@ import ElijoUnPerroView from "@/views/ElijoUnPerroView";
 import TransitosView from "@/views/TransitosView";
 import RefugiosPerfilView from "@/views/RefugiosPerfilView";
 import FormularioAdopcionView from "@/views/FormularioAdopcionView";
+import NotificationsView from "@/views/NotificationsView";
 
 Vue.use(VueRouter)
 
@@ -121,6 +122,11 @@ const routes = [
     path: '/FormularioAdopcion',
     name: 'FormularioAdopcion',
     component: FormularioAdopcionView
+  },
+  {
+    path: '/Notificaciones',
+    name: 'NotificacionesView',
+    component: NotificationsView
   },
 
   // 404: Not found

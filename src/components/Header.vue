@@ -14,6 +14,17 @@
     <v-spacer>
 
     </v-spacer>
+
+      <v-btn
+          text
+          icon
+          color="#689FD2"
+          to="/Notificaciones"
+          large
+      >
+        <v-icon>mdi-email</v-icon>
+      </v-btn>
+
     <v-btn
         text
         padless color="#2A537A"
@@ -29,6 +40,7 @@
     >Ingresá</v-btn>
   </v-app-bar>
 </template>
+
 <script>
 export default {
   name: 'AppHeader'
