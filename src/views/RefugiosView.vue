@@ -2,27 +2,12 @@
   <div>
       <ToolBar/>
     <v-container>
-      <v-row align="center">
-        <v-col style="margin-left: 200px" cols="8">
-          <!--        arreglar para que quede centrado sin esa ilegalidad-->
-          <v-text-field
-              outlined
-              filled
-              label="buscar"
-              background-color="#689FD2"
-              append-icon="mdi-magnify"
-              dark
-          ></v-text-field>
-        </v-col>
-        <v-col>
+      <SearchBar/>
+        <!-- <v-col>
           <v-select label="Filtrar" :items="['Más consultados', 'Más cercanos', '...']"/>
-        </v-col>
-      </v-row>
-    </v-container>
-    <v-container>
+        </v-col> -->
       <v-card
           class="mx-auto"
-          max-width="700"
       >
         <v-list header>
             <template v-for="(refugio,index) in refugios">
@@ -39,9 +24,11 @@
             </v-list-item-content>
 
             <v-list-item-icon>
-              <v-icon :color="grey">
-                mdi-message-plus-outline
-              </v-icon>
+              <v-btn icon>
+                <v-icon :color="grey">
+                  mdi-message-plus-outline
+                </v-icon>
+              </v-btn>
             </v-list-item-icon>
               </v-list-item>
               <v-divider
@@ -57,9 +44,10 @@
 
 <script>
 import ToolBar from "@/components/Toolbar";
+import SearchBar from "@/components/SearchBar";
 export default {
   name: "RefugiosView",
-  components: {ToolBar},
+  components: {SearchBar, ToolBar},
   data: () => ({
     refugios: [
       {

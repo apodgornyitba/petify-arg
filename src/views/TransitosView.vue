@@ -2,59 +2,37 @@
   <div>
     <ToolBar/>
     <v-container>
-      <v-row align="center">
-        <v-col style="margin-left: 200px" cols="8">
-          <!--        arreglar para que quede centrado sin esa ilegalidad-->
-          <v-text-field
-              outlined
-              filled
-              label="buscar"
-              background-color="#689FD2"
-              append-outer-icon="mdi-magnify"
-          ></v-text-field>
-        </v-col>
-      </v-row>
-    </v-container>
-    <v-container fluid class="hero">
-      <v-row>
-        <v-col style="margin-left: 500px">
-          <h3 class="blue--text text--darken-4">Contacto</h3>
-        </v-col>
-        <v-spacer>
-        </v-spacer>
-        <v-col style="margin-right: 550px">
-          <h3 class="blue--text text--darken-4">Localización</h3>
-        </v-col>
-      </v-row>
-    </v-container>
-    <v-container>
+      <SearchBar/>
       <v-card
           class="mx-auto"
-          max-width="700"
       >
-        <v-list header>
-          <template v-for="(transito,index) in transitos">
-            <v-list-item :key="transito.name">
-              
-              <v-list-item-content>
-                <v-list-item-name class="blue--text text--darken-4"
-                  v-text="transito.name + ' ' +transito.location"/>
-              </v-list-item-content>
-
-              <v-list-item-icon>
-                <v-icon :color="grey">
-                  mdi-message-plus-outline
-                </v-icon>
-              </v-list-item-icon>
-            </v-list-item>
-            <v-divider
-                v-if="index< transitos.length - 1"
-                :key="index"
-            ></v-divider>
+        <v-simple-table>
+          <template v-slot:default>
+            <thead>
+            <tr>
+              <th class="text-left blue--text text--darken-4">
+                Contacto
+              </th>
+              <th class="text-left blue--text text--darken-4">
+                Localización
+              </th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr
+                v-for="item in transitos"
+                :key="item.name"
+            >
+              <td class="text-left blue--text text--darken-4">{{ item.name }}</td>
+              <td class="text-left blue--text text--darken-4">{{ item.location }}</td>
+              <td> <v-btn icon><v-icon :color="grey">
+                mdi-message-plus-outline
+              </v-icon> </v-btn> </td>
+            </tr>
+            </tbody>
           </template>
-        </v-list>
-
-        <!--        </v-list>-->
+        </v-simple-table>
       </v-card>
     </v-container>
   </div>
@@ -62,9 +40,10 @@
 
 <script>
 import ToolBar from "@/components/Toolbar";
+import SearchBar from "@/components/SearchBar";
 export default {
   name: "TransitosView",
-  components: {ToolBar},
+  components: {SearchBar, ToolBar},
   data: () => ({
     transitos: [
       {

@@ -2,21 +2,30 @@
   <div>
     <ToolBar/>
     <v-container>
-      <v-row>
+      <v-row style="margin-top: 30px; margin-right: 10px; margin-bottom: 20px">
           <v-img  max-height="150"
                   max-width="150"
                   style="border-radius: 50%"
                   :src="require('@/assets/Refugios/patitas-al-rescate.png')"
           />
-          <h1 class="blue--text text--darken-4" style="margin-left: 300px ; text-underline: grey">
+        <v-col style="margin-left: 10px">
+          <v-row>
+          <h1 class="blue--text text--darken-4">
             Patitas al rescate
+            <v-btn icon>
             <v-icon>
               mdi-message-alert-outline
             </v-icon>
+            </v-btn>
           </h1>
-        <v-divider style="width: 500px"/>
+          </v-row>
+          <v-row>
+          <h3 style="color: cornflowerblue">Contacto: @patitasalrescate</h3>
       </v-row>
       <v-row>
+          <h3 style="color: cornflowerblue">Ubicación: Palermo, CABA</h3>
+      </v-row>
+        </v-col>
         <v-col>
           <v-btn class="white--text"
                  elevation="0"
@@ -29,16 +38,11 @@
           </v-btn>
         </v-col>
       </v-row>
-      <v-row>
-        <h3 style="color: cornflowerblue">Contacto: @patitasalrescate</h3>
-      </v-row>
-      <v-row>
-        <h3 style="color: cornflowerblue">Ubicación: Palermo, CABA</h3>
-      </v-row>
-
     </v-container>
     <v-divider class="blue darken-4"/>
-    <v-container>
+    <v-container class="align-center justify-center text-center">
+      <v-row>
+        <v-col>
       <v-row>
         <v-col>
           <v-btn class="white--text"
@@ -65,10 +69,14 @@
             </v-btn>
           </v-col>
         </v-row>
+        </v-col>
+        <v-col>
       <v-img
           max-height="550"
           max-width="550"
           :src="require('@/assets/mapita.png')"/>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 

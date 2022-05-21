@@ -9,9 +9,6 @@ import PerrosView from "@/views/PerrosView";
 import RefugiosView from "@/views/RefugiosView";
 import RegisterView from "@/views/RegisterView";
 import SignInView from "@/views/SignInView";
-import UP_SobreMiView from "@/components/SobreMiLowerBody";
-import UP_AdopcionView from "@/components/AdopcionLowerBody";
-import UP_ConfiguracionView from "@/components/ConfiguracionLowerBody";
 import OlvideMiContrasena from "@/views/OlvideMiContrasena";
 import PageNotFound from "@/views/PageNotFound";
 import PruebaView from "@/views/PruebaView";
@@ -82,21 +79,6 @@ const routes = [
     path: '/signin',
     name: 'signin',
     component: SignInView
-  },
-  {
-    path: '/sobremi',
-    name: 'sobremi',
-    component: UP_SobreMiView
-  },
-  {
-    path: '/adopcion',
-    name: 'adopcion',
-    component: UP_AdopcionView
-  },
-  {
-    path: '/configuracion',
-    name: 'configuracion',
-    component: UP_ConfiguracionView
   },
   {
     path:'/prueba',

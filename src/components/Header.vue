@@ -10,12 +10,12 @@
   />
       </a>
   </div>
-    <!-- COMENTARIO: FLTA CODEAR QUE APAREZCA EL NOMBRE DE USUARIO-->
+    <!-- COMENTARIO: FALTA CODEAR QUE APAREZCA EL NOMBRE DE USUARIO -->
     <v-spacer>
 
     </v-spacer>
 
-      <v-btn
+      <!--<v-btn
           text
           icon
           color="#689FD2"
@@ -23,7 +23,7 @@
           large
       >
         <v-icon>mdi-email</v-icon>
-      </v-btn>
+      </v-btn> -->
 
     <v-btn
         text

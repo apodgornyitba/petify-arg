@@ -2,12 +2,7 @@
   <div>
     <ToolBar/>
     <v-container fluid class="hero">
-      <v-text-field
-          outlined
-          filled
-          label="buscar"
-          append-outer-icon="mdi-magnify"
-      ></v-text-field>
+      <SearchBar/>
       <v-row class="text-center" style="margin-top: 50px"  >
         <v-col>
           <v-btn class="white--text"
@@ -71,10 +66,11 @@
 <script>
 
 import ToolBar from "@/components/Toolbar";
+import SearchBar from "@/components/SearchBar";
 export default {
   name: 'HomeView',
 
-  components: {ToolBar,},
+  components: {SearchBar, ToolBar,},
 
   data: () => ({
     //

@@ -2,6 +2,7 @@
   <div>
       <ToolBar/>
     <v-container>
+      <SearchBar/>
       <v-row class="align-left" style="margin-top: 20px; margin-bottom: 20px">
         <v-col>
           <div class="subheading pt-4">
@@ -10,7 +11,6 @@
           <a href="/elijoPerro">
             <v-img :src="require('../assets/perrito1.jpg')" max-width="200px"/>
           </a>
-
         </v-col>
         <v-col>
           <div class="subheading pt-4">
@@ -43,9 +43,10 @@
 
 <script>
 import ToolBar from "@/components/Toolbar";
+import SearchBar from "@/components/SearchBar";
 export default {
   name: "PerrosView",
-  components: {ToolBar}
+  components: {SearchBar, ToolBar}
 }
 </script>
 

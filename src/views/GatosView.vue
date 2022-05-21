@@ -1,8 +1,8 @@
 <template>
   <div>
       <ToolBar/>
-      <v-container>
         <v-container>
+          <SearchBar/>
           <v-row class="align-left" style="margin-top: 20px; margin-bottom: 20px">
             <v-col>
               <div class="subheading pt-4">
@@ -36,16 +36,16 @@
             </v-col>
           </v-row>
         </v-container>
-      </v-container>
   </div>
 
 </template>
 
 <script>
 import ToolBar from "@/components/Toolbar";
+import SearchBar from "@/components/SearchBar";
 export default {
   name: "GatosView",
-  components: {ToolBar}
+  components: {SearchBar, ToolBar}
 }
 </script>
 

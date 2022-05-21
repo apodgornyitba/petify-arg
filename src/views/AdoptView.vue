@@ -2,22 +2,13 @@
   <div>
     <ToolBar/>
     <v-container>
-      <v-row align="center">
-      <v-col style="margin-left: 200px" cols="8">
-<!--        arreglar para que quede centrado sin esa ilegalidad-->
-    <v-text-field
-        outlined
-        filled
-        label="buscar"
-        background-color="#689FD2"
-        append-icon="mdi-magnify"
-        dark
-    ></v-text-field>
+      <v-row>
+      <v-col>
+        <SearchBar/>
       </v-col>
       </v-row>
     </v-container>
     <v-card>
-      <!--          COMENTARIO: FIJENSE SI EL TAB LES GUSTA MAS GRIS O CON EL COLOR CELESTE QUE ES ESTE "#D1E4F0"-->
       <v-tabs
           v-model="tab"
           background-color="#EFEEF1"
@@ -54,10 +45,11 @@
 import ToolBar from "@/components/Toolbar";
 import AdoptaPerros from "@/components/AdoptaPerrosLowerBody";
 import AdoptaGatos from "@/components/AdoptaGatosLowerBody";
+import SearchBar from "@/components/SearchBar";
 
 export default {
   name: "AdoptView",
-  components: {AdoptaGatos, AdoptaPerros, ToolBar},
+  components: {SearchBar, AdoptaGatos, AdoptaPerros, ToolBar},
   data () {
     return {
       tab: null,
