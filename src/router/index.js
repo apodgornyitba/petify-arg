@@ -16,6 +16,7 @@ import OlvideMiContrasena from "@/views/OlvideMiContrasena";
 import PageNotFound from "@/views/PageNotFound";
 import PruebaView from "@/views/PruebaView";
 import ElijoUnPerroView from "@/views/ElijoUnPerroView";
+import TransitosView from "@/views/TransitosView";
 
 Vue.use(VueRouter)
 
@@ -104,14 +105,17 @@ const routes = [
     name:'elijoPerro',
     component: ElijoUnPerroView
   },
-
+  {
+    path: '/transito',
+    name: 'transito',
+    component: TransitosView
+  },
   // 404: Not found
   {
     name: 'PageNotFound',
     path: '/:pathMatch(.*)*',
     component: PageNotFound
   },
-
 ]
 
 const router = new VueRouter({
