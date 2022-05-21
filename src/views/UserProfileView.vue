@@ -4,11 +4,11 @@
     <v-card>
       <v-tabs
           v-model="tab"
-          background-color="#D1E4F0"
+          background-color="#EFEEF1"
           color="#2A537A"
-          class="black--text"
           centered
-          dark
+          light
+          grow
 
       >
         <v-tab
@@ -63,5 +63,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

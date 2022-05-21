@@ -10,20 +10,21 @@
         filled
         label="buscar"
         background-color="#689FD2"
-        append-outer-icon="mdi-magnify"
+        append-icon="mdi-magnify"
+        dark
     ></v-text-field>
       </v-col>
       </v-row>
     </v-container>
     <v-card>
+      <!--          COMENTARIO: FIJENSE SI EL TAB LES GUSTA MAS GRIS O CON EL COLOR CELESTE QUE ES ESTE "#D1E4F0"-->
       <v-tabs
           v-model="tab"
-          background-color="#D1E4F0"
+          background-color="#EFEEF1"
           color="#2A537A"
-          class="black--text"
           centered
-          dark
-
+          light
+          grow
       >
         <v-tab
             v-for="item in items"

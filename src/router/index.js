@@ -18,6 +18,7 @@ import PruebaView from "@/views/PruebaView";
 import ElijoUnPerroView from "@/views/ElijoUnPerroView";
 import TransitosView from "@/views/TransitosView";
 import RefugiosPerfilView from "@/views/RefugiosPerfilView";
+import FormularioAdopcionView from "@/views/FormularioAdopcionView";
 
 Vue.use(VueRouter)
 
@@ -116,12 +117,20 @@ const routes = [
     name:'perfilRefugio',
     component: RefugiosPerfilView
   },
+  {
+    path: '/FormularioAdopcion',
+    name: 'FormularioAdopcion',
+    component: FormularioAdopcionView
+  },
+
   // 404: Not found
   {
     name: 'PageNotFound',
     path: '/:pathMatch(.*)*',
     component: PageNotFound
   },
+
+
 ]
 
 const router = new VueRouter({

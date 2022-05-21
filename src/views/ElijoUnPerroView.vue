@@ -15,6 +15,7 @@
           <h1>
             Nala:
           </h1>
+<!--          COMENTARIO: todo este texto en realidad lo va a ingresar cada refugio -> base de datos, back-->
 
           <h2 class="font-weight-medium">
             Descripción: Mestiza de pelo largo, juguetona, necesita
@@ -30,7 +31,7 @@
           </h2>
         </v-col>
 
-        <v-col align="rigth">
+        <v-col align="rigth" cols="2">
 
           <v-btn
               color="#689FD2"
@@ -39,14 +40,15 @@
               large
               raised
               x-large
-              to="/perros"
+              to="/FormularioAdopcion"
+
           >
-            <v-icon size="40px">mdi-dog</v-icon>
+            <v-icon size="40px">mdi-paw</v-icon>
             Quiero Adoptar</v-btn>
 
         </v-col>
 
-        <v-col align="rigth">
+        <v-col align="rigth" >
 
           <v-btn
               color="#689FD2"
@@ -55,9 +57,10 @@
               large
               raised
               x-large
-              to="/perros"
+              to="/donaterefugio"
           >
-            <v-icon size="40px">mdi-dog</v-icon>
+            <v-icon size="40px">mdi-paw</v-icon>
+
             Quiero Ayudar</v-btn>
 <!--          COMENTARIO: DESPUES CAMBIAR EL ICONO-->
 

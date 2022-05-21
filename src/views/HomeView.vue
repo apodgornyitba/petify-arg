@@ -51,7 +51,9 @@
         </h1>
         <v-row class="align-left" style="margin-top: 20px; margin-bottom: 20px">
           <v-col>
-          <v-img :src="require('../assets/perrito1.jpg')" max-width="250px"/>
+            <a href="/elijoPerro">
+              <v-img :src="require('../assets/perrito1.jpg')" max-width="250px"/>
+            </a>
           </v-col>
           <v-col>
           <v-img :src="require('../assets/perrito2.jpg')" max-width="250px"/>

@@ -10,7 +10,8 @@
               filled
               label="buscar"
               background-color="#689FD2"
-              append-outer-icon="mdi-magnify"
+              append-icon="mdi-magnify"
+              dark
           ></v-text-field>
         </v-col>
         <v-col>
