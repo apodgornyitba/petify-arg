@@ -17,6 +17,7 @@ import PageNotFound from "@/views/PageNotFound";
 import PruebaView from "@/views/PruebaView";
 import ElijoUnPerroView from "@/views/ElijoUnPerroView";
 import TransitosView from "@/views/TransitosView";
+import RefugiosPerfilView from "@/views/RefugiosPerfilView";
 
 Vue.use(VueRouter)
 
@@ -109,6 +110,11 @@ const routes = [
     path: '/transito',
     name: 'transito',
     component: TransitosView
+  },
+  {
+    path:'/perfilRefugio',
+    name:'perfilRefugio',
+    component: RefugiosPerfilView
   },
   // 404: Not found
   {

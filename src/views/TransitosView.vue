@@ -18,12 +18,12 @@
     <v-container fluid class="hero">
       <v-row>
         <v-col style="margin-left: 500px">
-          <h3>Contacto</h3>
+          <h3 class="blue--text text--darken-4">Contacto</h3>
         </v-col>
         <v-spacer>
         </v-spacer>
         <v-col style="margin-right: 550px">
-          <h3>Localización</h3>
+          <h3 class="blue--text text--darken-4">Localización</h3>
         </v-col>
       </v-row>
     </v-container>
@@ -37,7 +37,7 @@
             <v-list-item :key="transito.name">
               
               <v-list-item-content>
-                <v-list-item-name
+                <v-list-item-name class="blue--text text--darken-4"
                   v-text="transito.name + ' ' +transito.location"/>
               </v-list-item-content>
 
