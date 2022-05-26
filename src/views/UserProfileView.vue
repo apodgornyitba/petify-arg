@@ -46,6 +46,7 @@ import ToolBar from "@/components/Toolbar";
 import AdopcionLowerBody from "@/components/AdopcionLowerBody";
 import SobreMi from "@/components/SobreMiLowerBody";
 import ConfiguracionLB from "@/components/ConfiguracionLowerBody";
+
 export default {
   name: "UserProfileView",
   components: {ConfiguracionLB, AdopcionLowerBody, SobreMi, ToolBar},

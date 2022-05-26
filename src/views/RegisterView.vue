@@ -40,13 +40,15 @@
           </v-col>
         <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
-              label="email"
+              v-model="emailUser"
+              label="Email"
           ></v-text-field>
         </v-col>
       </v-row>
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
+              v-model="passwordUser"
               label="Contraseña"
           ></v-text-field>
         </v-col>
@@ -77,13 +79,15 @@
               </v-col>
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
-                    label="email"
+                    v-model="emailRefugio"
+                    label="Email"
                 ></v-text-field>
               </v-col>
             </v-row>
             <v-row class="align-center text-center justify-center">
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
+                    v-model="passwordRefugio"
                     label="Contraseña"
                 ></v-text-field>
               </v-col>
@@ -106,6 +110,7 @@
               large
               raised
               x-large
+              @click="createUser(usuario)"
           >REGISTRAR</v-btn>
         </v-col>
       </v-row>
@@ -114,14 +119,44 @@
 </template>
 
 <script>
+
+import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
+
 export default {
   name: "RegisterView",
   components: {},
   data: () => ({
-    usuario: true
+    usuario: true,
+    auth: getAuth(),
+    displayName: '',
+    emailUser: '',
+    passwordUser: '',
+    emailRefugio: '',
+    passwordRefugio: '',
   }),
 
   methods: {
+    createUser(usuario){
+      if(usuario) {
+        createUserWithEmailAndPassword(this.auth, this.emailUser, this.passwordUser).then((userCredential) => {
+          const user = userCredential.user;
+          this.emailUser = user.email;
+          setTimeout(() => this.$router.push('/signin'), 1000);
+        }).catch((error) => {
+          console.log(error.message);
+          return error.code;
+        });
+      } else {
+        createUserWithEmailAndPassword(this.auth, this.emailRefugio, this.passwordRefugio).then((userCredential) => {
+          const refugee = userCredential.user;
+          this.emailRefugio = refugee.email;
+          setTimeout(() => this.$router.push('/signin'), 1000);
+        }).catch((error) => {
+          console.log(error.message);
+          return error.code;
+        });
+      }
+    },
     habilitarusuario() {
       this.usuario = true;
     },

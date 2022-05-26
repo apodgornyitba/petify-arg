@@ -7,13 +7,15 @@
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center" cols="3">
         <v-text-field
-            label="Nombre de usuario"
+            v-model="email"
+            label="Email"
         ></v-text-field>
         </v-col>
       </v-row>
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center" cols="3">
           <v-text-field
+              v-model="password"
               label="Contraseña"
           ></v-text-field>
         </v-col>
@@ -28,6 +30,7 @@
               large
               raised
               x-large
+              @click="signIn"
           >INGRESAR</v-btn>
         </v-col>
       </v-row>
@@ -49,11 +52,29 @@
 </template>
 
 <script>
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 export default {
   name: "SignInView",
   components: {},
-}
+  data: () => ({
+    auth: getAuth(),
+    email: '',
+    password: '',
+  }),
+  methods: {
+    signIn(){
+      signInWithEmailAndPassword(this.auth, this.email, this.password);
+      //     .then((userCredential) => {
+      //
+      // }).catch((error) => {
+      //   console.log(error.message);
+      //   return error.code;
+      // });
+      setTimeout(() => this.$router.push('/'), 1000);
+    }
+  },
+  }
 </script>
 
 <style scoped>
