@@ -28,7 +28,7 @@
         <form @submit.prevent="submit">
           <validation-provider
               v-slot="{ errors }"
-              name="Name"
+              name="El nombre"
               rules="required|max:10"
           >
             <v-text-field
@@ -41,16 +41,16 @@
           </validation-provider>
           <validation-provider
               v-slot="{ errors }"
-              name="phoneNumber"
+              name="El número de teléfono"
               :rules="{
           required: true,
-          digits: 7,
-          regex: '^(71|72|74|76|81|82|84|85|86|87|88|89)\\d{5}$'
+          digits: 10,
+          regex: 'd^(11|15)\\d{8}$'
         }"
           >
             <v-text-field
                 v-model="phoneNumber"
-                :counter="7"
+                :counter="10"
                 :error-messages="errors"
                 label="Número de teléfono"
                 required
@@ -70,7 +70,7 @@
           </validation-provider>
           <validation-provider
               v-slot="{ errors }"
-              name="select1"
+              name="Este campo"
               rules="required"
           >
 <!--            <SelectFields label="Tiene mascotas?"></SelectFields>-->
@@ -79,14 +79,13 @@
                 :items="items1"
                 :error-messages="errors"
                 label="Tiene mascotas?"
-                data-vv-name="select1"
                 required
             ></v-select>
           </validation-provider>
 
           <validation-provider
               v-slot="{ errors }"
-              name="select2"
+              name="Este campo"
               rules="required"
           >
             <v-select
@@ -94,7 +93,6 @@
                 :items="items2"
                 :error-messages="errors"
                 label="Cuán importante considera pasear a su mascota?"
-                data-vv-name="select2"
                 required
             ></v-select>
           </validation-provider>
@@ -142,27 +140,27 @@ setInteractionMode('eager')
 
 extend('digits', {
   ...digits,
-  message: '{_field_} needs to be {length} digits. ({_value_})',
+  message: '{_field_} debe contener {length} digitos.',
 })
 
 extend('required', {
   ...required,
-  message: '{_field_} can not be empty',
+  message: '{_field_} no puede estar vacío',
 })
 
 extend('max', {
   ...max,
-  message: '{_field_} may not be greater than {length} characters',
+  message: '{_field_} no puede superar los {length} caracteres',
 })
 
 extend('regex', {
   ...regex,
-  message: '{_field_} {_value_} does not match {regex}',
+  message: '{_field_} {_value_} no es válido',
 })
 
 extend('email', {
   ...email,
-  message: 'Email must be valid',
+  message: 'Ingrese un email válido',
 })
 
 export default {
