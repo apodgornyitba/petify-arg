@@ -11,6 +11,7 @@
         </v-col>
         <v-col> <!-- v-if no va si es refugio -->
           <TextFields label="Apellido"></TextFields>
+        </v-col>
         <v-col>
           <TextFields
               v-model="user.surname"
@@ -18,6 +19,7 @@
           </TextFields>
         </v-col>
       </v-row>
+
       <!-- v-if si es refugio poner un Donde se encuentran? -->
       <v-row style="margin-bottom: -30px; margin-top: -30px"> <v-col><h3>¿Dónde vivís?</h3></v-col> </v-row>
       <v-row>
