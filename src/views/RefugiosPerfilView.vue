@@ -32,6 +32,7 @@
                  padless color="#2A537A"
                  width="250"
                  height="40"
+                 to="/perros"
           >
             Nuestras mascotas
             <v-icon right size="30px">mdi-paw</v-icon>
@@ -50,6 +51,7 @@
                  padless color="#2A537A"
                  width="250"
                  height="40"
+                 to="/transito"
           >
             Nuestros tránsitos
             <v-icon right size="30px">mdi-home-map-marker</v-icon>
@@ -63,6 +65,7 @@
                    padless color="#2A537A"
                    width="250"
                    height="40"
+                   to="/donaterefugio"
             >
               Quiero ayudar
               <v-icon right size="30px">mdi-home-map-marker</v-icon>

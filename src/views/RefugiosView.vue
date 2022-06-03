@@ -13,10 +13,10 @@
             <template v-for="(refugio,index) in refugios">
               <v-list-item :key="refugio.name">
             <v-list-item-avatar>
-              <v-img
-                  :alt="`${refugio.name} avatar`"
-                  :src="require(`@/assets/Refugios/${refugio.avatar}`)"
-              ></v-img>
+                <v-img
+                    :alt="`${refugio.name} avatar`"
+                    :src="require(`@/assets/Refugios/${refugio.avatar}`)"
+                ></v-img>
             </v-list-item-avatar>
 
             <v-list-item-content>
@@ -24,11 +24,15 @@
             </v-list-item-content>
 
             <v-list-item-icon>
-              <v-btn icon>
+              <v-btn
+                  icon
+                  to="/PerfilRefugio"
+              >
                 <v-icon :color="grey">
                   mdi-message-plus-outline
                 </v-icon>
               </v-btn>
+
             </v-list-item-icon>
               </v-list-item>
               <v-divider
