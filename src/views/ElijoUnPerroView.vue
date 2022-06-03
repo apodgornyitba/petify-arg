@@ -59,15 +59,11 @@
               x-large
               to="/donaterefugio"
           >
-            <v-icon size="40px">mdi-paw</v-icon>
+            <v-icon size="40px">mdi-handshake</v-icon>
 
             Quiero Ayudar</v-btn>
-<!--          COMENTARIO: DESPUES CAMBIAR EL ICONO-->
-
         </v-col>
-
       </v-row>
-
     </v-container>
   </div>
 </template>

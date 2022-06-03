@@ -74,6 +74,14 @@
       </v-col>
       </v-row>
     </v-container>
+    <!-- v-if no va si es refugio -->
+    <!-- v-if si es un refugio deben aparecer la posibilidad de cargar su formulario -->
+    <!--  <v-row style="margin-bottom: -30px; margin-top: -30px"> <v-col><h3>Ingrese el link a su formulario</h3></v-col> </v-row>
+      <v-row>
+        <v-col>
+        <TextFields></TextFields>
+        </v-col>
+      </v-row> -->
   </div>
 </template>
 

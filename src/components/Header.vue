@@ -10,21 +10,8 @@
   />
       </a>
   </div>
-    <!-- COMENTARIO: FALTA CODEAR QUE APAREZCA EL NOMBRE DE USUARIO -->
-    <v-spacer>
-
-    </v-spacer>
-
-      <!--<v-btn
-          text
-          icon
-          color="#689FD2"
-          to="/Notificaciones"
-          large
-      >
-        <v-icon>mdi-email</v-icon>
-      </v-btn> -->
-
+    <v-spacer/>
+    <!-- una vez que el usuario ingresa -->
     <v-btn
         text
         padless color="#2A537A"
@@ -38,6 +25,10 @@
         padless color="#2A537A"
         to="/signin"
     >Ingresá</v-btn>
+    <!-- v-if de user.id -->
+    <!-- <h2>
+      BIENVENIDO USER.NAME
+    </h2> -->
   </v-app-bar>
 </template>
 

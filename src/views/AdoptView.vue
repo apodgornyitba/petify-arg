@@ -1,6 +1,7 @@
 <template>
   <div>
     <ToolBar/>
+    <!-- v-if si son un cliente solo ven la info -->
     <v-container>
       <v-row>
       <v-col>
@@ -38,11 +39,14 @@
         </v-tab-item>
       </v-tabs-items>
     </v-card>
+    <!-- v-if si son un refugio deben cargar la info
+    <CargarDatos/> -->
   </div>
 </template>
 
 <script>
 import ToolBar from "@/components/Toolbar";
+//import CargarDatos from "@/components/CargarDatos";
 import AdoptaPerros from "@/components/AdoptaPerrosLowerBody";
 import AdoptaGatos from "@/components/AdoptaGatosLowerBody";
 import SearchBar from "@/components/SearchBar";
@@ -50,6 +54,7 @@ import SearchBar from "@/components/SearchBar";
 export default {
   name: "AdoptView",
   components: {SearchBar, AdoptaGatos, AdoptaPerros, ToolBar},
+  //components: {CargarDatos, ToolBar},
   data () {
     return {
       tab: null,

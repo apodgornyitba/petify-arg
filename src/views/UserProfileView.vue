@@ -9,7 +9,6 @@
           centered
           light
           grow
-
       >
         <v-tab
             v-for="item in items"
