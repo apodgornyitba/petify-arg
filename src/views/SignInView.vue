@@ -53,26 +53,30 @@
 
 <script>
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import {mapActions} from "vuex";
 
 export default {
   name: "SignInView",
   components: {},
   data: () => ({
-    auth: getAuth(),
     email: '',
     password: '',
   }),
   methods: {
-    signIn(){
-      signInWithEmailAndPassword(this.auth, this.email, this.password);
-      //     .then((userCredential) => {
-      //
-      // }).catch((error) => {
-      //   console.log(error.message);
-      //   return error.code;
-      // });
-      setTimeout(() => this.$router.push('/'), 1000);
-    }
+    ...mapActions("user", {
+      $update: "update",
+    }),
+    async signIn(){
+      const auth = getAuth();
+      const credentials = await signInWithEmailAndPassword(auth, this.email, this.password).then(() => {
+
+      }).catch((error) => {
+        console.log(error.message);
+        return error.code;
+      });
+      await this.$update({user: credentials.user});
+      await this.$router.push('/')
+    },
   },
   }
 </script>

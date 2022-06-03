@@ -23,11 +23,13 @@
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
+              v-model="nameUser"
               label="Nombre"
           ></v-text-field>
         </v-col>
         <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
+              v-model="surnameUser"
               label="Apellido"
           ></v-text-field>
         </v-col>
@@ -35,6 +37,7 @@
       <v-row class="align-center text-center justify-center">
           <v-col class="align-center text-center justify-center" cols="5">
             <v-text-field
+                v-model="displayNameUser"
                 label="Nombre de usuario"
             ></v-text-field>
           </v-col>
@@ -54,6 +57,7 @@
         </v-col>
         <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
+              v-model="confirmPasswordUser"
               label="Confirmar contraseña"
           ></v-text-field>
         </v-col>
@@ -79,7 +83,6 @@
               </v-col>
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
-                    v-model="emailRefugio"
                     label="Email"
                 ></v-text-field>
               </v-col>
@@ -87,7 +90,6 @@
             <v-row class="align-center text-center justify-center">
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
-                    v-model="passwordRefugio"
                     label="Contraseña"
                 ></v-text-field>
               </v-col>
@@ -121,41 +123,49 @@
 <script>
 
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
+import {doc, setDoc} from "firebase/firestore";
+import db from "../firebase/initFirebase";
+import {mapActions} from "vuex";
 
 export default {
   name: "RegisterView",
   components: {},
   data: () => ({
     usuario: true,
-    auth: getAuth(),
-    displayName: '',
+    displayNameUser: '',
+    nameUser: '',
+    surnameUser: '',
     emailUser: '',
     passwordUser: '',
-    emailRefugio: '',
-    passwordRefugio: '',
+    confirmPasswordUser: '',
   }),
 
   methods: {
+    ...mapActions("user", {
+      $update: "update",
+    }),
     createUser(usuario){
+      const auth = getAuth();
       if(usuario) {
-        createUserWithEmailAndPassword(this.auth, this.emailUser, this.passwordUser).then((userCredential) => {
-          const user = userCredential.user;
-          this.emailUser = user.email;
-          setTimeout(() => this.$router.push('/signin'), 1000);
-        }).catch((error) => {
-          console.log(error.message);
-          return error.code;
-        });
+        this.registerUser(auth, this.emailUser, this.passwordUser);
       } else {
-        createUserWithEmailAndPassword(this.auth, this.emailRefugio, this.passwordRefugio).then((userCredential) => {
-          const refugee = userCredential.user;
-          this.emailRefugio = refugee.email;
-          setTimeout(() => this.$router.push('/signin'), 1000);
-        }).catch((error) => {
-          console.log(error.message);
-          return error.code;
-        });
+        // createUserWithEmailAndPassword(this.auth, this.emailRefugio, this.passwordRefugio).then(() => {
+        //   setTimeout(() => this.$router.push('/signin'), 1000);
+        // }).catch((error) => {
+        //   console.log(error.message);
+        //   return error.code;
+        // });
       }
+    },
+    async registerUser(auth, email, password){
+      const credentials = await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(doc(db, "users", credentials.user.uid), {
+        name: this.nameUser,
+        surname: this.surnameUser,
+        username: this.displayNameUser,
+      });
+      this.$update({user: credentials.user});
+      await this.$router.push('/')
     },
     habilitarusuario() {
       this.usuario = true;

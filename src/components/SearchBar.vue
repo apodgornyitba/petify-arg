@@ -2,7 +2,7 @@
   <v-text-field
       outlined
       filled
-      label="buscar"
+      label="Buscar"
       append-outer-icon="mdi-magnify"
   ></v-text-field>
 </template>
