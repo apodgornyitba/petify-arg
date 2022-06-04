@@ -1,4 +1,4 @@
-<!--ME FALTA VALIDAR LA CONTRASEÑA-->
+<!--ME FALTAN CORREGIR UN PAR DE COSAS, PERO ES POR ACA-->
 <template>
   <v-container>
     <v-container>
@@ -10,7 +10,14 @@
               ref="observer"
               v-slot="{ invalid }"
           >
-            <form @submit.prevent="submit">
+<!--            <form @submit.prevent="submit">-->
+              <v-form
+                  @submit.prevent="submit"
+                  v-model="valid"
+                  lazy-validation
+              >
+
+<!--              <v-form ref="form" v-model="valid" lazy-validation>-->
               <v-row class="align-center text-center justify-center">
                 <v-col class="align-center text-center justify-center" cols="3">
               <validation-provider
@@ -26,18 +33,20 @@
                 ></v-text-field>
               </validation-provider>
 
-<!--        <v-text-field-->
-<!--            v-model="email"-->
-<!--            label="Email"-->
-<!--        ></v-text-field>-->
         </v-col>
       </v-row>
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center" cols="3">
           <v-text-field
-              v-model="password"
+              :append-icon="showP ? 'mdi-eye' : 'mdi-eye-off'"
               label="Contraseña"
+              v-model="password"
+              :rules="[rules.required, rules.min]"
+              :type="showP ? 'text' : 'password'"
+              class="input-group--focused"
+              @click:append="showP = !showP"
           ></v-text-field>
+
         </v-col>
       </v-row>
       <v-row class="align-center text-center justify-center">
@@ -69,7 +78,8 @@
           </p>
         </v-col>
       </v-row>
-      </form>
+      </v-form>
+<!--      </form>-->
       </validation-observer>
     </v-container>
   </v-container>
@@ -115,8 +125,20 @@ export default {
     ValidationObserver,
   },
   data: () => ({
+      valid:true,
+      password: "",
+      // passwordRules: [v => !!v || "Debe ingresar una contraseña"],
+
+    showP: false,
+
+
+    rules: {
+      required: value => !!value || 'Debe ingresar una contraseña.',
+      min: v => v.length >= 6 || 'Debe contener 6 caracteres mínimo.',
+      emailMatch: () => (`El email o la contraseña son incorrectos.`),
+    },
+
     email: '',
-    password: '',
   }),
   methods: {
     ...mapActions("user", {

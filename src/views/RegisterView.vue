@@ -1,6 +1,8 @@
+<!--FALTA PULIR ALGUNAS COSAS DE VALIDACION-->
 <template>
   <v-container>
     <v-container>
+      <v-form ref="form" v-model="valid" lazy-validation>
       <v-row class="align-center text-center justify-center" style="margin-top: 20px; margin-bottom: 20px">
         <v-img :src="require('../assets/petifyLogo.jpeg')" max-width="300px"/>
       </v-row>
@@ -22,15 +24,20 @@
       <v-card :disabled="!usuario">
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center" cols="5">
+
           <v-text-field
               v-model="nameUser"
               label="Nombre"
+              :rules="nameRules"
+              required
           ></v-text-field>
         </v-col>
         <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
               v-model="surnameUser"
               label="Apellido"
+              :rules="nameRules"
+              required
           ></v-text-field>
         </v-col>
       </v-row>
@@ -38,27 +45,43 @@
           <v-col class="align-center text-center justify-center" cols="5">
             <v-text-field
                 v-model="displayNameUser"
+                :counter="10"
+                :rules="nameRules"
                 label="Nombre de usuario"
+                required
             ></v-text-field>
           </v-col>
         <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
               v-model="emailUser"
+              :rules="emailRules"
               label="Email"
+              required
           ></v-text-field>
         </v-col>
       </v-row>
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center" cols="5">
+
           <v-text-field
               v-model="passwordUser"
               label="Contraseña"
+              :rules="passwordRules"
+              :type="show1 ? 'text' : 'password'"
+              required
+              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="show1 = !show1"
           ></v-text-field>
         </v-col>
         <v-col class="align-center text-center justify-center" cols="5">
           <v-text-field
               v-model="confirmPasswordUser"
               label="Confirmar contraseña"
+              :rules="confirmPasswordRules.concat(passwordConfirmationRule)"
+              :type="show2 ? 'text' : 'password'"
+              required
+              :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="show2 = !show2"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -71,6 +94,8 @@
               <v-col class="align-center text-center justify-center" cols="10">
                 <v-text-field
                     label="Nombre del Refugio"
+                    :rules="nameRules"
+                    required
                 ></v-text-field>
               </v-col>
 
@@ -79,11 +104,16 @@
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
                     label="Nombre de usuario"
+                    :counter="10"
+                    :rules="nameRules"
+                    required
                 ></v-text-field>
               </v-col>
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
                     label="Email"
+                    :rules="emailRules"
+                    required
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -91,11 +121,21 @@
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
                     label="Contraseña"
+                    :rules="passwordRules"
+                    :type="show3 ? 'text' : 'password'"
+                    required
+                    :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
+                    @click:append="show3 = !show3"
                 ></v-text-field>
               </v-col>
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
                     label="Confirmar contraseña"
+                    :rules="confirmPasswordRules.concat(passwordConfirmationRule)"
+                    required
+                    :type="show4 ? 'text' : 'password'"
+                    :append-icon="show4 ? 'mdi-eye' : 'mdi-eye-off'"
+                    @click:append="show4 = !show4"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -112,10 +152,13 @@
               large
               raised
               x-large
+              type="submit"
+              :disabled="!valid"
               @click="createUser(usuario)"
           >REGISTRAR</v-btn>
         </v-col>
       </v-row>
+      </v-form>
     </v-container>
   </v-container>
 </template>
@@ -131,6 +174,17 @@ export default {
   name: "RegisterView",
   components: {},
   data: () => ({
+    valid: true,
+    nameRules: [
+      v => !!v || "Este campo es obligatorio.",
+      v => (v && v.length <= 10) || "Superó el límite de 10 caracteres"
+    ],
+    emailRules: [
+      v => !!v || "Ingrese su mail.",
+      v => /.+@.+/.test(v) || "Email inválido."
+    ],
+    passwordRules: [v => !!v || "Ingrese una contraseña."],
+    confirmPasswordRules: [v => !!v || "Ingrese una contraseña."],
     usuario: true,
     displayNameUser: '',
     nameUser: '',
@@ -138,12 +192,24 @@ export default {
     emailUser: '',
     passwordUser: '',
     confirmPasswordUser: '',
+    show1: false,
+    show2: false,
+    show3: false,
+    show4: false,
+
+    // passwordConfirmationRule: [this.passwordUser === this.confirmPasswordUser || "Las contraseñas no coinciden"],
   }),
 
   methods: {
     ...mapActions("user", {
       $update: "update",
     }),
+    computed: {
+      passwordConfirmationRule() {
+        return () =>
+            this.passwordUser === this.confirmPasswordUser || "Las contraseñas no coinciden";
+      }
+    },
     createUser(usuario){
       const auth = getAuth();
       if(usuario) {
