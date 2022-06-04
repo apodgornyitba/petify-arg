@@ -17,6 +17,7 @@ import TransitosView from "@/views/TransitosView";
 import RefugiosPerfilView from "@/views/RefugiosPerfilView";
 import FormularioAdopcionView from "@/views/FormularioAdopcionView";
 import NotificationsView from "@/views/NotificationsView";
+import DenunciarView from "@/views/DenunciarView";
 
 Vue.use(VueRouter)
 
@@ -59,6 +60,11 @@ const routes = [
     path: '/perros',
     name: 'perros',
     component: PerrosView
+  },
+  {
+    path: '/denunciar',
+    name: 'denunciar',
+    component: DenunciarView
   },
   {
     path: '/refugios',

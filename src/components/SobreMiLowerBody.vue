@@ -1,45 +1,57 @@
 <template>
   <div>
     <v-container class="justify-center align-center">
+      <v-form ref="form" v-model="valid" lazy-validation>
       <v-row style="margin-bottom: -30px"> <v-col> <h3>¿Cuál es tu nombre?</h3> </v-col> </v-row>
       <v-row>
         <v-col>
           <TextFields
               v-model="user.name"
               label="Nombre"
+              :rules="nameRules"
+              required
           ></TextFields>
         </v-col>
         <v-col>
           <TextFields
               v-model="user.surname"
-              label="Apellido">
-          </TextFields>
+              label="Apellido"
+              :rules="nameRules"
+              required
+          ></TextFields>
         </v-col>
       </v-row>
-      <v-row style="margin-bottom: -30px; margin-top: -30px"> <v-col><h3>¿Dónde vivís?</h3></v-col> </v-row>
+      <v-row style="margin-bottom: -30px; margin-top: -30px"> <v-col><h3>¿Dónde vivís? </h3></v-col> </v-row>
       <v-row>
         <v-col>
+<!--         COMENTARIO: no tiene mucho sentido si solo estamos en arg-->
         <TextFields label="País"></TextFields>
         </v-col>
       </v-row>
       <v-row>
+<!--        COMENTARIO: hay que hacer las reglas para esto-->
         <v-col style="margin-top: -50px">
-        <TextFields label="Provincia"></TextFields>
+        <TextFields
+            label="Provincia"
+            required
+            :rules="nameRules"
+        ></TextFields>
         </v-col>
       </v-row>
       <v-row>
         <v-col style="margin-top: -50px">
-        <TextFields label="Localidad"></TextFields>
+        <TextFields label="Localidad" :rules="nameRules"></TextFields>
         </v-col>
       </v-row>
       <v-row>
         <v-col style="margin-top: -50px">
-        <TextFields label="Código Postal"></TextFields>
+        <TextFields label="Código Postal" :rules="nameRules"></TextFields>
         </v-col>
         <v-col cols="4">
-          <v-btn padless color="#2A537A" class="white--text">Guardar</v-btn>
+          <v-btn padless color="#2A537A" class="white--text" :disabled="!valid" >Guardar</v-btn>
         </v-col>
       </v-row>
+      </v-form>
     </v-container>
   </div>
 </template>
@@ -56,6 +68,11 @@ export default {
   name: "SobreMi",
   components: {TextFields},
   data:() => ({
+    valid: true,
+    nameRules: [
+      v => !!v || "Este campo es obligatorio.",
+      v => (v && v.length <= 10) || "Superó el límite de 10 caracteres"
+    ],
     user: {},
     email: '',
     id: '',

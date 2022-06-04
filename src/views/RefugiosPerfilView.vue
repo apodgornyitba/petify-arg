@@ -12,11 +12,22 @@
           <v-row>
           <h1 class="blue--text text--darken-4">
             Patitas al rescate
-            <v-btn icon>
-            <v-icon>
-              mdi-message-alert-outline
-            </v-icon>
-            </v-btn>
+
+            <v-btn
+            class="white--text"
+            elevation="0"
+            padless color="red"
+            width="150"
+            height="40"
+            to="/denunciar"
+            >Denunciar
+            <v-icon> mdi-message-alert-outline</v-icon>
+<!--            </v-btn>-->
+<!--            <v-btn icon>-->
+<!--            <v-icon>-->
+<!--              mdi-message-alert-outline-->
+<!--            </v-icon>-->
+          </v-btn>
           </h1>
           </v-row>
           <v-row>

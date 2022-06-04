@@ -3,6 +3,8 @@
         outlined
         filled
         :label="this.label"
+        :rules="this.rules"
+        required
     ></v-text-field>
 </template>
 
@@ -12,6 +14,8 @@ export default {
   props: {
     label:{
       type: String,
+    },
+    rules:{
     },
   }
 

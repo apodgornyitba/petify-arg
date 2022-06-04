@@ -1,12 +1,15 @@
 <template>
   <div>
     <v-container class="justify-center align-center">
+      <v-form ref="form" v-model="valid" lazy-validation>
       <v-row style="margin-bottom: -30px"> <v-col> <h3>Nuevo email</h3> </v-col> </v-row>
       <v-row>
         <v-col>
           <TextFields
               v-model="newEmail"
               label="ejemplo@gmail.com"
+              :rules="emailRules"
+              required
           ></TextFields>
         </v-col>
       </v-row>
@@ -17,10 +20,22 @@
           <TextFields
               v-model="newPassword"
               label="Nueva contraseña"
+              :rules="passwordRules"
+              :type="show3 ? 'text' : 'password'"
+              required
+              :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="show3 = !show3"
           ></TextFields>
         </v-col>
         <v-col>
-          <TextFields label="Confirmar contraseña"></TextFields>
+          <TextFields
+              label="Confirmar contraseña"
+              :rules="confirmPasswordRules.concat(passwordConfirmationRule)"
+              required
+              :type="show4 ? 'text' : 'password'"
+              :append-icon="show4 ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="show4 = !show4"
+          ></TextFields>
         </v-col>
       </v-row>
       <v-row class="align-center">
@@ -29,11 +44,13 @@
               padless color="#2A537A"
               class="white--text"
               @click="updateEmailAndPassword"
+              :disabled="!valid"
           >
             Cambiar
           </v-btn>
         </v-col>
       </v-row>
+      </v-form>
     </v-container>
   </div>
 </template>
@@ -47,9 +64,18 @@ export default {
   name: "ConfiguracionLB",
   components: {TextFields},
   data: () => ({
+    valid: true,
     auth: getAuth(),
     newEmail: '',
     newPassword: '',
+    emailRules: [
+      v => !!v || "Ingrese su mail.",
+      v => /.+@.+/.test(v) || "Email inválido."
+    ],
+    passwordRules: [v => !!v || "Ingrese una contraseña."],
+    confirmPasswordRules: [v => !!v || "Ingrese una contraseña."],
+    show3: false,
+    show4: false,
   }),
   methods: {
     updateEmailAndPassword() {

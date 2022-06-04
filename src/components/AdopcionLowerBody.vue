@@ -71,6 +71,11 @@
           <SelectFields label="Adopción con necesidades especiales"></SelectFields>
           </v-col>
         </v-row>
+        <v-row>
+          <v-col>
+            <v-btn padless color="#2A537A" class="white--text">Guardar</v-btn>
+          </v-col>
+        </v-row>
       </v-col>
       </v-row>
     </v-container>
