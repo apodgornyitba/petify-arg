@@ -188,16 +188,13 @@ export default {
   }),
 
   methods: {
-    submit () {
-      this.$refs.observer.validate()
-    },
     clear () {
       this.name = ''
       this.phoneNumber = ''
       this.email = ''
       this.select = null
       this.checkbox = null
-      this.$refs.observer.reset()
+
     },
   },
 }
