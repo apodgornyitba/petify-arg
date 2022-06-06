@@ -22,7 +22,7 @@
             </v-list-item-avatar>
 
             <v-list-item-content>
-              <v-list-item-name v-text="refugio.name"></v-list-item-name>
+              <v-list-item-title v-text="refugio.name"></v-list-item-title>
             </v-list-item-content>
 
             <v-list-item-icon>
