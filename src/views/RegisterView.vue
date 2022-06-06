@@ -77,7 +77,7 @@
           <v-text-field
               v-model="confirmPasswordUser"
               label="Confirmar contraseña"
-              :rules="confirmPasswordRules.concat(passwordConfirmationRule)"
+              :rules="confirmPasswordRules"
               :type="show2 ? 'text' : 'password'"
               required
               :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
@@ -131,7 +131,7 @@
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
                     label="Confirmar contraseña"
-                    :rules="confirmPasswordRules.concat(passwordConfirmationRule)"
+                    :rules="(confirmPasswordRules)"
                     required
                     :type="show4 ? 'text' : 'password'"
                     :append-icon="show4 ? 'mdi-eye' : 'mdi-eye-off'"
@@ -152,7 +152,6 @@
               large
               raised
               x-large
-              type="submit"
               :disabled="!valid"
               @click="createUser(usuario)"
           >REGISTRAR</v-btn>
@@ -184,7 +183,6 @@ export default {
       v => /.+@.+/.test(v) || "Email inválido."
     ],
     passwordRules: [v => !!v || "Ingrese una contraseña."],
-    confirmPasswordRules: [v => !!v || "Ingrese una contraseña."],
     usuario: true,
     displayNameUser: '',
     nameUser: '',
@@ -192,24 +190,21 @@ export default {
     emailUser: '',
     passwordUser: '',
     confirmPasswordUser: '',
+    confirmPasswordRules: [v => !!v || "Ingrese una contraseña."],
     show1: false,
     show2: false,
     show3: false,
     show4: false,
-
-    // passwordConfirmationRule: [this.passwordUser === this.confirmPasswordUser || "Las contraseñas no coinciden"],
   }),
 
   methods: {
     ...mapActions("user", {
       $update: "update",
     }),
-    computed: {
-      passwordConfirmationRule() {
-        return () =>
-            this.passwordUser === this.confirmPasswordUser || "Las contraseñas no coinciden";
-      }
-    },
+    // passwordConfirmationRule() {
+    //   return () =>
+    //       this.passwordUser !== this.confirmPasswordUser || "Las contraseñas no coinciden";
+    // },
     createUser(usuario){
       const auth = getAuth();
       if(usuario) {
@@ -231,7 +226,7 @@ export default {
         username: this.displayNameUser,
       });
       this.$update({user: credentials.user});
-      await this.$router.push('/')
+      setTimeout(() => this.$router.push('/'), 1000);
     },
     habilitarusuario() {
       this.usuario = true;

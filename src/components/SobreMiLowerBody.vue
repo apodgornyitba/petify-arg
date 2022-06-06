@@ -1,14 +1,18 @@
 <template>
   <div>
     <v-container class="justify-center align-center">
-      <v-form ref="form" v-model="valid" lazy-validation>
+      <v-form
+              ref="form"
+              v-model="valid"
+              lazy-validation
+      >
       <v-row style="margin-bottom: -30px"> <v-col> <h3>¿Cuál es tu nombre?</h3> </v-col> </v-row>
       <v-row>
         <v-col>
           <TextFields
               v-model="user.name"
-              label="Nombre"
               :rules="nameRules"
+              label="Nombre"
               required
           ></TextFields>
         </v-col>
@@ -48,7 +52,12 @@
         <TextFields label="Código Postal" :rules="nameRules"></TextFields>
         </v-col>
         <v-col cols="4">
-          <v-btn padless color="#2A537A" class="white--text" :disabled="!valid" >Guardar</v-btn>
+          <v-btn
+              padless color="#2A537A"
+              class="white--text"
+              :disabled="!valid"
+              @click="updateProf"
+          >Guardar</v-btn>
         </v-col>
       </v-row>
       </v-form>
@@ -84,8 +93,11 @@ export default {
   methods:{
     async getUser(){
       if(this.$getUserId){
+        console.log("UserId:", this.$getUserId);
         const docs = await getDoc(doc(db, "users", this.$getUserId));
         this.user = docs.data();
+        console.log("User:", this.user);
+        console.log("User Name:", this.user.name);
         this.email = this.$getEmail;
         this.id = this.$getUserId;
       }
@@ -97,7 +109,6 @@ export default {
         surname: this.user.surname,
         username: this.user.username,
       });
-      this.$router.push("/userprofile");
     },
   },
   watch: {

@@ -6,16 +6,16 @@
         <v-img :src="require('../assets/petifyLogo.jpeg')" max-width="300px"/>
       </v-row>
 
-          <validation-observer
-              ref="observer"
-              v-slot="{ invalid }"
-          >
+<!--          <validation-observer-->
+<!--              ref="observer"-->
+<!--              v-slot="{ invalid }"-->
+<!--          >-->
 <!--            <form @submit.prevent="submit">-->
-              <v-form
-                  @submit.prevent="submit"
-                  v-model="valid"
-                  lazy-validation
-              >
+<!--              <v-form-->
+<!--                  @submit.prevent="submit"-->
+<!--                  v-model="valid"-->
+<!--                  lazy-validation-->
+<!--              >-->
 
 <!--              <v-form ref="form" v-model="valid" lazy-validation>-->
               <v-row class="align-center text-center justify-center">
@@ -59,8 +59,6 @@
               large
               raised
               x-large
-              type="submit"
-              :disabled="invalid"
               @click="signIn"
           >INGRESAR</v-btn>
         </v-col>
@@ -78,16 +76,16 @@
           </p>
         </v-col>
       </v-row>
-      </v-form>
+<!--      </v-form>-->
 <!--      </form>-->
-      </validation-observer>
+<!--      </validation-observer>-->
     </v-container>
   </v-container>
 </template>
 
 <script>
 import { required, digits, email, max, regex } from 'vee-validate/dist/rules'
-import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
+import { extend, /*ValidationObserver,*/ ValidationProvider, setInteractionMode } from 'vee-validate'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import {mapActions} from "vuex";
 
@@ -122,7 +120,7 @@ export default {
   name: "SignInView",
   components: {
     ValidationProvider,
-    ValidationObserver,
+    // ValidationObserver,
   },
   data: () => ({
       valid:true,
@@ -146,13 +144,12 @@ export default {
     }),
     async signIn(){
       const auth = getAuth();
-      const credentials = await signInWithEmailAndPassword(auth, this.email, this.password).then(() => {
-
+      await signInWithEmailAndPassword(auth, this.email, this.password).then((userCred) => {
+        this.$update({user: userCred.user});
       }).catch((error) => {
         console.log(error.message);
         return error.code;
       });
-      await this.$update({user: credentials.user});
       await this.$router.push('/')
     },
   },

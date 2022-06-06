@@ -5,53 +5,47 @@ export default {
     namespaced: true,
     state: {
       userData: {},
+      info: {},
+      id: '',
+      displayName: '',
+      name: '',
+      surname: '',
     },
     getters: {
-        data: state => {
-            return state.userData
-        },
         isLoggedIn(state) {
-            return state.userData.id != null;
+            return state.id != null;
         },
         getId(state){
-            return state.userData.id;
+            return state.id;
         },
         getFullName(state){
-          return state.userData.name + state.userData.surname;
+          return state.name + state.surname;
         },
         getDisplayName(state){
-          return state.userData.displayName;
+          return state.displayName;
         },
         getInfo(state){
-            return state.userData.info;
+            return state.info;
         },
         getEmail(state){
-          return state.userData.info.email;
+          return state.info.email;
         },
     },
     mutations: {
-        initializeStore(state){
-          const plainItem = localStorage.getItem('userData');
-          if(plainItem){
-              state.userData = JSON.parse(plainItem);
-          } else {
-              state.userData = { id: null, name: '', surname: '', username: '', info: null};
-          }
-        },
         setId(state, id){
-            state.userData.id = id;
+            state.id = id;
         },
         setInfo(state, info){
-            state.userData.info = info;
+            state.info = info;
         },
         setName(state, name){
-            state.userData.name = name;
+            state.name = name;
         },
         setSurname(state, surname){
-            state.userData.surname = surname;
+            state.surname = surname;
         },
         setUsername(state, username){
-          state.userData.username = username;
+          state.username = username;
         },
     },
     actions: {
