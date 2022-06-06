@@ -8,7 +8,9 @@
        </v-col>
 
       </v-row>
+    </v-container>
 
+    <v-container fluid>
       <v-row>
 
         <v-col cols="6">
@@ -30,6 +32,7 @@
             Refugio: La patita feliz.
           </h2>
         </v-col>
+
 
         <v-col align="rigth" cols="2">
 
@@ -63,6 +66,7 @@
 
             Quiero Ayudar</v-btn>
         </v-col>
+
       </v-row>
     </v-container>
   </div>

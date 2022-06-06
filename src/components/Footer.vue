@@ -5,6 +5,7 @@
       elevation="0"
       padless color="#2A537A"
       class="justify-center"
+      app
   >
 
     <v-card
