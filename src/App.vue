@@ -4,14 +4,16 @@
     <v-main>
         <router-view/>
     </v-main>
+    <AppFooter/>
   </v-app>
 </template>
 
 <script>
 
 import AppHeader from "@/components/Header";
+import AppFooter from "@/components/Footer";
 export default {
-  components: {AppHeader}
+  components: {AppFooter, AppHeader}
 }
 </script>
 

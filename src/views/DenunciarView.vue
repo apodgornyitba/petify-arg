@@ -8,13 +8,10 @@
           <h2>
             Formulario para denunciar comportamiento extraño de un refugio
           </h2>
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col>
-          <h4 class="font-weight-medium">
-            Por favor complete el siguiente formulario para iniciar el trámite de denuncia de Patitas al Rescate.
+          <v-divider/>
+          <h4>
+            <v-icon>mdi-information</v-icon>
+            Tu denuncia es anónima y es muy importante para nosotros, esto nos ayuda a mantener la seguridad de los animales. En caso de una emergencia, recomendamos llamar a la policía, no esperes.
           </h4>
         </v-col>
       </v-row>
@@ -22,7 +19,6 @@
         <v-col cols="8">
           <SelectFields label="Motivo" :items=select_motivo></SelectFields>
         </v-col>
-
         <v-col cols="8">
           <v-text-field
               name="Motivo"

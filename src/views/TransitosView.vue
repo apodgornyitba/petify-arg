@@ -26,8 +26,8 @@
             >
               <td class="text-left blue--text text--darken-4">{{ item.name }}</td>
               <td class="text-left blue--text text--darken-4">{{ item.location }}</td>
-              <td> <v-btn icon><v-icon :color="grey">
-                mdi-message-plus-outline
+              <td> <v-btn icon to="/denuncia"><v-icon :color="grey">
+                mdi-message-alert-outline
               </v-icon> </v-btn> </td>
             </tr>
             </tbody>

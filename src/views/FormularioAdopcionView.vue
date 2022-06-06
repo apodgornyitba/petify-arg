@@ -184,7 +184,7 @@ export default {
       'Solo para que haga sus necesidades',
       'No lo veo necesario',
     ],
-    checkbox: null,
+    //checkbox: null,
   }),
 
   methods: {
@@ -193,7 +193,7 @@ export default {
       this.phoneNumber = ''
       this.email = ''
       this.select = null
-      this.checkbox = null
+      //this.checkbox = null
 
     },
   },

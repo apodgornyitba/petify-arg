@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container class="justify-center align-center">
+    <v-container  class="justify-center align-center">
       <v-row>
       <v-col>
         <v-row style="margin-bottom: -30px "> <v-col>
@@ -71,12 +71,12 @@
           <SelectFields label="Adopción con necesidades especiales" :items=especial></SelectFields>
           </v-col>
         </v-row>
-        <v-row>
-          <v-col>
-            <v-btn padless color="#2A537A" class="white--text">Guardar</v-btn>
-          </v-col>
-        </v-row>
-      </v-col>
+        </v-col>
+      </v-row>
+      <v-row class="justify-center align-center text-center">
+        <v-col>
+          <v-btn padless color="#2A537A" class="white--text">Guardar</v-btn>
+        </v-col>
       </v-row>
     </v-container>
     <!-- v-if no va si es refugio -->
@@ -95,7 +95,21 @@
 import SelectFields from "@/components/SelectFields";
 export default {
   name: "AdopcionLowerBody",
-  components: {SelectFields}
+  components: {SelectFields},
+  data: () => ({
+    mascota_deseada: ["Perro", "Gato"],
+    count_owners:  ["1", "2", "3", "4", "5 o más"],
+    count_mascotas: ["0", "1", "2", "3", "4", "5 o más"],
+    mascota_previa: ["Perro", "Gato", "Ambos", "¡Esta será mi primera mascota!"],
+    espacio_disponible: ["Menos de 20", "Entre 20 y 50", "Entre 50 y 100", "Más de 100"],
+    espacio_alrededor: ["Sí", "No"],
+    edad: ["Indiferente", "0-1 años", "2-4 años", "5-7 años", "7 o más"],
+    sexo: ["Indiferente", "Macho", "Hembra"],
+    size: ["Indiferente","Pequeño", "Mediano", "Grande"],
+    personalidad: ["Energético", "Tranquilo", "Solitario", "Cariñoso"],
+    necesidades: ["Alimento, paseos, cuidado de salud e higiene", "Alimento, cuidado de salud e higiene", "Alimento"],
+    especial: ["Sí", "No"]
+  })
 }
 </script>
 

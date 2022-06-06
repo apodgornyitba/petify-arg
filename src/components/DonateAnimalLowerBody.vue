@@ -2,17 +2,17 @@
   <v-container>
     <v-row>
       <v-col align="center">
-        <TextFields label="Nombre del refugio"/>
+        <SelectFields label="Nombre del refugio" :items=refugios />
       </v-col>
     </v-row>
     <v-row>
       <v-col align="center">
-        <TextFields label="Nombre del animal"/>
+        <SelectFields label="Nombre del animal" :items="animales" />
       </v-col>
     </v-row>
     <v-row>
       <v-col align="center">
-        <TextFields label="Tipo de ayuda"/>
+        <SelectFields :items=tipos label="Tipo de ayuda"/>
       </v-col>
     </v-row>
     <v-row>
@@ -31,9 +31,15 @@
 </template>
 <script>
 import TextFields from "@/components/TextFields";
+import SelectFields from "@/components/SelectFields";
 export default {
   name: "DonateAnimalLowerBody",
-  components: {TextFields}
+  components: {SelectFields, TextFields},
+  data: () => ({
+    refugios: ["Patitas al rescate", "Colita Feliz", "La patita feliz", "La patita feliz", "Salvando sus vidas", "Zaguates"],
+    animales: ["Boris", "Nala" , "Sebastian", "Roma" ,"Mariana", "Tai" ,"Laura", "Mate" , "Jose Luis", "Salta"],
+    tipos: ["QUIERO TRANSITAR", "QUIERO TRASPORTAR", "QUIERO DONAR ALIMENTO", "QUIERO DONAR UTILES"],
+  })
 }
 </script>
 

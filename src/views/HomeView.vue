@@ -60,20 +60,17 @@
             <v-img :src="require('../assets/perrito5.jpg')" max-width="250px"/>
           </v-col>
         </v-row>
-
       </v-container>
-    <Footer/>
   </div>
 </template>
 <script>
 
 import ToolBar from "@/components/Toolbar";
-import Footer from "@/components/Footer";
 import SearchBar from "@/components/SearchBar";
 export default {
   name: 'HomeView',
 
-  components: {SearchBar, ToolBar, Footer},
+  components: {SearchBar, ToolBar},
 
   data: () => ({
     //

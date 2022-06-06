@@ -12,22 +12,6 @@
           <v-row>
           <h1 class="blue--text text--darken-4">
             Patitas al rescate
-
-            <v-btn
-            class="white--text"
-            elevation="0"
-            padless color="red"
-            width="150"
-            height="40"
-            to="/denunciar"
-            >Denunciar
-            <v-icon> mdi-message-alert-outline</v-icon>
-<!--            </v-btn>-->
-<!--            <v-btn icon>-->
-<!--            <v-icon>-->
-<!--              mdi-message-alert-outline-->
-<!--            </v-icon>-->
-          </v-btn>
           </h1>
           </v-row>
           <v-row>
@@ -38,6 +22,24 @@
       </v-row>
         </v-col>
         <v-col>
+          <v-row>
+          <v-btn
+              class="white--text"
+              elevation="0"
+              padless color="red"
+              width="150"
+              height="40"
+              to="/denunciar"
+          >Denunciar
+            <v-icon> mdi-message-alert-outline</v-icon>
+            <!--            </v-btn>-->
+            <!--            <v-btn icon>-->
+            <!--            <v-icon>-->
+            <!--              mdi-message-alert-outline-->
+            <!--            </v-icon>-->
+          </v-btn>
+          </v-row>
+          <v-row style="margin-top: 20px">
           <v-btn class="white--text"
                  elevation="0"
                  padless color="#2A537A"
@@ -48,6 +50,7 @@
             Nuestras mascotas
             <v-icon right size="30px">mdi-paw</v-icon>
           </v-btn>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>
@@ -79,7 +82,7 @@
                    to="/donaterefugio"
             >
               Quiero ayudar
-              <v-icon right size="30px">mdi-home-map-marker</v-icon>
+              <v-icon right size="30px">mdi-handshake</v-icon>
             </v-btn>
           </v-col>
         </v-row>
