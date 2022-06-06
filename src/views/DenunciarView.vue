@@ -20,19 +20,13 @@
       </v-row>
       <v-row class="align-center">
         <v-col cols="8">
-        <v-text-field
-          name="Motivo"
-          label="Motivo"
-          v-model="motivo"
-
-        >
-        </v-text-field>
+          <SelectFields label="Motivo" :items=select_motivo></SelectFields>
         </v-col>
 
         <v-col cols="8">
           <v-text-field
               name="Motivo"
-              label="Mas campos a definir"
+              label="Más detalles"
               v-model="motivo"
           >
           </v-text-field>
@@ -57,11 +51,13 @@
 
 <script>
 import ToolBar from "@/components/Toolbar";
+import SelectFields from "@/components/SelectFields";
 export default {
   name: "DenunciarView",
-  components: {ToolBar},
+  components: {SelectFields, ToolBar},
   data: () => ({
     motivo: '',
+    select_motivo: ["Actividad sospechosa", "Maltrato", "Información falsa", "Otro"],
 
   }),
 }

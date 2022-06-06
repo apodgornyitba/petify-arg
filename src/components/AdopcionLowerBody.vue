@@ -8,32 +8,32 @@
         </v-col> </v-row>
         <v-row>
           <v-col>
-          <SelectFields label="Mascota deseada"></SelectFields>
+          <SelectFields label="Mascota deseada" :items=mascota_deseada></SelectFields>
           </v-col>
         </v-row>
         <v-row>
           <v-col style="margin-top: -50px">
-          <SelectFields label="Futuro/s dueño/s"></SelectFields>
+          <SelectFields label="Futuro/s dueño/s" :items=count_owners></SelectFields>
           </v-col>
         </v-row>
         <v-row>
           <v-col style="margin-top: -50px">
-          <SelectFields label="Mascota/s actual/es"></SelectFields>
+          <SelectFields label="Cantidad de mascota/s actual/es" :items=count_mascotas></SelectFields>
           </v-col>
         </v-row>
         <v-row>
           <v-col style="margin-top: -50px">
-          <SelectFields label="Mascota/s previa/s"></SelectFields>
+          <SelectFields label="Tipo de mascota/s previa/s" :items=mascota_previa></SelectFields>
           </v-col>
         </v-row>
         <v-row>
           <v-col style="margin-top: -50px">
-          <SelectFields label="Espacio disponible"></SelectFields>
+          <SelectFields label="Espacio disponible (m2)" :items=espacio_disponible></SelectFields>
           </v-col>
         </v-row>
         <v-row>
           <v-col style="margin-top: -50px">
-          <SelectFields label="Espacio alrededor"></SelectFields>
+          <SelectFields label="Espacio alrededor" :items=espacio_alrededor></SelectFields>
           </v-col>
         </v-row>
       </v-col>
@@ -43,32 +43,32 @@
         </v-col></v-row>
         <v-row>
           <v-col>
-          <SelectFields label="Preferencia de edad"></SelectFields>
+          <SelectFields label="Preferencia de edad" :items=edad></SelectFields>
           </v-col>
         </v-row>
         <v-row>
           <v-col style="margin-top: -50px">
-          <SelectFields label="Preferencia de género"></SelectFields>
+          <SelectFields label="Preferencia de sexo" :items=sexo></SelectFields>
           </v-col>
         </v-row>
         <v-row>
           <v-col style="margin-top: -50px">
-          <SelectFields label="Preferencia de tamaño"></SelectFields>
+          <SelectFields label="Preferencia de tamaño" :items=size></SelectFields>
           </v-col>
         </v-row>
         <v-row>
           <v-col style="margin-top: -50px">
-          <SelectFields label="Personalidad"></SelectFields>
+          <SelectFields label="Personalidad" :items=personalidad></SelectFields>
           </v-col>
         </v-row>
         <v-row>
           <v-col style="margin-top: -50px">
-          <SelectFields label="Necesidades"></SelectFields>
+          <SelectFields label="Necesidades" :items=necesidades></SelectFields>
           </v-col>
         </v-row>
         <v-row>
           <v-col style="margin-top: -50px">
-          <SelectFields label="Adopción con necesidades especiales"></SelectFields>
+          <SelectFields label="Adopción con necesidades especiales" :items=especial></SelectFields>
           </v-col>
         </v-row>
         <v-row>
