@@ -43,10 +43,10 @@
               v-slot="{ errors }"
               name="El número de teléfono"
               :rules="{
-          required: true,
-          digits: 10,
-          regex: 'd^(11|15)\\d{8}$'
-        }"
+              required: true,
+              digits: 10,
+              regex: 'd^(11|15)\\d{8}$'
+              }"
           >
             <v-text-field
                 v-model="phoneNumber"

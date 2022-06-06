@@ -6,13 +6,11 @@
        <v-col align="center">
          <v-img :src="require('../assets/perrito1.jpg')" max-width="300px" height="425"/>
        </v-col>
-
       </v-row>
     </v-container>
 
     <v-container fluid>
       <v-row>
-
         <v-col cols="6">
           <h1>
             Nala:
