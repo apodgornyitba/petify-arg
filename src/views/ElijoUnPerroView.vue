@@ -31,39 +31,73 @@
           </h2>
         </v-col>
 
+            <v-col :xs="10" :md="2" :lg="2">
+              <v-btn
+                  color="#689FD2"
+                  class="white--text"
+                  elevation="2"
+                  large
+                  raised
+                  x-large
+                  block
+                  to="/FormularioAdopcion"
 
-        <v-col align="rigth" cols="2">
+              >
+                <v-icon size="40px">mdi-paw</v-icon>
+                Quiero Adoptar</v-btn>
+            </v-col>
 
-          <v-btn
-              color="#689FD2"
-              class="white--text"
-              elevation="2"
-              large
-              raised
-              x-large
-              to="/FormularioAdopcion"
+            <v-col :xs="10" :md="2" :lg="2">
+              <v-btn
+                  color="#689FD2"
+                  class="white--text"
+                  elevation="2"
+                  large
+                  raised
+                  x-large
+                  block
+                  to="/donaterefugio"
+              >
+                <v-icon size="40px">mdi-handshake</v-icon>
 
-          >
-            <v-icon size="40px">mdi-paw</v-icon>
-            Quiero Adoptar</v-btn>
+                Quiero Ayudar</v-btn>
 
-        </v-col>
+            </v-col>
 
-        <v-col align="rigth" >
 
-          <v-btn
-              color="#689FD2"
-              class="white--text"
-              elevation="2"
-              large
-              raised
-              x-large
-              to="/donaterefugio"
-          >
-            <v-icon size="40px">mdi-handshake</v-icon>
 
-            Quiero Ayudar</v-btn>
-        </v-col>
+<!--        <v-col align="rigth" cols="2">-->
+
+<!--          <v-btn-->
+<!--              color="#689FD2"-->
+<!--              class="white&#45;&#45;text"-->
+<!--              elevation="2"-->
+<!--              large-->
+<!--              raised-->
+<!--              x-large-->
+<!--              to="/FormularioAdopcion"-->
+
+<!--          >-->
+<!--            <v-icon size="40px">mdi-paw</v-icon>-->
+<!--            Quiero Adoptar</v-btn>-->
+
+<!--        </v-col>-->
+
+<!--        <v-col align="rigth" >-->
+
+<!--          <v-btn-->
+<!--              color="#689FD2"-->
+<!--              class="white&#45;&#45;text"-->
+<!--              elevation="2"-->
+<!--              large-->
+<!--              raised-->
+<!--              x-large-->
+<!--              to="/donaterefugio"-->
+<!--          >-->
+<!--            <v-icon size="40px">mdi-handshake</v-icon>-->
+
+<!--            Quiero Ayudar</v-btn>-->
+<!--        </v-col>-->
 
       </v-row>
     </v-container>
