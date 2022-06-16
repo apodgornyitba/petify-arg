@@ -28,18 +28,18 @@
       <v-row style="margin-bottom: -30px; margin-top: -30px"> <v-col><h3>¿Dónde vivís? </h3></v-col> </v-row>
       <v-row>
         <v-col>
-<!--         COMENTARIO: no tiene mucho sentido si solo estamos en arg-->
-        <TextFields label="País"></TextFields>
+        <SelectFields label="País" :items=paises></SelectFields>
         </v-col>
       </v-row>
       <v-row>
 <!--        COMENTARIO: hay que hacer las reglas para esto-->
         <v-col style="margin-top: -50px">
-        <TextFields
-            label="Provincia"
-            required
-            :rules="nameRules"
-        ></TextFields>
+<!--        <TextFields-->
+<!--            label="Provincia"-->
+<!--            required-->
+<!--            :rules="nameRules"-->
+<!--        ></TextFields>-->
+          <SelectFields label="Provincia" :items=provincias></SelectFields>
         </v-col>
       </v-row>
       <v-row>
@@ -49,7 +49,7 @@
       </v-row>
       <v-row>
         <v-col style="margin-top: -50px">
-        <TextFields label="Código Postal" :rules="nameRules"></TextFields>
+        <TextFields label="Código Postal" :rules="codigoPostalRules"></TextFields>
         </v-col>
         <v-col cols="4">
           <v-btn
@@ -68,6 +68,7 @@
 <script>
 
 import TextFields from "@/components/TextFields";
+import SelectFields from "@/components/SelectFields";
 import {mapGetters} from "vuex";
 import {doc, getDoc, updateDoc} from "firebase/firestore";
 import db from "../firebase/initFirebase"
@@ -75,12 +76,19 @@ import db from "../firebase/initFirebase"
 
 export default {
   name: "SobreMi",
-  components: {TextFields},
+  components: {TextFields,SelectFields},
   data:() => ({
+    paises: ["Argentina",],
+    provincias: ["CABA", "Buenos Aires"],
     valid: true,
     nameRules: [
       v => !!v || "Este campo es obligatorio.",
       v => (v && v.length <= 10) || "Superó el límite de 10 caracteres"
+    ],
+    codigoPostalRules:[
+      v => !!v || "Este campo es obligatorio.",
+      v => (v && v.length <= 4) || "Superó el límite de caracteres",
+      v => (v && /^[0-9]+$/.test(v)) || "Ingrese solo números"
     ],
     user: {},
     email: '',

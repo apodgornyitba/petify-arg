@@ -2,6 +2,11 @@
   <div>
     <tool-bar/>
     <v-container>
+      <v-form
+          ref="form"
+          v-model="valid"
+          lazy-validation
+      >
 
       <v-row style="margin-top: 20px">
 
@@ -21,110 +26,88 @@
 
       <v-row class="center">
         <v-col>
-      <validation-observer
-          ref="observer"
-          v-slot="{ invalid }"
-      >
-        <form @submit.prevent="submit">
-          <validation-provider
-              v-slot="{ errors }"
-              name="El nombre"
-              rules="required|max:10"
-          >
-            <v-text-field
-                v-model="name"
-                :counter="10"
-                :error-messages="errors"
-                label="Nombre"
-                required
-            ></v-text-field>
-          </validation-provider>
-          <validation-provider
-              v-slot="{ errors }"
-              name="El número de teléfono"
-              :rules="{
-              required: true,
-              digits: 10,
-              regex: 'd^(11|15)\\d{8}$'
-              }"
-          >
-            <v-text-field
-                v-model="phoneNumber"
-                :counter="10"
-                :error-messages="errors"
-                label="Número de teléfono"
-                required
-            ></v-text-field>
-          </validation-provider>
-          <validation-provider
-              v-slot="{ errors }"
-              name="email"
-              rules="required|email"
-          >
-            <v-text-field
-                v-model="email"
-                :error-messages="errors"
-                label="E-mail"
-                required
-            ></v-text-field>
-          </validation-provider>
-          <validation-provider
-              v-slot="{ errors }"
-              name="Este campo"
-              rules="required"
-          >
-<!--            <SelectFields label="Tiene mascotas?"></SelectFields>-->
-            <v-select
-                v-model="select"
-                :items="items1"
-                :error-messages="errors"
-                label="Tiene mascotas?"
-                required
-            ></v-select>
-          </validation-provider>
+          <TextFields
+              v-model="name"
+              :rules="nameRules"
+              label="Nombre"
+              required
+          ></TextFields>
+        </v-col>
 
-          <validation-provider
-              v-slot="{ errors }"
-              name="Este campo"
-              rules="required"
-          >
-            <v-select
-                v-model="select"
-                :items="items2"
-                :error-messages="errors"
-                label="Cuán importante considera pasear a su mascota?"
-                required
-            ></v-select>
-          </validation-provider>
-<!--          <validation-provider-->
-<!--              v-slot="{ errors }"-->
-<!--              rules="required"-->
-<!--              name="checkbox"-->
-<!--          >-->
-<!--            <v-checkbox-->
-<!--                v-model="checkbox"-->
-<!--                :error-messages="errors"-->
-<!--                value="1"-->
-<!--                label="Option"-->
-<!--                type="checkbox"-->
-<!--                required-->
-<!--            ></v-checkbox>-->
-<!--          </validation-provider>-->
+        <v-col>
+          <TextFields
+              v-model="phoneNumber"
+              label="Número de teléfono"
+              :rules="phoneRules"
+          />
+        </v-col>
 
+        <v-col>
+          <TextFields
+              v-model="email"
+              label="E-mail"
+              :rules="emailRules"
+              required
+          ></TextFields>
+        </v-col>
+
+        <v-col>
+          <SelectFields
+              v-model="select2"
+              label="Cuán importante considera pasear a su mascota?" :items=items2></SelectFields>
+        </v-col>
+
+        <v-col>
+          <SelectFields
+              v-model="select1"
+              label="Tiene mascotas?"  :items=items1></SelectFields>
+        </v-col>
+
+        <v-col>
+          <SelectFields
+              v-model="select1"
+              label="El perro dormiría adentro o afuera de la casa?"  :items=items3></SelectFields>
+        </v-col>
+
+        <v-col>
+          <SelectFields
+              v-model="select1"
+              label="Tiene patio?"  :items=items1></SelectFields>
+        </v-col>
+
+        <v-col>
+          <SelectFields
+              v-model="select1"
+              label="Quien está a cargo de tu vivienda?"  :items=items4></SelectFields>
+        </v-col>
+
+        <v-col cols="2">
           <v-btn
-              class="mr-4"
+              padless color="#2A537A"
+              class="white--text"
               type="submit"
-              :disabled="invalid"
+              :disabled="!valid"
           >
             Enviar
           </v-btn>
-          <v-btn @click="clear">
+        </v-col>
+
+        <v-col>
+          <v-btn
+            @click="clear"
+            type="clear"
+            padless color="#2A537A"
+            class="white--text"
+          >
             Vaciar
           </v-btn>
-        </form>
-      </validation-observer>
         </v-col>
-      </v-row>
+
+
+        </v-row>
+
+
+      </v-form>
     </v-container>
   </div>
   <!-- COMENTARIO: si el refufio del perro ingresa un formularioa que ps de enviar en nuetro, ingrese al google forms del mismo -->
@@ -132,49 +115,37 @@
 
 
 <script>
-import { required, digits, email, max, regex } from 'vee-validate/dist/rules'
-import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
 import ToolBar from "@/components/Toolbar";
-
-setInteractionMode('eager')
-
-extend('digits', {
-  ...digits,
-  message: '{_field_} debe contener {length} digitos.',
-})
-
-extend('required', {
-  ...required,
-  message: '{_field_} no puede estar vacío',
-})
-
-extend('max', {
-  ...max,
-  message: '{_field_} no puede superar los {length} caracteres',
-})
-
-extend('regex', {
-  ...regex,
-  message: '{_field_} {_value_} no es válido',
-})
-
-extend('email', {
-  ...email,
-  message: 'Ingrese un email válido',
-})
+import TextFields from "@/components/TextFields";
+import SelectFields from "@/components/SelectFields";
 
 export default {
   name: "FormularioAdopcion",
   components: {
-    ValidationProvider,
-    ValidationObserver,
+    TextFields,
+    SelectFields,
     ToolBar,
   },
   data: () => ({
+    valid: true,
+    nameRules: [
+      v => !!v || "Este campo es obligatorio.",
+      v => (v && v.length <= 10) || "Superó el límite de 10 caracteres"
+    ],
+    phoneRules: [
+      v => !!v || "Este campo es obligatorio.",
+      v => (v && v.length <= 10) || "Superó el límite de 10 caracteres",
+      v => (v.length > 0 && /^[0-9]+$/.test(v)) || "Ingrese un teléfono válido (solo números).",
+    ],
+    emailRules: [
+      v => !!v || "Ingrese su mail.",
+      v => /.+@.+/.test(v) || "Email inválido."
+    ],
     name: '',
     phoneNumber: '',
     email: '',
-    select: null,
+    select1: '',
+    select2: '',
     items1: [
       'Sí',
       'No',
@@ -184,17 +155,26 @@ export default {
       'Solo para que haga sus necesidades',
       'No lo veo necesario',
     ],
+    items3: [
+      'Adentro',
+      'Afuera',
+      'Dependiendo del clima',
+    ],
+    items4: [
+      'Yo',
+      'Mi madre/ padre',
+      'Otro',
+    ],
     //checkbox: null,
   }),
 
   methods: {
-    clear () {
+    clear(){
       this.name = ''
       this.phoneNumber = ''
       this.email = ''
-      this.select = null
-      //this.checkbox = null
-
+      this.select1 = null
+      this.select2 = null
     },
   },
 }
