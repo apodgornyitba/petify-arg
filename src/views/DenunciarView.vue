@@ -31,15 +31,18 @@
       </v-row>
 
       <v-row>
+        <v-col>
         <v-btn
-            class="mr-4"
+            padless color="#2A537A"
+            class="white--text"
             type="submit"
         >
           Enviar
         </v-btn>
-        <v-btn @click="clear">
-          Vaciar
-        </v-btn>
+<!--        <v-btn @click="clear">-->
+<!--          Vaciar-->
+<!--        </v-btn>-->
+        </v-col>
       </v-row>
     </v-container>
   </div>

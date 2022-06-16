@@ -80,8 +80,12 @@
               v-model="select1"
               label="Quien está a cargo de tu vivienda?"  :items=items4></SelectFields>
         </v-col>
+      </v-row>
 
-        <v-col cols="2">
+<!--        <v-col cols="2">-->
+        <v-row>
+          <v-col cols="2">
+<!--            COMENTARIO corregir esta grasada SE ME JUNTAN LOS BOTONES NO SE POR QUE-->
           <v-btn
               padless color="#2A537A"
               class="white--text"
@@ -92,7 +96,8 @@
           </v-btn>
         </v-col>
 
-        <v-col>
+
+          <v-col>
           <v-btn
             @click="clear"
             type="clear"
@@ -101,11 +106,9 @@
           >
             Vaciar
           </v-btn>
-        </v-col>
-
+          </v-col>
 
         </v-row>
-
 
       </v-form>
     </v-container>
