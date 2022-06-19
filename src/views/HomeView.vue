@@ -47,7 +47,16 @@
         <v-row class="align-left" style="margin-top: 20px; margin-bottom: 20px">
           <v-col>
             <a href="/elijoPerro">
-              <v-img :src="require('../assets/perrito1.jpg')" max-width="250px"/>
+
+              <v-img :src="require('../assets/perrito1.jpg')" max-width="250px">
+<!--                <v-btn-->
+<!--                    icon-->
+<!--                    color="pink"-->
+<!--                >-->
+<!--                  <v-icon>mdi-heart</v-icon>-->
+<!--                </v-btn>-->
+<!--COMENTARIO: falta boton de fav-->
+              </v-img>
             </a>
           </v-col>
           <v-col>
@@ -73,7 +82,7 @@ export default {
   components: {SearchBar, ToolBar},
 
   data: () => ({
-    //
+    fav: false,
   }),
 };
 </script>

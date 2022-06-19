@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import UserProfileView from "@/views/UserProfileView";
 import AdoptView from "@/views/AdoptView";
+import InfoMascotaView from "@/views/InfoMascotaView";
 import DonateView from "@/views/DonateView";
 import GatosView from "@/views/GatosView";
 import PerrosView from "@/views/PerrosView";
@@ -49,6 +50,11 @@ const routes = [
     path: '/donaterefugio',
     name: 'donaterefugio',
     component: DonateView
+  },
+  {
+    path: '/infoView',
+    name: 'infoView',
+    component: InfoMascotaView
   },
 
   {

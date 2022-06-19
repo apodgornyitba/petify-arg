@@ -25,6 +25,14 @@
             to="/donaterefugio"
         >Quiero ayudar</v-btn>
       </v-col>
+      <v-col>
+        <v-btn
+            text
+            color="white"
+            to="/infoView"
+        >Información</v-btn>
+<!--        tambien le podemos poner "Tips"-->
+      </v-col>
     </v-row>
   </v-toolbar>
 </template>
