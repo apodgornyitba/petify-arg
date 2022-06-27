@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-container  class="justify-center align-center">
+      <h1>Respuesta de formulario</h1>
       <v-row>
         <v-col>
           <v-row style="margin-bottom: -30px "> <v-col>
