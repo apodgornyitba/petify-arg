@@ -69,7 +69,6 @@
           <v-text-field
               v-if="!this.$store.getters.isShelter"
               v-model="user.localidad"
-              :rules="nameRules"
               label="Localidad"
               outlined
               style="width: 500px; margin-bottom: 15px"
@@ -79,7 +78,6 @@
           <v-text-field
               v-if="this.$store.getters.isShelter"
               v-model="user.address"
-              :rules="nameRules"
               label="Dirección"
               outlined
               style="width: 500px; margin-bottom: 15px"
