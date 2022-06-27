@@ -48,7 +48,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <!-- HARDCODEADO -->
+    <!--COMENTARIO: HARDCODEADO -->
       <v-container>
         <h1 class="text-center" >
           En adopción:

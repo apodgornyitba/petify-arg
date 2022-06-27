@@ -64,6 +64,7 @@
 
         <v-row style="margin-top: 20px">
           <v-btn
+              
               color="#689FD2"
               class="white--text"
               elevation="2"

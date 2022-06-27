@@ -85,6 +85,52 @@
           ></v-text-field>
         </v-col>
       </v-row>
+        <v-row class="align-center text-center justify-center">
+          <v-col class="align-center text-center justify-center" cols="5">
+            <v-select
+                outlined
+                filled
+                style="width: 500px; margin-bottom: 15px"
+                v-model="paises[0]"
+                label="País"
+                :items="paises"
+            ></v-select>
+          </v-col>
+          <v-col class="align-center text-center justify-center" cols="5">
+            <v-select
+                outlined
+                filled
+                style="width: 500px; margin-bottom: 15px"
+                v-model="provincias[1]"
+                label="Provincia"
+                :items="provincias"
+            ></v-select>
+          </v-col>
+        </v-row>
+        <v-row class="align-center text-center justify-center">
+          <v-col class="align-center text-center justify-center" cols="5">
+            <v-text-field
+              v-model="localidad"
+              label="Localidad"
+              :rules="nameRules"
+              required
+              outlined
+              style="width: 500px; margin-bottom: 15px"
+              filled
+          ></v-text-field>
+          </v-col>
+          <v-col class="align-center text-center justify-center" cols="5">
+            <v-text-field
+              v-model="postal"
+              :rules="codigoPostalRules"
+              label="Codigo Postal"
+              outlined
+              style="width: 500px; margin-bottom: 15px"
+              filled
+              required
+          ></v-text-field>
+          </v-col>
+        </v-row>
       </v-card>
         </v-col>
 
@@ -138,6 +184,52 @@
                     @click:append="show4 = !show4"
                 ></v-text-field>
               </v-col>
+              <v-row class="align-center text-center justify-center">
+                <v-col class="align-center text-center justify-center" cols="5">
+                  <v-select
+                      outlined
+                      filled
+                      style="width: 500px; margin-bottom: 15px"
+                      v-model="paises[0]"
+                      label="País"
+                      :items="paises"
+                  ></v-select>
+                </v-col>
+                <v-col class="align-center text-center justify-center" cols="5">
+                  <v-select
+                      outlined
+                      filled
+                      style="width: 500px; margin-bottom: 15px"
+                      v-model="provincias[1]"
+                      label="Provincia"
+                      :items="provincias"
+                  ></v-select>
+                </v-col>
+              </v-row>
+              <v-row class="align-center text-center justify-center">
+                <v-col class="align-center text-center justify-center" cols="5">
+                  <v-text-field
+                      v-model="direccion"
+                      label="Dirección"
+                      :rules="direccionRules"
+                      required
+                      outlined
+                      style="width: 500px; margin-bottom: 15px"
+                      filled
+                  ></v-text-field>
+                </v-col>
+                <v-col class="align-center text-center justify-center" cols="5">
+                  <v-text-field
+                      v-model="postal"
+                      :rules="codigoPostalRules"
+                      label="Codigo Postal"
+                      outlined
+                      style="width: 500px; margin-bottom: 15px"
+                      filled
+                      required
+                  ></v-text-field>
+                </v-col>
+              </v-row>
             </v-row>
           </v-card>
         </v-col>
@@ -173,6 +265,13 @@ export default {
   name: "RegisterView",
   components: {},
   data: () => ({
+    paises: ["Argentina",],
+    provincias: ["CABA",],
+    codigoPostalRules:[
+      v => !!v || "Este campo es obligatorio.",
+      v => (v && v.length <= 4) || "Superó el límite de caracteres",
+      v => (v && /^[0-9]+$/.test(v)) || "Ingrese solo números"
+    ],
     valid: true,
     nameRules: [
       v => !!v || "Este campo es obligatorio.",
@@ -182,15 +281,21 @@ export default {
       v => !!v || "Ingrese su mail.",
       v => /.+@.+/.test(v) || "Email inválido."
     ],
-    passwordRules: [v => !!v || "Ingrese una contraseña."],
+    passwordRules: [v => !!v || "Ingrese una contraseña.", v => v.length >= 6 || 'Debe contener 6 caracteres mínimo.'],
     usuario: true,
     displayNameUser: '',
     nameUser: '',
     surnameUser: '',
     emailUser: '',
+    localidad: '',
+    direccion: '',
+    postal: '',
+    pais: '',
+    provincia: '',
     passwordUser: '',
     confirmPasswordUser: '',
     confirmPasswordRules: [v => !!v || "Ingrese una contraseña."],
+    direccionRules: [v => !!v || "Ingrese una dirección."],
     show1: false,
     show2: false,
     show3: false,

@@ -83,8 +83,8 @@
 <!--        <TextFields label="Código Postal" :rules="codigoPostalRules"></TextFields>-->
           <v-text-field
               v-model="user.postal"
-              :rules="nameRules"
-              label="Codigo Ppostal"
+              :rules="codigoPostalRules"
+              label="Codigo Postal"
               outlined
               style="width: 500px; margin-bottom: 15px"
               filled
@@ -118,7 +118,7 @@ export default {
   name: "SobreMi",
   data:() => ({
     paises: ["Argentina",],
-    provincias: ["CABA", "Buenos Aires"],
+    provincias: ["CABA",],
     valid: true,
     nameRules: [
       v => !!v || "Este campo es obligatorio.",
