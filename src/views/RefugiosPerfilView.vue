@@ -51,15 +51,9 @@
             <v-icon right size="30px">mdi-paw</v-icon>
           </v-btn>
           </v-row>
-        </v-col>
-      </v-row>
-    </v-container>
-    <v-divider class="blue darken-4"/>
-    <v-container class="align-center justify-center text-center">
-      <v-row>
-        <v-col>
-      <v-row>
-        <v-col>
+
+
+      <v-row style="margin-top: 20px">
           <v-btn class="white--text"
                  elevation="0"
                  padless color="#2A537A"
@@ -70,23 +64,25 @@
             Nuestros tránsitos
             <v-icon right size="30px">mdi-home-map-marker</v-icon>
           </v-btn>
-        </v-col>
       </v-row>
-        <v-row>
-          <v-col>
-            <v-btn class="white--text"
-                   elevation="0"
-                   padless color="#2A537A"
-                   width="250"
-                   height="40"
-                   to="/donaterefugio"
-            >
-              Quiero ayudar
-              <v-icon right size="30px">mdi-handshake</v-icon>
-            </v-btn>
-          </v-col>
-        </v-row>
-        </v-col>
+      <v-row style="margin-top: 20px">
+          <v-btn class="white--text"
+                 elevation="0"
+                 padless color="#2A537A"
+                 width="250"
+                 height="40"
+                 to="/donaterefugio"
+          >
+            Quiero ayudar
+            <v-icon right size="30px">mdi-handshake</v-icon>
+          </v-btn>
+      </v-row>
+      </v-col>
+      </v-row>
+    </v-container>
+    <v-divider class="blue darken-4"/>
+    <v-container class="align-center justify-center text-center">
+      <v-row>
         <v-col>
           <GoogleMap/>
         </v-col>
