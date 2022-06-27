@@ -1,40 +1,35 @@
 import db from "../../firebase/initFirebase"
 import {doc, getDoc} from "firebase/firestore";
-
 export default {
     namespaced: true,
-    state: {
+    state:{
         info: {},
         id: '',
         displayName: '',
         name: '',
-        surname: '',
         country: '',
         province: '',
-        localidad: '',
+        address: '',
         postal: '',
     },
-    getters: {
-        isUserLoggedIn(state) {
+    getters:{
+        isShelterLoggedIn(state) {
             return state.id !== '';
         },
         getId(state){
             return state.id;
         },
-        getName(state){
+        getShelterName(state){
             return state.name;
         },
-        getFullName(state){
-          return state.name + state.surname;
-        },
         getDisplayName(state){
-          return state.displayName;
+            return state.displayName;
         },
         getInfo(state){
             return state.info;
         },
         getEmail(state){
-          return state.info.email;
+            return state.info.email;
         },
         getCountry(state){
             return state.country;
@@ -42,14 +37,14 @@ export default {
         getProvince(state){
             return state.province;
         },
-        getLocalidad(state){
-            return state.localidad;
+        getAddress(state){
+            return state.address;
         },
         getPostal(state){
             return state.postal;
         }
     },
-    mutations: {
+    mutations:{
         setId(state, id){
             state.id = id;
         },
@@ -59,14 +54,11 @@ export default {
         setName(state, name){
             state.name = name;
         },
-        setSurname(state, surname){
-            state.surname = surname;
-        },
         setUsername(state, username){
-          state.username = username;
+            state.username = username;
         },
-        setLocalidad(state, localidad){
-            state.localidad = localidad;
+        setLocalidad(state, address){
+            state.address = address;
         },
         setPostal(state, postal){
             state.postal = postal;
@@ -78,38 +70,36 @@ export default {
             state.province = province;
         },
     },
-    actions: {
-        update({dispatch}, {user}) {
-            if (user) {
-                dispatch("updateId", {user: user});
+    actions:{
+        update({dispatch}, {shelter}) {
+            if (shelter) {
+                dispatch("updateId", {shelter: shelter});
             } else {
                 dispatch("removeId");
             }
         },
-        async updateId({commit}, {user}) {
-            localStorage.setItem("USER", user.uid);
-            const docs = await getDoc(doc(db, "users", user.uid));
-            commit("setInfo", user);
-            commit("setId", user.uid);
+        async updateId({commit}, {shelter}) {
+            localStorage.setItem("SHELTER", shelter.uid);
+            const docs = await getDoc(doc(db, "shelters", shelter.uid));
+            commit("setInfo", shelter);
+            commit("setId", shelter.uid);
             commit("setUsername", docs.data().username);
             commit("setName", docs.data().name);
-            commit("setSurname", docs.data().surname);
+            commit("setAddress", docs.data().address)
             commit("setCountry", docs.data().country);
             commit("setProvince", docs.data().province);
-            commit("setLocalidad", docs.data().localidad);
             commit("setPostal", docs.data().postal);
         },
-        removeId({commit}) {
-            localStorage.removeItem("USER");
+        removeId({ commit }){
+            localStorage.removeItem("SHELTER");
             commit("setId", null);
             commit("setInfo", null);
             commit("setName", '');
-            commit("setSurname", '');
             commit("setUsername", '');
+            commit("setAddress", '');
             commit("setCountry", '');
             commit("setProvince", '');
-            commit("setLocalidad", '');
             commit("setPostal", '');
         },
-    },
+    }
 }

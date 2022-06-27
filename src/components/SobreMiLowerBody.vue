@@ -21,6 +21,7 @@
         </v-col>
         <v-col>
           <v-text-field
+              v-if="!this.$store.getters.isShelter"
               v-model="user.surname"
               :rules="nameRules"
               label="Apellido"
@@ -34,12 +35,11 @@
       <v-row style="margin-bottom: -30px; margin-top: -30px"> <v-col><h3>¿Dónde vivís? </h3></v-col> </v-row>
       <v-row>
         <v-col>
-<!--        <SelectFields label="País" :items=paises v-model="paises[0]"></SelectFields>-->
           <v-select
               outlined
               filled
               style="width: 500px; margin-bottom: 15px"
-              v-model="paises[0]"
+              v-model="country"
               label="País"
               :items="paises"
           ></v-select>
@@ -58,7 +58,7 @@
               outlined
               filled
               style="width: 500px; margin-bottom: 15px"
-              v-model="provincias[1]"
+              v-model="province"
               label="Provincia"
               :items="provincias"
           ></v-select>
@@ -66,11 +66,19 @@
       </v-row>
       <v-row>
         <v-col style="margin-top: -50px">
-<!--        <TextFields label="Localidad" :rules="nameRules"></TextFields>-->
           <v-text-field
+              v-if="!this.$store.getters.isShelter"
               v-model="user.localidad"
-              :rules="nameRules"
               label="Localidad"
+              outlined
+              style="width: 500px; margin-bottom: 15px"
+              filled
+              required
+          ></v-text-field>
+          <v-text-field
+              v-if="this.$store.getters.isShelter"
+              v-model="user.address"
+              label="Dirección"
               outlined
               style="width: 500px; margin-bottom: 15px"
               filled
@@ -80,7 +88,6 @@
       </v-row>
       <v-row>
         <v-col style="margin-top: -50px">
-<!--        <TextFields label="Código Postal" :rules="codigoPostalRules"></TextFields>-->
           <v-text-field
               v-model="user.postal"
               :rules="codigoPostalRules"
@@ -116,7 +123,7 @@ import db from "../firebase/initFirebase"
 
 export default {
   name: "SobreMi",
-  data:() => ({
+  data: () => ({
     paises: ["Argentina",],
     provincias: ["CABA",],
     valid: true,
@@ -124,7 +131,7 @@ export default {
       v => !!v || "Este campo es obligatorio.",
       v => (v && v.length <= 10) || "Superó el límite de 10 caracteres"
     ],
-    codigoPostalRules:[
+    codigoPostalRules: [
       v => !!v || "Este campo es obligatorio.",
       v => (v && v.length <= 4) || "Superó el límite de caracteres",
       v => (v && /^[0-9]+$/.test(v)) || "Ingrese solo números"
@@ -132,49 +139,102 @@ export default {
     user: {},
     email: '',
     id: '',
+    country: '',
+    province: '',
+    address: '',
     localidad: '',
     postal: '',
   }),
-  computed: mapGetters("user", {
-    $getUserId: "getId",
-    $getEmail: "getEmail",
-    $getLocalidad: "getLocalidad",
-    $getPostal: "getPostal",
-  }),
+  computed:{
+    ...mapGetters("user", {
+      $getUserId: "getId",
+      $getEmail: "getEmail",
+      $getCountry: "getCountry",
+      $getProvince: "getProvince",
+      $getLocalidad: "getLocalidad",
+      $getPostal: "getPostal",
+    }),
+    ...mapGetters("shelter", {
+      $getShelterId: "getId",
+      $getShelterCountry: "getCountry",
+      $getShelterProvince: "getProvince",
+      $getShelterAddress: "getAddress",
+      $getShelterPostal: "getPostal",
+    }),
+  },
   ...mapActions("user", {
     $update: "update",
   }),
+  ...mapActions("shelter",{
+
+  }),
   methods:{
     async getUser(){
-      if(this.$getUserId){
-        console.log("UserId:", this.$getUserId);
-        const docs = await getDoc(doc(db, "users", this.$getUserId));
-        this.user = docs.data();
-        console.log("User:", this.user);
-        console.log("User Name:", this.user.name);
-        this.email = this.$getEmail;
-        this.id = this.$getUserId;
-        this.localidad = this.$getLocalidad;
-        this.postal = this.$getPostal;
+      if(!this.$store.getters.isShelter) {
+        if (this.$getUserId) {
+          console.log("UserId:", this.$getUserId);
+          const docs = await getDoc(doc(db, "users", this.$getUserId));
+          this.user = docs.data();
+          console.log("User:", this.user);
+          console.log("User Name:", this.user.name);
+          this.email = this.$getEmail;
+          this.id = this.$getUserId;
+          this.country = this.$getCountry;
+          this.province = this.$getProvince;
+          this.localidad = this.$getLocalidad;
+          this.postal = this.$getPostal;
+        }
+      }else if (this.$store.getters.isShelter){
+        if(this.$getShelterId){
+          console.log("ShelterId:", this.$getUserId);
+
+          const docs = await getDoc(doc(db, "shelters", this.$getShelterId));
+          this.user = docs.data();
+
+          console.log("Shelter:", this.user);
+          console.log("Shelter Name:", this.user.name);
+
+          this.id = this.$getShelterId;
+          this.country = this.$getShelterCountry;
+          this.province = this.$getShelterProvince;
+          this.localidad = this.$getShelterAddress;
+          this.postal = this.$getShelterPostal;
+        }
       }
     },
-    async updateProf(){
-      const userRef = doc(db, "users", this.$getUserId);
-      await updateDoc(userRef, {
-        name: this.user.name,
-        surname: this.user.surname,
-        localidad: this.localidad,
-        postal: this.postal,
-      });
-    },
+    async updateProf() {
+      if (!this.$store.getters.isShelter) {
+        const userRef = doc(db, "users", this.$getUserId);
+        await updateDoc(userRef, {
+          name: this.user.name,
+          surname: this.user.surname,
+          country: this.country,
+          province: this.province,
+          localidad: this.localidad,
+          postal: this.postal,
+        });
+      } else if (this.$store.getters.isShelter){
+        const userRef = doc(db, "shelters", this.$getShelterId);
+        await updateDoc(userRef, {
+          name: this.user.name,
+          country: this.country,
+          province: this.province,
+          address: this.address,
+          postal: this.postal,
+        });
+      }
+    }
   },
   watch: {
     $getUserId(){
       this.getUser();
-    }
+    },
+    $getShelterId(){
+      this.getUser();
+    },
   },
   beforeMount() {
-    this.getUser();
+      this.getUser();
   }
 }
 </script>

@@ -2,29 +2,36 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import user from './module/user'
-import refugee from './module/refugee'
+import shelter from './module/shelter'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
 
   state: {
-    isRefugee: false,
+    isShelter: false,
+    isLoggedIn: false,
   },
   getters: {
-    isRefugee(){
-      return this.state.isRefugee
+    isShelter(state){
+      return state.isShelter
+    },
+    isLoggedIn(state){
+      return state.isLoggedIn
     }
   },
   mutations: {
-    setIsRefugee(){
-      this.state.isRefugee = !this.state.isRefugee
+    setIsShelter(state, bool){
+      state.isShelter = bool
+    },
+    setIsLoggedIn(state){
+      state.isLoggedIn = !state.isLoggedIn
     }
   },
   actions: {
   },
   modules: {
     user,
-    refugee,
+    shelter,
   }
 })
