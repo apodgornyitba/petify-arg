@@ -34,12 +34,11 @@
       <v-row style="margin-bottom: -30px; margin-top: -30px"> <v-col><h3>¿Dónde vivís? </h3></v-col> </v-row>
       <v-row>
         <v-col>
-<!--        <SelectFields label="País" :items=paises v-model="paises[0]"></SelectFields>-->
           <v-select
               outlined
               filled
               style="width: 500px; margin-bottom: 15px"
-              v-model="paises[0]"
+              v-model="country"
               label="País"
               :items="paises"
           ></v-select>
@@ -58,7 +57,7 @@
               outlined
               filled
               style="width: 500px; margin-bottom: 15px"
-              v-model="provincias[1]"
+              v-model="province"
               label="Provincia"
               :items="provincias"
           ></v-select>
@@ -66,7 +65,6 @@
       </v-row>
       <v-row>
         <v-col style="margin-top: -50px">
-<!--        <TextFields label="Localidad" :rules="nameRules"></TextFields>-->
           <v-text-field
               v-model="user.localidad"
               :rules="nameRules"
@@ -80,7 +78,6 @@
       </v-row>
       <v-row>
         <v-col style="margin-top: -50px">
-<!--        <TextFields label="Código Postal" :rules="codigoPostalRules"></TextFields>-->
           <v-text-field
               v-model="user.postal"
               :rules="codigoPostalRules"
@@ -132,12 +129,16 @@ export default {
     user: {},
     email: '',
     id: '',
+    country: '',
+    province: '',
     localidad: '',
     postal: '',
   }),
   computed: mapGetters("user", {
     $getUserId: "getId",
     $getEmail: "getEmail",
+    $getCountry: "getCountry",
+    $getProvince: "getProvince",
     $getLocalidad: "getLocalidad",
     $getPostal: "getPostal",
   }),
@@ -154,6 +155,8 @@ export default {
         console.log("User Name:", this.user.name);
         this.email = this.$getEmail;
         this.id = this.$getUserId;
+        this.country = this.$getCountry;
+        this.province = this.$getProvince;
         this.localidad = this.$getLocalidad;
         this.postal = this.$getPostal;
       }
@@ -163,6 +166,8 @@ export default {
       await updateDoc(userRef, {
         name: this.user.name,
         surname: this.user.surname,
+        country: this.country,
+        province: this.province,
         localidad: this.localidad,
         postal: this.postal,
       });

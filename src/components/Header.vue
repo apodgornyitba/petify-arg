@@ -13,27 +13,34 @@
     <v-spacer/>
     <!-- una vez que el usuario ingresa -->
     <v-btn
-        v-if="!this.$getName"
+        v-if="!this.$store.getters.isLoggedIn"
         text
         padless color="#2A537A"
         to="/register"
     >Registrate</v-btn>
     <h2
-      v-if="!this.$getName"
+      v-if="!this.$store.getters.isLoggedIn"
     >
       |
     </h2>
     <v-btn
-        v-if="!this.$getName"
+        v-if="!this.$store.getters.isLoggedIn"
         text
         padless color="#2A537A"
         to="/signin"
     >Ingresá</v-btn>
-    <h2
-      v-if="this.$getName"
-    >
-      Bienvenido {{this.$getName}}
-    </h2>
+    <div>
+      <h2
+          v-if="this.$isUserLoggedIn"
+      >
+        Bienvenido {{this.$getName}}
+      </h2>
+      <h2
+          v-if="this.$isShelterLoggedIn"
+      >
+        Bienvenido {{this.$getShelterName}}
+      </h2>
+    </div>
   </v-app-bar>
 </template>
 
@@ -45,10 +52,16 @@ export default {
   data:() => ({
     user: {},
   }),
-  computed: mapGetters("user", {
-    $getName: "getName"
-
-  }),
+  computed: {
+    ...mapGetters("user", {
+            $getName: "getName",
+            $isUserLoggedIn: "isUserLoggedIn",
+          }),
+    ...mapGetters("shelter",{
+            $getShelterName: "getName",
+            $isShelterLoggedIn: "isShelterLoggedIn",
+          }),
+  },
   methods:{
 
   },

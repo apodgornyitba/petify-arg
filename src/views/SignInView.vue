@@ -146,11 +146,12 @@ export default {
       const auth = getAuth();
       await signInWithEmailAndPassword(auth, this.email, this.password).then((userCred) => {
         this.$update({user: userCred.user});
+        this.$store.commit("setIsLoggedIn");
+        this.$router.push('/');
       }).catch((error) => {
         console.log(error.message);
         return error.code;
       });
-      await this.$router.push('/')
     },
   },
   }

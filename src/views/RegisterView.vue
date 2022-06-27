@@ -139,6 +139,7 @@
             <v-row class="align-center text-center justify-center">
               <v-col class="align-center text-center justify-center" cols="10">
                 <v-text-field
+                    v-model="nameShelter"
                     label="Nombre del Refugio"
                     :rules="nameRules"
                     required
@@ -149,6 +150,7 @@
             <v-row class="align-center text-center justify-center">
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
+                    v-model="displayNameShelter"
                     label="Nombre de usuario"
                     :counter="10"
                     :rules="nameRules"
@@ -157,6 +159,7 @@
               </v-col>
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
+                    v-model="emailShelter"
                     label="Email"
                     :rules="emailRules"
                     required
@@ -166,6 +169,7 @@
             <v-row class="align-center text-center justify-center">
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
+                    v-model="passwordShelter"
                     label="Contraseña"
                     :rules="passwordRules"
                     :type="show3 ? 'text' : 'password'"
@@ -176,6 +180,7 @@
               </v-col>
               <v-col class="align-center text-center justify-center" cols="5">
                 <v-text-field
+                    v-model="confirmPasswordShelter"
                     label="Confirmar contraseña"
                     :rules="(confirmPasswordRules)"
                     required
@@ -190,7 +195,7 @@
                       outlined
                       filled
                       style="width: 500px; margin-bottom: 15px"
-                      v-model="paises[0]"
+                      v-model="pais"
                       label="País"
                       :items="paises"
                   ></v-select>
@@ -200,7 +205,7 @@
                       outlined
                       filled
                       style="width: 500px; margin-bottom: 15px"
-                      v-model="provincias[1]"
+                      v-model="provincia"
                       label="Provincia"
                       :items="provincias"
                   ></v-select>
@@ -283,17 +288,26 @@ export default {
     ],
     passwordRules: [v => !!v || "Ingrese una contraseña.", v => v.length >= 6 || 'Debe contener 6 caracteres mínimo.'],
     usuario: true,
+
     displayNameUser: '',
     nameUser: '',
     surnameUser: '',
     emailUser: '',
+    passwordUser: '',
+    confirmPasswordUser: '',
+
+    displayNameShelter: '',
+    nameShelter: '',
+    emailShelter: '',
+    passwordShelter: '',
+    confirmPasswordShelter: '',
+
     localidad: '',
     direccion: '',
     postal: '',
     pais: '',
     provincia: '',
-    passwordUser: '',
-    confirmPasswordUser: '',
+
     confirmPasswordRules: [v => !!v || "Ingrese una contraseña."],
     direccionRules: [v => !!v || "Ingrese una dirección."],
     show1: false,
@@ -315,12 +329,7 @@ export default {
       if(usuario) {
         this.registerUser(auth, this.emailUser, this.passwordUser);
       } else {
-        // createUserWithEmailAndPassword(this.auth, this.emailRefugio, this.passwordRefugio).then(() => {
-        //   setTimeout(() => this.$router.push('/signin'), 1000);
-        // }).catch((error) => {
-        //   console.log(error.message);
-        //   return error.code;
-        // });
+        this.registerShelter(auth, this.emailShelter, this.passwordShelter);
       }
     },
     async registerUser(auth, email, password){
@@ -329,6 +338,25 @@ export default {
         name: this.nameUser,
         surname: this.surnameUser,
         username: this.displayNameUser,
+        country: this.pais,
+        province: this.provincia,
+        localidad: this.localidad,
+        postal: this.postal,
+
+      });
+      this.$update({user: credentials.user});
+      setTimeout(() => this.$router.push('/'), 1000);
+    },
+    async registerShelter(auth, email, password){
+      const credentials = await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(doc(db, "shelters", credentials.user.uid), {
+        name: this.nameShelter,
+        username: this.displayNameShelter,
+        country: this.pais,
+        province: this.provincia,
+        address: this.direccion,
+        postal: this.postal,
+
       });
       this.$update({user: credentials.user});
       setTimeout(() => this.$router.push('/'), 1000);
