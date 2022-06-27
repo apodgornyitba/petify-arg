@@ -109,7 +109,7 @@
 
 // import TextFields from "@/components/TextFields";
 // import SelectFields from "@/components/SelectFields";
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 import {doc, getDoc, updateDoc} from "firebase/firestore";
 import db from "../firebase/initFirebase"
 
@@ -138,6 +138,11 @@ export default {
   computed: mapGetters("user", {
     $getUserId: "getId",
     $getEmail: "getEmail",
+    $getLocalidad: "getLocalidad",
+    $getPostal: "getPostal",
+  }),
+  ...mapActions("user", {
+    $update: "update",
   }),
   methods:{
     async getUser(){
@@ -149,6 +154,8 @@ export default {
         console.log("User Name:", this.user.name);
         this.email = this.$getEmail;
         this.id = this.$getUserId;
+        this.localidad = this.$getLocalidad;
+        this.postal = this.$getPostal;
       }
     },
     async updateProf(){

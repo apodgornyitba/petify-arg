@@ -10,6 +10,8 @@ export default {
       displayName: '',
       name: '',
       surname: '',
+      localidad:'',
+      postal: '',
     },
     getters: {
         isLoggedIn(state) {
@@ -33,6 +35,12 @@ export default {
         getEmail(state){
           return state.info.email;
         },
+        getLocalidad(state){
+            return state.localidad;
+        },
+        getPostal(state){
+            return state.postal;
+        }
     },
     mutations: {
         setId(state, id){
@@ -50,6 +58,12 @@ export default {
         setUsername(state, username){
           state.username = username;
         },
+        setLocalidad(state, localidad){
+            state.localidad = localidad;
+        },
+        setPostal(state, postal){
+            state.postal = postal;
+        }
     },
     actions: {
         update({dispatch}, {user}) {
@@ -63,11 +77,12 @@ export default {
             localStorage.setItem("USER", user.uid);
             const docs = await getDoc(doc(db, "users", user.uid));
             commit("setInfo", user);
-
             commit("setId", user.uid);
             commit("setUsername", docs.data().username);
             commit("setName", docs.data().name);
             commit("setSurname", docs.data().surname);
+            commit("setLocalidad", docs.data().localidad);
+            commit("setPostal", docs.data().postal);
         },
         removeId({ commit }){
           localStorage.removeItem("USER");
@@ -76,6 +91,8 @@ export default {
           commit("setName", '');
           commit("setSurname", '');
           commit("setUsername", '');
+          commit("setLocalidad", '');
+          commit("setPostal", '');
         },
     },
 }
