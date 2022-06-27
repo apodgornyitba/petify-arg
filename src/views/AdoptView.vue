@@ -1,7 +1,6 @@
 <template>
   <div>
     <ToolBar/>
-    <!-- v-if si son un cliente solo ven la info -->
     <v-container>
       <v-row>
       <v-col>

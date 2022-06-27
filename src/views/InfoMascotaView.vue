@@ -1,18 +1,10 @@
 <template>
   <div>
     <ToolBar/>
-    <!-- v-if si son un cliente solo ven la info -->
     <v-container>
-      <v-row>
-        <v-col>
-          <SearchBar/>
-        </v-col>
-      </v-row>
-
-      <v-row>
+      <v-row style="margin-top: 20px">
         <h1>Qué hay que saber antes de adoptar una mascota</h1>
       </v-row>
-
       <v-row>
         <h3> Antes de llevar un animal a su hogar:</h3>
         <v-card-text>
@@ -56,10 +48,61 @@
       </v-row>
       <v-row>
         <h3>Para más información puede consultar estos links:</h3>
-<!--        COMENTARIO: agregar links, ya me canse :)-->
+        <v-card-text>
+          <div>
+            <a href="https://www.mundodeportivo.com/uncomo/animales/articulo/consejos-para-la-educacion-de-perros-adoptados-15659.html">
+              Consejos para la educacion de perros adoptados
+            </a></div>
+          <div>
+            <a href="https://www.prensalibre.com/vida/salud-y-familia/13-consejos-para-hacer-mas-facil-el-proceso-de-adaptacion-de-un-perro-adoptado/">
+              13 consejos para hacer mas facil el proceso de adaptacion de un perro adoptado
+            </a>
+          </div>
+          <div>
+            <a href="https://www.canuto.com.mx/blogs/tips-para-tu-perro/consejos-perro-adoptado-se-adapte">
+              Consejos para que tu perro adoptado se adapte
+            </a>
+          </div>
+          <div>
+            <a href="https://www.expertoanimal.com/consejos-para-los-primeros-dias-de-un-gato-en-casa-23347.html">
+              Consejos para los primeros dias de un gato en casa
+            </a>
+          </div>
+          <div>
+            <a href="https://www.consumer.es/mascotas/adoptar-a-un-gato-de-la-calle-guia-basica.html">
+              Adoptar a un gato de la calle guia basica
+            </a>
+          </div>
+        </v-card-text>
       </v-row>
       <v-row>
         <h3>O ver estos videos informativos:</h3>
+        <v-card-text>
+          <div>
+          <a href="https://www.youtube.com/watch?v=J3NAYXXyBVI">
+            Cómo cuidar un GATO CACHORRO
+          </a></div>
+          <div>
+          <a href="https://www.youtube.com/watch?v=yNftEf4_C64">
+            Primer día del gato en casa | Educador de Gats
+          </a>
+            </div>
+          <div>
+          <a href="https://www.youtube.com/watch?v=mpS824S7u7A">
+            Consejos para educar a un perro adoptado que gruñe a sus nuevos dueños
+          </a>
+            </div>
+          <div>
+          <a href="https://www.youtube.com/watch?v=5buVcG-Zq6Y">
+            ¿Cómo EDUCAR un PERRO ADOPTADO? 🤔 - TODO lo que DEBES SABER (100% EFECTIVO) ✅
+          </a>
+          </div>
+            <div>
+          <a href="https://www.youtube.com/watch?v=mlfzDp9rjos">
+            ¿Dónde y Cómo Adoptar a un Perro? - Requisitos y Recomendaciones
+          </a>
+              </div>
+        </v-card-text>
       </v-row>
     </v-container>
   </div>
@@ -67,11 +110,10 @@
 
 <script>
 import ToolBar from "@/components/Toolbar";
-import SearchBar from "@/components/SearchBar";
 
 export default {
   name: "InfoMascotaView",
-  components: {SearchBar, ToolBar},
+  components: {ToolBar},
 
   data () {
     return {

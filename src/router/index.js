@@ -19,6 +19,7 @@ import RefugiosPerfilView from "@/views/RefugiosPerfilView";
 import FormularioAdopcionView from "@/views/FormularioAdopcionView";
 import NotificationsView from "@/views/NotificationsView";
 import DenunciarView from "@/views/DenunciarView";
+import FavView from "@/views/FavView";
 
 Vue.use(VueRouter)
 
@@ -27,14 +28,6 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
     path: '/userprofile',
@@ -76,6 +69,11 @@ const routes = [
     path: '/refugios',
     name: 'refugios',
     component: RefugiosView
+  },
+  {
+    path: '/favoritos',
+    name: 'favoritos',
+    component: FavView
   },
   {
     path: '/register',

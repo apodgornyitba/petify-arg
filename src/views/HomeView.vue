@@ -2,8 +2,7 @@
   <div>
     <ToolBar/>
     <v-container fluid class="hero">
-      <SearchBar/>
-      <v-row class="text-center" style="margin-top: 50px"  >
+      <v-row class="text-center" style="margin-top: 100px"  >
         <v-col>
           <v-btn class="white--text"
                  elevation="0"
@@ -37,9 +36,19 @@
           ><v-icon size="40px">mdi-home-map-marker</v-icon>
             Refugios</v-btn>
         </v-col>
+        <v-col>
+          <v-btn class="white--text"
+                 elevation="0"
+                 padless color="#2A537A"
+                 width="150"
+                 height="100"
+                 to="/favoritos"
+          ><v-icon size="40px">mdi-heart</v-icon>
+            Favoritos</v-btn>
+        </v-col>
       </v-row>
     </v-container>
-    <!-- COMENTARIO: CAMBIAR LAS IMAGENES POR LAS IMAGENES DE LA BASES DE DATOS: HACER UN FOR -->
+    <!-- HARDCODEADO -->
       <v-container>
         <h1 class="text-center" >
           En adopción:
@@ -49,13 +58,6 @@
             <a href="/elijoPerro">
 
               <v-img :src="require('../assets/perrito1.jpg')" max-width="250px">
-<!--                <v-btn-->
-<!--                    icon-->
-<!--                    color="pink"-->
-<!--                >-->
-<!--                  <v-icon>mdi-heart</v-icon>-->
-<!--                </v-btn>-->
-<!--COMENTARIO: falta boton de fav-->
               </v-img>
             </a>
           </v-col>
@@ -75,11 +77,10 @@
 <script>
 
 import ToolBar from "@/components/Toolbar";
-import SearchBar from "@/components/SearchBar";
 export default {
   name: 'HomeView',
 
-  components: {SearchBar, ToolBar},
+  components: {ToolBar},
 
   data: () => ({
     fav: false,

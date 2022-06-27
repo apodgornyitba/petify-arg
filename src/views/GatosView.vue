@@ -3,6 +3,7 @@
       <ToolBar/>
         <v-container>
           <SearchBar/>
+          <!--HARDCODEO-->
           <v-row class="align-left" style="margin-top: 20px; margin-bottom: 20px">
             <v-col>
               <div class="subheading pt-4">
