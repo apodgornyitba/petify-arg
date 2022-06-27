@@ -2,6 +2,7 @@
     <v-text-field
         outlined
         filled
+        :v-model="this.data"
         :label="this.label"
         :rules="this.rules"
         required
@@ -12,6 +13,7 @@
 export default {
   name: "TextFields",
   props: {
+    data: String,
     label:{
       type: String,
     },

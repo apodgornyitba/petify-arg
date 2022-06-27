@@ -13,28 +13,45 @@
     <v-spacer/>
     <!-- una vez que el usuario ingresa -->
     <v-btn
+        v-if="!this.$getName"
         text
         padless color="#2A537A"
         to="/register"
     >Registrate</v-btn>
-    <h2>
+    <h2
+      v-if="!this.$getName"
+    >
       |
     </h2>
     <v-btn
+        v-if="!this.$getName"
         text
         padless color="#2A537A"
         to="/signin"
     >Ingresá</v-btn>
-    <!-- v-if de user.id -->
-    <!-- <h2>
-      BIENVENIDO USER.NAME
-    </h2> -->
+    <h2
+      v-if="this.$getName"
+    >
+      Bienvenido {{this.$getName}}
+    </h2>
   </v-app-bar>
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  data:() => ({
+    user: {},
+  }),
+  computed: mapGetters("user", {
+    $getName: "getName"
+
+  }),
+  methods:{
+
+  },
 }
 </script>
 

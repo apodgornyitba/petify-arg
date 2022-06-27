@@ -18,6 +18,9 @@ export default {
         getId(state){
             return state.id;
         },
+        getName(state){
+            return state.name;
+        },
         getFullName(state){
           return state.name + state.surname;
         },
@@ -60,6 +63,7 @@ export default {
             localStorage.setItem("USER", user.uid);
             const docs = await getDoc(doc(db, "users", user.uid));
             commit("setInfo", user);
+
             commit("setId", user.uid);
             commit("setUsername", docs.data().username);
             commit("setName", docs.data().name);

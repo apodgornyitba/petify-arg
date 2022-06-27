@@ -9,26 +9,41 @@
       <v-row style="margin-bottom: -30px"> <v-col> <h3>¿Cuál es tu nombre?</h3> </v-col> </v-row>
       <v-row>
         <v-col>
-          <TextFields
+          <v-text-field
               v-model="user.name"
               :rules="nameRules"
               label="Nombre"
+              outlined
+              style="width: 500px"
+              filled
               required
-          ></TextFields>
+          ></v-text-field>
         </v-col>
         <v-col>
-          <TextFields
+          <v-text-field
               v-model="user.surname"
-              label="Apellido"
               :rules="nameRules"
+              label="Apellido"
+              outlined
+              style="width: 500px"
+              filled
               required
-          ></TextFields>
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row style="margin-bottom: -30px; margin-top: -30px"> <v-col><h3>¿Dónde vivís? </h3></v-col> </v-row>
       <v-row>
         <v-col>
-        <SelectFields label="País" :items=paises></SelectFields>
+<!--        <SelectFields label="País" :items=paises v-model="paises[0]"></SelectFields>-->
+          <v-select
+              outlined
+              filled
+              style="width: 500px; margin-bottom: 15px"
+              v-model="paises[0]"
+              label="País"
+              :items="paises"
+          ></v-select>
+
         </v-col>
       </v-row>
       <v-row>
@@ -39,17 +54,42 @@
 <!--            required-->
 <!--            :rules="nameRules"-->
 <!--        ></TextFields>-->
-          <SelectFields label="Provincia" :items=provincias></SelectFields>
+          <v-select
+              outlined
+              filled
+              style="width: 500px; margin-bottom: 15px"
+              v-model="provincias[1]"
+              label="Provincia"
+              :items="provincias"
+          ></v-select>
         </v-col>
       </v-row>
       <v-row>
         <v-col style="margin-top: -50px">
-        <TextFields label="Localidad" :rules="nameRules"></TextFields>
+<!--        <TextFields label="Localidad" :rules="nameRules"></TextFields>-->
+          <v-text-field
+              v-model="user.localidad"
+              :rules="nameRules"
+              label="Localidad"
+              outlined
+              style="width: 500px; margin-bottom: 15px"
+              filled
+              required
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row>
         <v-col style="margin-top: -50px">
-        <TextFields label="Código Postal" :rules="codigoPostalRules"></TextFields>
+<!--        <TextFields label="Código Postal" :rules="codigoPostalRules"></TextFields>-->
+          <v-text-field
+              v-model="user.postal"
+              :rules="nameRules"
+              label="Codigo Ppostal"
+              outlined
+              style="width: 500px; margin-bottom: 15px"
+              filled
+              required
+          ></v-text-field>
         </v-col>
         <v-col cols="4">
           <v-btn
@@ -67,8 +107,8 @@
 
 <script>
 
-import TextFields from "@/components/TextFields";
-import SelectFields from "@/components/SelectFields";
+// import TextFields from "@/components/TextFields";
+// import SelectFields from "@/components/SelectFields";
 import {mapGetters} from "vuex";
 import {doc, getDoc, updateDoc} from "firebase/firestore";
 import db from "../firebase/initFirebase"
@@ -76,7 +116,6 @@ import db from "../firebase/initFirebase"
 
 export default {
   name: "SobreMi",
-  components: {TextFields,SelectFields},
   data:() => ({
     paises: ["Argentina",],
     provincias: ["CABA", "Buenos Aires"],
@@ -93,6 +132,8 @@ export default {
     user: {},
     email: '',
     id: '',
+    localidad: '',
+    postal: '',
   }),
   computed: mapGetters("user", {
     $getUserId: "getId",
@@ -115,7 +156,8 @@ export default {
       await updateDoc(userRef, {
         name: this.user.name,
         surname: this.user.surname,
-        username: this.user.username,
+        localidad: this.localidad,
+        postal: this.postal,
       });
     },
   },

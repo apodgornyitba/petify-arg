@@ -7,11 +7,19 @@ import refugee from './module/refugee'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+
   state: {
+    isRefugee: false,
   },
   getters: {
+    isRefugee(){
+      return this.state.isRefugee
+    }
   },
   mutations: {
+    setIsRefugee(){
+      this.state.isRefugee = !this.state.isRefugee
+    }
   },
   actions: {
   },
