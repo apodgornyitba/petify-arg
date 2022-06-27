@@ -9,20 +9,20 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 
   state: {
-    isRefugee: false,
+    isShelter: false,
     isLoggedIn: false,
   },
   getters: {
-    isRefugee(state){
-      return state.isRefugee
+    isShelter(state){
+      return state.isShelter
     },
     isLoggedIn(state){
       return state.isLoggedIn
     }
   },
   mutations: {
-    setIsRefugee(state){
-      state.isRefugee = !state.isRefugee
+    setIsShelter(state, bool){
+      state.isShelter = bool
     },
     setIsLoggedIn(state){
       state.isLoggedIn = !state.isLoggedIn

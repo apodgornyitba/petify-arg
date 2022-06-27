@@ -19,7 +19,7 @@ export default {
         getId(state){
             return state.id;
         },
-        getName(state){
+        getShelterName(state){
             return state.name;
         },
         getDisplayName(state){

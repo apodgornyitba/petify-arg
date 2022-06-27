@@ -58,7 +58,7 @@ export default {
             $isUserLoggedIn: "isUserLoggedIn",
           }),
     ...mapGetters("shelter",{
-            $getShelterName: "getName",
+            $getShelterName: "getShelterName",
             $isShelterLoggedIn: "isShelterLoggedIn",
           }),
   },

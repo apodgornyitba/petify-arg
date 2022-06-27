@@ -14,7 +14,7 @@
             color="#2A537A"
             x-large
         >
-          <v-btn width="570px" @click="habilitarusuario" > SOY USUARIO </v-btn>
+          <v-btn width="570px" @click="habilitarusuario() " > SOY USUARIO </v-btn>
           <v-btn width="570px" @click="habilitarrefugio" > SOY REFUGIO </v-btn>
         </v-btn-toggle>
         </v-col>
@@ -345,7 +345,7 @@ export default {
 
       });
       this.$update({user: credentials.user});
-      setTimeout(() => this.$router.push('/'), 1000);
+      setTimeout(() => this.$router.push('/singin'), 1000);
     },
     async registerShelter(auth, email, password){
       const credentials = await createUserWithEmailAndPassword(auth, email, password);
@@ -363,9 +363,11 @@ export default {
     },
     habilitarusuario() {
       this.usuario = true;
+      this.$store.commit("setIsShelter", false);
     },
     habilitarrefugio() {
       this.usuario = false;
+      this.$store.commit("setIsShelter", true);
     },
   }
 }
