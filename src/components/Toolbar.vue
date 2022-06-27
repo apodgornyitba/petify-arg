@@ -6,6 +6,13 @@
     <v-row class="text-center">
       <v-col>
         <v-btn
+            v-if="!this.$store.getters.isLoggedIn"
+            text
+            color="white"
+            to="/signin"
+        >Mi perfil</v-btn>
+        <v-btn
+            v-if="this.$store.getters.isLoggedIn"
             text
             color="white"
             to="/userprofile"
