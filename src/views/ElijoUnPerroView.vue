@@ -72,8 +72,9 @@
               raised
               x-large
               block
+              @click="show = !show"
           >
-            <v-icon size="40px">mdi-heart</v-icon>
+            <v-icon size="40px">{{!show ? 'mdi-heart-outline' : 'mdi-heart' }}</v-icon>
 
            Favorito</v-btn>
 
@@ -88,7 +89,12 @@
 import ToolBar from "@/components/Toolbar";
 export default {
   name: "elijoPerro",
-  components: {ToolBar}
+  components: {ToolBar},
+  data() {
+    return {
+      show: false
+    }
+  }
 }
 </script>
 

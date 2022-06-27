@@ -15,15 +15,6 @@
               </v-img>
             </a>
           </v-col>
-          <v-col>
-            <v-img :src="require('../assets/perrito2.jpg')" max-width="250px"/>
-          </v-col>
-          <v-col>
-            <v-img :src="require('../assets/perrito3.jpg')" max-width="250px"/>
-          </v-col>
-          <v-col>
-            <v-img :src="require('../assets/perrito5.jpg')" max-width="250px"/>
-          </v-col>
         </v-row>
     </v-container>
   </div>

@@ -31,6 +31,11 @@
               <DonateAnimalLowerBody/>
             </v-card>
           </v-tab-item>
+          <v-tab-item>
+            <v-card outlined tile  color="#EFEEF1">
+              <DonateUsLowerBody/>
+            </v-card>
+          </v-tab-item>
         </v-tabs-items>
       </v-card>
   </div>
@@ -41,15 +46,17 @@
 import ToolBar from "@/components/Toolbar";
 import DonateLowerBody from "@/components/DonateLowerBody";
 import DonateAnimalLowerBody from "@/components/DonateAnimalLowerBody";
+import DonateUsLowerBody from "@/components/DonateUsLowerBody";
 export default {
   name: 'DonateView"',
-  components:{ToolBar, DonateAnimalLowerBody, DonateLowerBody},
+  components:{DonateUsLowerBody, ToolBar, DonateAnimalLowerBody, DonateLowerBody},
   data () {
     return {
       tab: null,
       items: [
         { tab: 'Refugio', content: 'Tab 1 Content' },
         { tab: 'Animal', content: 'Tab 2 Content' },
+        { tab: 'Petify', content: 'Tab 3 Content' },
       ],
     }
   },
