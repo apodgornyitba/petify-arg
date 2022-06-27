@@ -48,7 +48,7 @@ export default {
       v => (v.length > 0 && /^[0-9]+$/.test(v)) || "Ingrese un teléfono válido (solo números).",
     ],
     refugios: ["Patitas al rescate", "Colita Feliz", "La patita feliz", "La patita feliz", "Salvando sus vidas", "Zaguates"],
-    tipos: ["QUIERO DONAR", "QUIERO DONAR ALIMENTO", "QUIERO DONAR UTILES"]
+    tipos: ["QUIERO DONAR DINERO", "QUIERO DONAR ALIMENTO", "QUIERO DONAR UTILES"]
   })
 }
 </script>
