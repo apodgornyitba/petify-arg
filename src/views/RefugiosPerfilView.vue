@@ -88,10 +88,7 @@
         </v-row>
         </v-col>
         <v-col>
-      <v-img
-          max-height="550"
-          max-width="550"
-          :src="require('@/assets/mapita.png')"/>
+          <GoogleMap/>
         </v-col>
       </v-row>
     </v-container>
@@ -101,9 +98,10 @@
 
 <script>
 import ToolBar from "@/components/Toolbar";
+import GoogleMap from "@/components/GoogleMap";
 export default {
   name: "PerfilRefugios",
-  components: {ToolBar}
+  components: {ToolBar, GoogleMap},
 }
 </script>
 

@@ -3,9 +3,18 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './router'
 import store from './store'
+import * as VueGoogleMaps from 'vue2-google-maps';
 import VueResource from 'vue-resource';
 import {initializeApp} from 'firebase/app';
 import {getFirestore} from 'firebase/firestore/lite';
+Vue.config.productionTip = false;
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyBzs6LvWrghh3InI50ZGGmo5inQ1UAzU5w',
+    libraries: 'places'
+  },
+});
 
 Vue.use(VueResource);
 
