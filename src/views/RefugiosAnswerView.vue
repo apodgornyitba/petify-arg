@@ -19,7 +19,7 @@
         </v-col>
         <v-col>
           <v-row style="margin-bottom: -30px"> <v-col>
-            <h3>Mi mascota ideal</h3>
+            <h3>Mi mascota ideal </h3>
           </v-col></v-row>
           <v-row>
             <v-col>

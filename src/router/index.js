@@ -132,7 +132,6 @@ const routes = [
     name: 'RefugiosUserView',
     component: RefugiosUserView
   },
-
   // 404: Not found
   {
     name: 'PageNotFound',

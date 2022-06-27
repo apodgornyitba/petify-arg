@@ -10,8 +10,7 @@
           <template v-slot:default>
             <thead>
             <tr>
-              <th class="text-left blue--text text--darken-4">
-                Usuarios
+              <th class="text-left blue--text text--darken-4">Usuarios
               </th>
               <th></th>
             </tr>
