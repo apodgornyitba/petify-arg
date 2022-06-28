@@ -37,7 +37,19 @@
             Refugios</v-btn>
         </v-col>
         <v-col>
-          <v-btn class="white--text"
+          <v-btn
+              v-if="!this.$store.getters.isLoggedIn"
+              class="white--text"
+                 elevation="0"
+                 padless color="#2A537A"
+                 width="150"
+                 height="100"
+                 to="/signin"
+          ><v-icon size="40px">mdi-heart</v-icon>
+            Favoritos</v-btn>
+          <v-btn
+              v-if="this.$store.getters.isLoggedIn"
+              class="white--text"
                  elevation="0"
                  padless color="#2A537A"
                  width="150"

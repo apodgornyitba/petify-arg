@@ -1,6 +1,5 @@
 <template>
   <div>
-    <ToolBar/>
     <v-container>
       <SearchBar/>
       <v-card
@@ -21,8 +20,8 @@
                 :key="item"
             >
               <td class="text-left blue--text text--darken-4"> <v-btn text style="text-transform: none" class="text-left blue--text text--darken-4" to="/RefugiosAnswerView">{{ item }}</v-btn></td>
-              <td> <v-btn icon><v-icon style="color: lightblue;">
-                mdi-heart
+              <td> <v-btn @click="show = !show" icon><v-icon style="color: lightblue;">
+                {{!show ? 'mdi-heart-outline' : 'mdi-heart' }}
               </v-icon> </v-btn> </td>
             </tr>
             </tbody>
@@ -34,14 +33,15 @@
 </template>
 
 <script>
-import ToolBar from "@/components/Toolbar";
+
 import SearchBar from "@/components/SearchBar";
 export default {
-  name: "RefugiosUserView",
-  components: {SearchBar, ToolBar},
+  name: "RefugiosUser",
+  components: {SearchBar},
   data: () => ({
     users: ["Sol Anselmo", "Andres Podgorny", "Juan Pablo Arias", "Camila Sierra", "Magdalena Flores", "Mateo Menghini"],
-    spacer: "\t\t\t"
+    spacer: "\t\t\t",
+    show: false
   }),
 }
 </script>

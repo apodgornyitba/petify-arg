@@ -25,8 +25,11 @@
           </v-card>
         </v-tab-item>
         <v-tab-item>
-          <v-card outlined tile  color="#EFEEF1">
+          <v-card v-if="!this.$store.getters.isShelter" outlined tile  color="#EFEEF1">
             <AdopcionLowerBody/>
+          </v-card>
+          <v-card v-if="this.$store.getters.isShelter" outlined tile  color="#EFEEF1">
+            <RefugiosUser/>
           </v-card>
         </v-tab-item>
         <v-tab-item>
@@ -45,10 +48,11 @@ import ToolBar from "@/components/Toolbar";
 import AdopcionLowerBody from "@/components/AdopcionLowerBody";
 import SobreMi from "@/components/SobreMiLowerBody";
 import ConfiguracionLB from "@/components/ConfiguracionLowerBody";
+import RefugiosUser from "@/components/RefugiosUserView";
 
 export default {
   name: "UserProfileView",
-  components: {ConfiguracionLB, AdopcionLowerBody, SobreMi, ToolBar},
+  components: {RefugiosUser, ConfiguracionLB, AdopcionLowerBody, SobreMi, ToolBar},
   data () {
     return {
       tab: null,

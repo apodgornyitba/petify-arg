@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ToolBar/>
     <v-container  class="justify-center align-center">
       <h1>Respuesta de formulario</h1>
       <v-row>
@@ -47,8 +48,10 @@
 </template>
 
 <script>
+import ToolBar from "@/components/Toolbar";
 export default {
   name: "RefugiosAnswerView",
+  components: {ToolBar},
   data: () => ({
     mascota_deseada: ["Perro", "Gato"],
     count_owners:  ["1", "2", "3", "4", "5 o más"],

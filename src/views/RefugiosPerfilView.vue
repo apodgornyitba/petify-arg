@@ -24,20 +24,27 @@
         <v-col>
           <v-row>
           <v-btn
+              v-if="!this.$store.getters.isLoggedIn"
               class="white--text"
               elevation="0"
               padless color="red"
               width="150"
               height="40"
-              to="/denunciar"
+              to="/signin"
           >Denunciar
             <v-icon> mdi-message-alert-outline</v-icon>
-            <!--            </v-btn>-->
-            <!--            <v-btn icon>-->
-            <!--            <v-icon>-->
-            <!--              mdi-message-alert-outline-->
-            <!--            </v-icon>-->
           </v-btn>
+            <v-btn
+                v-if="this.$store.getters.isLoggedIn"
+                class="white--text"
+                elevation="0"
+                padless color="red"
+                width="150"
+                height="40"
+                to="/denunciar"
+            >Denunciar
+              <v-icon> mdi-message-alert-outline</v-icon>
+            </v-btn>
           </v-row>
           <v-row style="margin-top: 20px">
           <v-btn class="white--text"
@@ -66,16 +73,30 @@
           </v-btn>
       </v-row>
       <v-row style="margin-top: 20px">
-          <v-btn class="white--text"
+          <v-btn
+              v-if="!this.$store.getters.isLoggedIn"
+              class="white--text"
                  elevation="0"
                  padless color="#2A537A"
                  width="250"
                  height="40"
-                 to="/donaterefugio"
+                to="/signin"
           >
             Quiero ayudar
             <v-icon right size="30px">mdi-handshake</v-icon>
           </v-btn>
+        <v-btn
+            v-if="this.$store.getters.isLoggedIn"
+            class="white--text"
+               elevation="0"
+               padless color="#2A537A"
+               width="250"
+               height="40"
+               to="/donaterefugio"
+        >
+          Quiero ayudar
+          <v-icon right size="30px">mdi-handshake</v-icon>
+        </v-btn>
       </v-row>
       </v-col>
       </v-row>

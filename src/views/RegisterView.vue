@@ -88,8 +88,6 @@
         <v-row class="align-center text-center justify-center">
           <v-col class="align-center text-center justify-center" cols="5">
             <v-select
-                outlined
-                filled
                 style="width: 500px; margin-bottom: 15px"
                 v-model="paises[0]"
                 label="País"
@@ -98,8 +96,6 @@
           </v-col>
           <v-col class="align-center text-center justify-center" cols="5">
             <v-select
-                outlined
-                filled
                 style="width: 500px; margin-bottom: 15px"
                 v-model="provincias[1]"
                 label="Provincia"
@@ -114,9 +110,7 @@
               label="Localidad"
               :rules="nameRules"
               required
-              outlined
               style="width: 500px; margin-bottom: 15px"
-              filled
           ></v-text-field>
           </v-col>
           <v-col class="align-center text-center justify-center" cols="5">
@@ -124,9 +118,7 @@
               v-model="postal"
               :rules="codigoPostalRules"
               label="Codigo Postal"
-              outlined
               style="width: 500px; margin-bottom: 15px"
-              filled
               required
           ></v-text-field>
           </v-col>
@@ -192,8 +184,6 @@
               <v-row class="align-center text-center justify-center">
                 <v-col class="align-center text-center justify-center" cols="5">
                   <v-select
-                      outlined
-                      filled
                       style="width: 500px; margin-bottom: 15px"
                       v-model="pais"
                       label="País"
@@ -202,8 +192,6 @@
                 </v-col>
                 <v-col class="align-center text-center justify-center" cols="5">
                   <v-select
-                      outlined
-                      filled
                       style="width: 500px; margin-bottom: 15px"
                       v-model="provincia"
                       label="Provincia"
@@ -218,9 +206,7 @@
                       label="Dirección"
                       :rules="direccionRules"
                       required
-                      outlined
                       style="width: 500px; margin-bottom: 15px"
-                      filled
                   ></v-text-field>
                 </v-col>
                 <v-col class="align-center text-center justify-center" cols="5">
@@ -228,9 +214,7 @@
                       v-model="postal"
                       :rules="codigoPostalRules"
                       label="Codigo Postal"
-                      outlined
                       style="width: 500px; margin-bottom: 15px"
-                      filled
                       required
                   ></v-text-field>
                 </v-col>

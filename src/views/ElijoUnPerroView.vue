@@ -31,6 +31,21 @@
         <v-col xs="10" :md="2" :lg="2">
             <v-row style="margin-top: 10px">
               <v-btn
+                  v-if="!this.$store.getters.isLoggedIn"
+                  color="#689FD2"
+                  class="white--text"
+                  elevation="2"
+                  large
+                  raised
+                  x-large
+                  block
+                  to="/signin"
+
+              >
+                <v-icon size="40px">mdi-paw</v-icon>
+                Quiero Adoptar</v-btn>
+              <v-btn
+                  v-if="this.$store.getters.isLoggedIn"
                   color="#689FD2"
                   class="white--text"
                   elevation="2"
@@ -47,6 +62,21 @@
 
             <v-row style="margin-top: 20px">
               <v-btn
+                  v-if="!this.$store.getters.isLoggedIn"
+                  color="#689FD2"
+                  class="white--text"
+                  elevation="2"
+                  large
+                  raised
+                  x-large
+                  block
+                  to="/signin"
+              >
+                <v-icon size="40px">mdi-handshake</v-icon>
+
+                Quiero Ayudar</v-btn>
+              <v-btn
+                  v-if="this.$store.getters.isLoggedIn"
                   color="#689FD2"
                   class="white--text"
                   elevation="2"
@@ -64,7 +94,21 @@
 
         <v-row style="margin-top: 20px">
           <v-btn
-              
+              v-if="!this.$store.getters.isLoggedIn"
+              color="#689FD2"
+              class="white--text"
+              elevation="2"
+              large
+              raised
+              x-large
+              block
+              to="/signin"
+          >
+            <v-icon size="40px">mdi-heart-outline</v-icon>
+
+           Favorito</v-btn>
+          <v-btn
+              v-if="this.$store.getters.isLoggedIn"
               color="#689FD2"
               class="white--text"
               elevation="2"
@@ -76,7 +120,7 @@
           >
             <v-icon size="40px">{{!show ? 'mdi-heart-outline' : 'mdi-heart' }}</v-icon>
 
-           Favorito</v-btn>
+            Favorito</v-btn>
 
         </v-row>
         </v-col>

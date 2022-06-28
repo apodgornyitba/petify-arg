@@ -20,6 +20,13 @@
       </v-col>
       <v-col>
         <v-btn
+            v-if="this.$store.getters.isShelter"
+            text
+            color="white"
+            to="/CargarDatos"
+        >Adoptá</v-btn>
+        <v-btn
+            v-if="!this.$store.getters.isShelter"
             text
             color="white"
             to="/adopt"
@@ -27,6 +34,13 @@
       </v-col>
       <v-col>
         <v-btn
+            v-if="!this.$store.getters.isLoggedIn"
+            text
+            color="white"
+            to="/signin"
+        >Quiero ayudar</v-btn>
+        <v-btn
+            v-if="this.$store.getters.isLoggedIn"
             text
             color="white"
             to="/donaterefugio"
@@ -38,7 +52,6 @@
             color="white"
             to="/infoView"
         >Información</v-btn>
-<!--        tambien le podemos poner "Tips"-->
       </v-col>
     </v-row>
   </v-toolbar>

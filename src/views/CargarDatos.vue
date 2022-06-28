@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ToolBar/>
     <v-container class="justify-center text-center align-center">
       <v-row style="margin-top: 10px" class="text-center">
         <v-col>
@@ -8,7 +9,7 @@
       </v-row>
       <v-row style="margin-top: -30px" class="text-center">
       <v-col>
-        <h4> solo puede ingresar de a uno </h4>
+        <h4> Solo puede ingresar de a uno </h4>
       </v-col>
         </v-row>
       <v-row class="align-center justify-center text-center">
@@ -44,9 +45,10 @@
 
 import SelectFields from "@/components/SelectFields";
 import TextFields from "@/components/TextFields";
+import ToolBar from "@/components/Toolbar";
 export default {
   name: "CargarDatos",
-  components: {SelectFields, TextFields},
+  components: {ToolBar, SelectFields, TextFields},
   data: () => ({
     tipos: ["PERRO", "GATO"]
   }),
