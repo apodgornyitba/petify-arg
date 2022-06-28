@@ -20,8 +20,8 @@
                 v-for="item in users"
                 :key="item"
             >
-              <td class="text-left blue--text text--darken-4"> <v-btn class="text-left blue--text text--darken-4" to="/RefugiosAnswerView">{{ item }}</v-btn></td>
-              <td> <v-btn><v-icon style="color: lightblue;">
+              <td class="text-left blue--text text--darken-4"> <v-btn text style="text-transform: none" class="text-left blue--text text--darken-4" to="/RefugiosAnswerView">{{ item }}</v-btn></td>
+              <td> <v-btn icon><v-icon style="color: lightblue;">
                 mdi-heart
               </v-icon> </v-btn> </td>
             </tr>
