@@ -23,19 +23,19 @@
         </v-col>
         <v-col>
           <v-row>
-          <v-btn
-              v-if="!this.$store.getters.isLoggedIn"
-              class="white--text"
-              elevation="0"
-              padless color="red"
-              width="150"
-              height="40"
-              to="/signin"
-          >Denunciar
-            <v-icon> mdi-message-alert-outline</v-icon>
-          </v-btn>
+<!--          <v-btn-->
+<!--              v-if="!this.$store.getters.isLoggedIn"-->
+<!--              class="white&#45;&#45;text"-->
+<!--              elevation="0"-->
+<!--              padless color="red"-->
+<!--              width="150"-->
+<!--              height="40"-->
+<!--              to="/signin"-->
+<!--          >Denunciar-->
+<!--            <v-icon> mdi-message-alert-outline</v-icon>-->
+<!--          </v-btn>  v-if="this.$store.getters.isLoggedIn" esto va abajo en la 38-->
             <v-btn
-                v-if="this.$store.getters.isLoggedIn"
+
                 class="white--text"
                 elevation="0"
                 padless color="red"
@@ -73,20 +73,21 @@
           </v-btn>
       </v-row>
       <v-row style="margin-top: 20px">
-          <v-btn
-              v-if="!this.$store.getters.isLoggedIn"
-              class="white--text"
-                 elevation="0"
-                 padless color="#2A537A"
-                 width="250"
-                 height="40"
-                to="/signin"
-          >
-            Quiero ayudar
-            <v-icon right size="30px">mdi-handshake</v-icon>
-          </v-btn>
+<!--          <v-btn-->
+<!--              v-if="!this.$store.getters.isLoggedIn"-->
+<!--              class="white&#45;&#45;text"-->
+<!--                 elevation="0"-->
+<!--                 padless color="#2A537A"-->
+<!--                 width="250"-->
+<!--                 height="40"-->
+<!--                to="/signin"-->
+<!--          >-->
+<!--            Quiero ayudar-->
+<!--            <v-icon right size="30px">mdi-handshake</v-icon>-->
+<!--          </v-btn>-->
+<!--        v-if="this.$store.getters.isLoggedIn" esto va en la linea 90-->
         <v-btn
-            v-if="this.$store.getters.isLoggedIn"
+
             class="white--text"
                elevation="0"
                padless color="#2A537A"
