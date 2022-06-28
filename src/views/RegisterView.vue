@@ -318,7 +318,10 @@ export default {
 
   methods: {
     ...mapActions("user", {
-      $update: "update",
+      $updateUser: "update",
+    }),
+    ...mapActions("shelter", {
+      $updateShelter: "update",
     }),
     // passwordConfirmationRule() {
     //   return () =>
@@ -327,10 +330,8 @@ export default {
     createUser(usuario){
       const auth = getAuth();
       if(usuario) {
-        this.$store.commit("setIsShelter", false);
         this.registerUser(auth, this.emailUser, this.passwordUser);
       } else {
-        this.$store.commit("setIsShelter", true);
         this.registerShelter(auth, this.emailShelter, this.passwordShelter);
       }
     },
@@ -346,10 +347,11 @@ export default {
         postal: this.postal,
 
       });
-      this.$update({user: credentials.user});
+      this.$updateUser({user: credentials.user});
       this.$store.commit("setIsLoggedIn");
       setTimeout(() => this.$router.push('/'), 1000);
     },
+
     async registerShelter(auth, email, password){
       const credentials = await createUserWithEmailAndPassword(auth, email, password);
       await setDoc(doc(db, "shelters", credentials.user.uid), {
@@ -361,15 +363,17 @@ export default {
         postal: this.postal,
 
       });
-      this.$update({user: credentials.user});
+      this.$updateShelter({shelter: credentials.user});
       this.$store.commit("setIsLoggedIn");
       setTimeout(() => this.$router.push('/'), 1000);
     },
     habilitarusuario() {
       this.usuario = true;
+      this.$store.commit("setIsShelter", false);
     },
     habilitarrefugio() {
       this.usuario = false;
+      this.$store.commit("setIsShelter", true);
     },
   }
 }
