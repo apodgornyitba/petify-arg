@@ -327,8 +327,10 @@ export default {
     createUser(usuario){
       const auth = getAuth();
       if(usuario) {
+        this.$store.commit("setIsShelter", false);
         this.registerUser(auth, this.emailUser, this.passwordUser);
       } else {
+        this.$store.commit("setIsShelter", true);
         this.registerShelter(auth, this.emailShelter, this.passwordShelter);
       }
     },
@@ -345,7 +347,8 @@ export default {
 
       });
       this.$update({user: credentials.user});
-      setTimeout(() => this.$router.push('/singin'), 1000);
+      this.$store.commit("setIsLoggedIn");
+      setTimeout(() => this.$router.push('/'), 1000);
     },
     async registerShelter(auth, email, password){
       const credentials = await createUserWithEmailAndPassword(auth, email, password);
@@ -359,15 +362,14 @@ export default {
 
       });
       this.$update({user: credentials.user});
+      this.$store.commit("setIsLoggedIn");
       setTimeout(() => this.$router.push('/'), 1000);
     },
     habilitarusuario() {
       this.usuario = true;
-      this.$store.commit("setIsShelter", false);
     },
     habilitarrefugio() {
       this.usuario = false;
-      this.$store.commit("setIsShelter", true);
     },
   }
 }
