@@ -211,7 +211,7 @@
                 </v-col>
                 <v-col class="align-center text-center justify-center" cols="5">
                   <v-text-field
-                      v-model="postal"
+                      v-model="postalRef"
                       :rules="codigoPostalRules"
                       label="Codigo Postal"
                       style="width: 500px; margin-bottom: 15px"
@@ -289,6 +289,7 @@ export default {
     localidad: '',
     direccion: '',
     postal: '',
+    postalRef:'',
     pais: '',
     provincia: '',
 
