@@ -22,6 +22,7 @@ import DenunciarView from "@/views/DenunciarView";
 import FavView from "@/views/FavView";
 import RefugiosAnswerView from "@/views/RefugiosAnswerView";
 import CargarDatos from "@/views/CargarDatos";
+import CambiarContrasenaOlvidada from "@/views/CambiarContrasenaOlvidada";
 
 Vue.use(VueRouter)
 
@@ -91,6 +92,11 @@ const routes = [
     path: '/signin',
     name: 'signin',
     component: SignInView
+  },
+  {
+    path: '/cambiarContra',
+    name: 'cambiarContra',
+    component: CambiarContrasenaOlvidada
   },
   {
     path:'/prueba',
