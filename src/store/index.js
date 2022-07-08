@@ -11,6 +11,7 @@ export default new Vuex.Store({
   state: {
     isShelter: false,
     isLoggedIn: false,
+    petId: '',
   },
   getters: {
     isShelter(state){
@@ -18,15 +19,21 @@ export default new Vuex.Store({
     },
     isLoggedIn(state){
       return state.isLoggedIn
-    }
+    },
+    getPetId(state){
+      return state.petId;
+    },
   },
   mutations: {
     setIsShelter(state, bool){
-      state.isShelter = bool
+      state.isShelter = bool;
     },
     setIsLoggedIn(state){
-      state.isLoggedIn = !state.isLoggedIn
-    }
+      state.isLoggedIn = !state.isLoggedIn;
+    },
+    setPetId(state, id){
+      state.petId = id;
+    },
   },
   actions: {
   },

@@ -92,6 +92,7 @@
 import ToolBar from "@/components/Toolbar";
 import {doc, setDoc} from "firebase/firestore";
 import db from "../firebase/initFirebase"
+import {mapGetters} from "vuex";
 
 export default {
   name: "CargarDatos",
@@ -104,15 +105,23 @@ export default {
     health: '',
     type: '',
   }),
+  computed:{
+    ...mapGetters("shelter", {
+      $getShelterName: "getShelterName",
+    }),
+  },
   methods:{
     async registerPet(){
-        console.log(this.name)
-        await setDoc(doc(db, "pets", this.name.toString()), {
+        // console.log(this.name);
+      const id = Math.floor(1000 + Math.random() * 9000).toString();
+      // console.log("ID:", id);
+      await setDoc(doc(db, "pets", id), {
           name: this.name,
           imgLink: this.imgLink,
           description: this.description,
           health: this.health,
           type: this.type,
+          shelter: this.$getShelterName,
         });
     },
   }

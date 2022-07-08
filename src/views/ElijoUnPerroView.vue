@@ -4,7 +4,8 @@
     <v-container fluid class="hero">
       <v-row class="text-center">
        <v-col align="center">
-         <v-img :src="require('../assets/perrito1.jpg')" max-width="300px" height="425"/>
+<!--         <v-img :src="require('../assets/perrito1.jpg')" max-width="300px" height="425"/>-->
+         <v-img :src="this.pet.imgLink" max-width="300px" height="425"/>
        </v-col>
       </v-row>
     </v-container>
@@ -13,19 +14,18 @@
       <v-row>
         <v-col cols="6">
           <h1>
-            Nala:
+            {{pet.name}}:
           </h1>
           <h2 class="font-weight-medium">
-            Descripción: Mestiza de pelo largo, juguetona, necesita
-            pasear bastante. Es de tamaño mediano.
+            Descripción: {{pet.description}}
 
           </h2>
           <h2 class="font-weight-medium">
-            Salud: Tiene todas las vacunas al día, no tiene alergias ni necesidades especiales.
+            Salud: {{pet.health}}
 
           </h2>
           <h2 class="font-weight-medium">
-            Refugio: La patita feliz.
+            Refugio: {{pet.shelter}}.
           </h2>
         </v-col>
         <v-col xs="10" :md="2" :lg="2">
@@ -135,20 +135,40 @@
 
 <script>
 import ToolBar from "@/components/Toolbar";
+import {getDoc, doc} from "firebase/firestore";
+import db from "../firebase/initFirebase"
 export default {
   name: "elijoPerro",
   components: {ToolBar},
   data() {
     return {
+      pet: {},
       show: false
     }
+  },
+  methods:{
+    async getPet(){
+      const id = localStorage.getItem("id");
+      const docs = await getDoc(doc(db, "pets", id));
+        this.pet = docs.data();
+        // console.log(("Pet:", this.pet));
+      // console.log(this.pet.imgLink.toString());
+
+    }
+  },
+  watch:{
+    $getPet(){
+      this.getPet();
+    },
+  },
+  beforeMount() {
+    this.getPet();
   }
 }
 </script>
 
 <style scoped>
 .hero {
-  background: url('../assets/nalaGigante.png');
   background-size: cover;
   background-position: center center;
   height: 447px;

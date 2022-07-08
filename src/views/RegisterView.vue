@@ -325,6 +325,7 @@ export default {
         name: this.nameUser,
         adoptInfo: {
           chosenPet: '',
+          numberOfOwners: '',
         },
         surname: this.surnameUser,
         username: this.displayNameUser,

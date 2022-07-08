@@ -19,13 +19,13 @@
                 filled
                 label="Mascota deseada"
                 :items="mascota_deseada"
-                v-model="chosenPet"
+                v-model="adoptInfo.chosenPet"
             ></v-select>
           </v-col>
         </v-row>
         <v-row>
           <v-col style="margin-top: -50px">
-          <SelectFields label="Futuro/s dueño/s" :items=count_owners></SelectFields>
+          <SelectFields  v-model="adoptInfo.numberOfOwners" label="Futuro/s dueño/s" :items=count_owners></SelectFields>
           </v-col>
         </v-row>
         <v-row>
@@ -91,6 +91,7 @@
                  class="white--text"
                  @click="updateProf"
           >Guardar</v-btn>
+          <v-img ></v-img>
         </v-col>
       </v-row>
     </v-container>
@@ -122,7 +123,7 @@ export default {
     necesidades: ["Alimento, paseos, cuidado de salud e higiene", "Alimento, cuidado de salud e higiene", "Alimento"],
     especial: ["Sí", "No"],
     adoptInfo: {},
-    user: {},
+    // user: {},
     chosenPet: '',
   }),
   computed:{
@@ -138,8 +139,8 @@ export default {
       if (this.$getUserId) {
         console.log("UserId:", this.$getId);
         const docs = await getDoc(doc(db, "users", this.$getId));
-        this.user = docs.data();
-        this.adoptInfo = this.user.adoptInfo;
+        this.adoptInfo = docs.data().user.adoptInfo;
+        // this.adoptInfo = this.user.adoptInfo;
         console.log("adoptInfo:", this.adoptInfo);
         this.chosenPet = this.adoptInfo.chosenPet;
         console.log("ChosenPet:", this.adoptInfo.chosenPet);
@@ -147,10 +148,12 @@ export default {
     },
     async updateProf(){
       console.log(this.chosenPet);
+      console.log((this.adoptInfo.chosenPet));
       const userRef = doc(db, "users", this.$getId);
       await updateDoc(userRef, {
         adoptInfo:{
-          chosenPet: this.chosenPet,
+          chosenPet: this.adoptInfo.chosenPet,
+          numberOfOwners: this.adoptInfo.numberOfOwners,
         },
       });
     }
