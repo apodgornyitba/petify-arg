@@ -58,7 +58,7 @@
 
 <script>
 
-import {collection, getDocs } from "firebase/firestore"
+import {collection, query, where, getDocs } from "firebase/firestore"
 import db from "../firebase/initFirebase"
 
 export default {
@@ -70,7 +70,8 @@ export default {
   }),
   methods: {
     async getPets(){
-      const querySnapshot = await getDocs(collection(db, "pets"));
+      const q = query(collection(db, "pets"), where("type", "==", "PERRO"));
+      const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         this.petsId.push(doc.id);
         this.petsArray.push(doc.data());
