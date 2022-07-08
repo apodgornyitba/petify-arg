@@ -39,7 +39,7 @@
               outlined
               filled
               style="width: 500px; margin-bottom: 15px"
-              v-model="country"
+              v-model="user.country"
               label="País"
               :items="paises"
           ></v-select>
@@ -58,7 +58,7 @@
               outlined
               filled
               style="width: 500px; margin-bottom: 15px"
-              v-model="province"
+              v-model="user.province"
               label="Provincia"
               :items="provincias"
           ></v-select>

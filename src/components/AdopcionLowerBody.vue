@@ -8,7 +8,19 @@
         </v-col> </v-row>
         <v-row>
           <v-col>
-          <SelectFields label="Mascota deseada" :items=mascota_deseada></SelectFields>
+<!--          <SelectFields-->
+<!--              :v-model="chosenPet"-->
+<!--              label="Mascota deseada"-->
+<!--              :items=mascota_deseada-->
+<!--          ></SelectFields>-->
+            <v-select
+                style="width: 500px"
+                outlined
+                filled
+                label="Mascota deseada"
+                :items="mascota_deseada"
+                v-model="chosenPet"
+            ></v-select>
           </v-col>
         </v-row>
         <v-row>
@@ -75,7 +87,10 @@
       </v-row>
       <v-row class="justify-center align-center text-center">
         <v-col>
-          <v-btn padless color="#2A537A" class="white--text">Guardar</v-btn>
+          <v-btn padless color="#2A537A"
+                 class="white--text"
+                 @click="updateProf"
+          >Guardar</v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -85,6 +100,10 @@
 <script>
 
 import SelectFields from "@/components/SelectFields";
+import {mapActions, mapGetters} from "vuex";
+import {doc, getDoc, updateDoc} from "firebase/firestore";
+import db from "../firebase/initFirebase";
+
 
 export default {
   name: "AdopcionLowerBody",
@@ -101,8 +120,55 @@ export default {
     size: ["Indiferente","Pequeño", "Mediano", "Grande"],
     personalidad: ["Energético", "Tranquilo", "Solitario", "Cariñoso"],
     necesidades: ["Alimento, paseos, cuidado de salud e higiene", "Alimento, cuidado de salud e higiene", "Alimento"],
-    especial: ["Sí", "No"]
-  })
+    especial: ["Sí", "No"],
+    adoptInfo: {},
+    user: {},
+    chosenPet: '',
+  }),
+  computed:{
+    ...mapGetters("user", {
+      $getId: "getId",
+    }),
+  },
+  ...mapActions("user", {
+    $update: "update",
+  }),
+  methods:{
+    async getUser(){
+      if (this.$getUserId) {
+        console.log("UserId:", this.$getId);
+        const docs = await getDoc(doc(db, "users", this.$getId));
+        this.user = docs.data();
+        this.adoptInfo = this.user.adoptInfo;
+        console.log("adoptInfo:", this.adoptInfo);
+        this.chosenPet = this.adoptInfo.chosenPet;
+        console.log("ChosenPet:", this.adoptInfo.chosenPet);
+      }
+    },
+    async updateProf(){
+      console.log(this.chosenPet);
+      const userRef = doc(db, "users", this.$getId);
+      await updateDoc(userRef, {
+        adoptInfo:{
+          chosenPet: this.chosenPet,
+        },
+      });
+    }
+    // showVModel(){
+    //   console.log("chosenPet:", this.chosenPet);
+    // },
+  },
+  watch:{
+    $getId(){
+      this.getUser();
+    },
+  },
+  beforeMount() {
+    this.getUser();
+    // this.chosenPet = this.adoptInfo.chosenPet;
+  }
+
+
 }
 </script>
 

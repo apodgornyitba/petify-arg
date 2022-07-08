@@ -14,44 +14,108 @@
         </v-row>
       <v-row class="align-center justify-center text-center">
         <v-col class="align-center justify-center text-center" cols="6">
-          <TextFields label="Nombre"></TextFields>
+<!--          <TextFields v-model="name" label="Nombre"></TextFields>-->
+          <v-text-field
+              outlined
+              filled
+              v-model="name"
+              label="Nombre"
+              required
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row style="margin-top: -30px" class="align-center justify-center text-center">
         <v-col class="align-center justify-center text-center" cols="6">
-          <TextFields label="Link a imagen"></TextFields>
+<!--          <TextFields v-model="imgLink" label="Link a imagen"></TextFields>-->
+          <v-text-field
+              outlined
+              filled
+              v-model="imgLink"
+              label="Link a imagen"
+              required
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row style="margin-top: -30px" class="align-center justify-center text-center">
         <v-col class="align-center justify-center text-center" cols="6">
-          <TextFields label="Descripcion"></TextFields>
+<!--          <TextFields v-model="description" label="Descripcion"></TextFields>-->
+          <v-text-field
+              outlined
+              filled
+              v-model="description"
+              label="Descripción"
+              required
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row style="margin-top: -30px" class="align-center justify-center text-center">
         <v-col class="align-center justify-center text-center" cols="6">
-          <TextFields label="Salud"></TextFields>
+<!--          <TextFields v-model="health" label="Salud"></TextFields>-->
+          <v-text-field
+              outlined
+              filled
+              v-model="health"
+              label="Salud"
+              required
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row style="margin-top: -30px" class="align-center justify-center text-center">
         <v-col class="align-center justify-center text-center" cols="6">
-          <SelectFields label="Tipo de animal" :items=tipos></SelectFields>
+<!--          <SelectFields v-model="type" label="Tipo de animal" :items=tipos></SelectFields>-->
+          <v-select
+              outlined
+              filled
+              v-model="type"
+              label="Tipo de animal"
+              :items="tipos"
+          ></v-select>
         </v-col>
       </v-row>
+      <v-btn
+          color="#689FD2"
+          class="white--text"
+          elevation="2"
+          large
+          raised
+          x-large
+          @click="registerPet"
+      >Registrar</v-btn>
     </v-container>
   </div>
 </template>
 
 <script>
 
-import SelectFields from "@/components/SelectFields";
-import TextFields from "@/components/TextFields";
+// import SelectFields from "@/components/SelectFields";
+// import TextFields from "@/components/TextFields";
 import ToolBar from "@/components/Toolbar";
+import {doc, setDoc} from "firebase/firestore";
+import db from "../firebase/initFirebase"
+
 export default {
   name: "CargarDatos",
-  components: {ToolBar, SelectFields, TextFields},
+  components: {ToolBar},
   data: () => ({
-    tipos: ["PERRO", "GATO"]
+    tipos: ["PERRO", "GATO"],
+    name: '',
+    imgLink: '',
+    description: '',
+    health: '',
+    type: '',
   }),
+  methods:{
+    async registerPet(){
+        console.log(this.name)
+        await setDoc(doc(db, "pets", this.name.toString()), {
+          name: this.name,
+          imgLink: this.imgLink,
+          description: this.description,
+          health: this.health,
+          type: this.type,
+        });
+    },
+  }
 }
 </script>
 

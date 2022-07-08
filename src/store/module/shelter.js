@@ -57,7 +57,7 @@ export default {
         setUsername(state, username){
             state.username = username;
         },
-        setLocalidad(state, address){
+        setAddress(state, address){
             state.address = address;
         },
         setPostal(state, postal){

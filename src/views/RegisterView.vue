@@ -323,6 +323,9 @@ export default {
       const credentials = await createUserWithEmailAndPassword(auth, email, password);
       await setDoc(doc(db, "users", credentials.user.uid), {
         name: this.nameUser,
+        adoptInfo: {
+          chosenPet: '',
+        },
         surname: this.surnameUser,
         username: this.displayNameUser,
         country: this.pais,

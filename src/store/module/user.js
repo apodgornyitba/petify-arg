@@ -5,6 +5,7 @@ export default {
     namespaced: true,
     state: {
         info: {},
+        adoptInfo: {},
         id: '',
         displayName: '',
         name: '',
@@ -20,6 +21,9 @@ export default {
         },
         getId(state){
             return state.id;
+        },
+        getAdoptInfo(state){
+            return state.adoptInfo;
         },
         getName(state){
             return state.name;
@@ -52,6 +56,9 @@ export default {
     mutations: {
         setId(state, id){
             state.id = id;
+        },
+        setAdoptInfo(state, adoptInfo){
+            state.adoptInfo = adoptInfo;
         },
         setInfo(state, info){
             state.info = info;
@@ -91,6 +98,7 @@ export default {
             const docs = await getDoc(doc(db, "users", user.uid));
             commit("setInfo", user);
             commit("setId", user.uid);
+            commit("setAdoptInfo", user.adoptInfo);
             commit("setUsername", docs.data().username);
             commit("setName", docs.data().name);
             commit("setSurname", docs.data().surname);
@@ -103,6 +111,7 @@ export default {
             localStorage.removeItem("USER");
             commit("setId", null);
             commit("setInfo", null);
+            commit("setAdoptInfo", null);
             commit("setName", '');
             commit("setSurname", '');
             commit("setUsername", '');
