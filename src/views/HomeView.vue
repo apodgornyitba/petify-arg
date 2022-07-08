@@ -66,22 +66,32 @@
           En adopción:
         </h1>
         <v-row class="align-left" style="margin-top: 20px; margin-bottom: 20px">
-          <v-col>
+          <v-col
+            v-for="(pet, idx) in petsArray"
+            :key="pet.name"
+          >
             <a href="/elijoPerro">
 
-              <v-img :src="require('../assets/perrito1.jpg')" max-width="250px">
+              <v-img :src="pet.imgLink" max-width="250px" height="250px" @click="setId(idx)">
               </v-img>
             </a>
           </v-col>
-          <v-col>
-          <v-img :src="require('../assets/perrito2.jpg')" max-width="250px"/>
-          </v-col>
-          <v-col>
-          <v-img :src="require('../assets/perrito3.jpg')" max-width="250px"/>
-          </v-col>
-          <v-col>
-            <v-img :src="require('../assets/perrito5.jpg')" max-width="250px"/>
-          </v-col>
+<!--          <v-col>-->
+<!--            <a href="/elijoPerro">-->
+
+<!--              <v-img :src="require('../assets/perrito1.jpg')" max-width="250px">-->
+<!--              </v-img>-->
+<!--            </a>-->
+<!--          </v-col>-->
+<!--          <v-col>-->
+<!--          <v-img :src="require('../assets/perrito2.jpg')" max-width="250px"/>-->
+<!--          </v-col>-->
+<!--          <v-col>-->
+<!--          <v-img :src="require('../assets/perrito3.jpg')" max-width="250px"/>-->
+<!--          </v-col>-->
+<!--          <v-col>-->
+<!--            <v-img :src="require('../assets/perrito5.jpg')" max-width="250px"/>-->
+<!--          </v-col>-->
         </v-row>
       </v-container>
   </div>
@@ -89,6 +99,9 @@
 <script>
 
 import ToolBar from "@/components/Toolbar";
+import {collection, getDocs} from "firebase/firestore";
+import db from "../firebase/initFirebase"
+
 export default {
   name: 'HomeView',
 
@@ -96,7 +109,31 @@ export default {
 
   data: () => ({
     fav: false,
+
+    petsArray: [],
+    petsId: [],
   }),
+  methods: {
+    async getPets(){
+      const querySnapshot = await getDocs(collection(db, "pets"));
+      querySnapshot.forEach((doc) => {
+        this.petsId.push(doc.id);
+        this.petsArray.push(doc.data());
+        console.log(this.petsArray)
+      });
+    },
+    setId(idx){
+      localStorage.setItem("id", this.petsId[idx]);
+    }
+  },
+  watch:{
+    $getPets(){
+      this.getPets();
+    }
+  },
+  beforeMount() {
+    this.getPets();
+  }
 };
 </script>
 

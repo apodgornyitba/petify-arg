@@ -10,11 +10,9 @@
           :key="pet.name"
         >
           <div class="subheading pt-4">
-<!--            {{getName(pet)}}-->
             {{pet.name}}
           </div>
           <a href="/elijoPerro">
-<!--            <v-img :src="getImg(pet)" max-width="200px"/>-->
                 <v-img :src="pet.imgLink" max-width="200px" height="200px" @click="setId(idx)"/>
           </a>
         </v-col>
@@ -74,30 +72,12 @@ export default {
     async getPets(){
       const querySnapshot = await getDocs(collection(db, "pets"));
       querySnapshot.forEach((doc) => {
-        // console.log(doc.data())
         this.petsId.push(doc.id);
         this.petsArray.push(doc.data());
       });
-      // console.log(this.petsArray);
-      // console.log(this.petsArray);
-      // console.log(this.petsId[0]);
-      // console.log("pet name:", this.petsArray[0].name);
     },
     setId(idx){
       localStorage.setItem("id", this.petsId[idx]);
-      // console.log(localStorage.getItem("id"));
-      // this.$store.commit('setPetId', this.petsId[idx]);
-      // console.log(this.$store.getters.getPetId);
-    }
-  },
-  computed:{
-    getName(index){
-      // console.log("index1: ", index);
-      return this.petsArray[index].name;
-    },
-    getImg(index){
-      // console.log("index2: ", index);
-      return this.petsArray[index].imgLink;
     }
   },
   watch:{
