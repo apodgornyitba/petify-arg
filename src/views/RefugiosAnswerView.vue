@@ -3,6 +3,7 @@
     <ToolBar/>
     <v-container  class="justify-center align-center">
       <h1>Respuesta de formulario</h1>
+      <h2> {{ this.user.name }} {{ user.surname }}</h2>
       <v-row>
         <v-col>
           <v-row style="margin-bottom: -30px "> <v-col>
@@ -10,12 +11,12 @@
           </v-col> </v-row>
           <v-row>
             <v-col>
-              <body> Mascota deseada: Perro </body>
-              <body> Futuro/s dueño/s: 2</body>
-              <body> Cantidad de mascota/s actual/es: 0</body>
-              <body> Tipo de mascota/s previa/s: ¡Esta será mi primera mascota!</body>
-              <body> Espacio disponible (m2): Entre 50 y 100</body>
-              <body> Espacio alrededor: No</body>
+              <body> Mascota deseada: {{user.adoptInfo.chosenPet }} </body>
+              <body> Futuro/s dueño/s: {{user.adoptInfo.numberOfOwners }} </body>
+              <body> Cantidad de mascota/s actual/es: {{user.adoptInfo.numberOfPets }} </body>
+              <body> Tipo de mascota/s previa/s: {{user.adoptInfo.typeOfPets }} </body>
+              <body> Espacio disponible (m2): {{ user.adoptInfo.spaceAv }} </body>
+              <body> Espacio alrededor: {{ user.adoptInfo.space }} </body>
             </v-col>
           </v-row>
         </v-col>
@@ -25,12 +26,12 @@
           </v-col></v-row>
           <v-row>
             <v-col>
-              <body > Preferencia de edad: 0-1 años </body>
-              <body> Preferencia de sexo: Indiferente</body>
-              <body> Preferencia de tamaño: Mediano</body>
-              <body> Personalidad: Enérgico</body>
-              <body> Necesidades: Alimento, paseos, cuidado de salud e higiene</body>
-              <body> Adopción con necesidades especiales: No </body>
+              <body > Preferencia de edad: {{ user.adoptInfo.age }} </body>
+              <body> Preferencia de sexo: {{ user.adoptInfo.gender }} </body>
+              <body> Preferencia de tamaño: {{ user.adoptInfo.size }} </body>
+              <body> Personalidad: {{ user.adoptInfo.personality }} </body>
+              <body> Necesidades: {{ user.adoptInfo.needs }} </body>
+              <body> Adopción con necesidades especiales: {{ user.adoptInfo.specialNeeds }} </body>
             </v-col>
           </v-row>
         </v-col>
@@ -49,23 +50,33 @@
 
 <script>
 import ToolBar from "@/components/Toolbar";
+import {getDoc, doc} from "firebase/firestore";
+import db from "../firebase/initFirebase"
 export default {
   name: "RefugiosAnswerView",
   components: {ToolBar},
-  data: () => ({
-    mascota_deseada: ["Perro", "Gato"],
-    count_owners:  ["1", "2", "3", "4", "5 o más"],
-    count_mascotas: ["0", "1", "2", "3", "4", "5 o más"],
-    mascota_previa: ["Perro", "Gato", "Ambos", "¡Esta será mi primera mascota!"],
-    espacio_disponible: ["Menos de 20", "Entre 20 y 50", "Entre 50 y 100", "Más de 100"],
-    espacio_alrededor: ["Sí", "No"],
-    edad: ["Indiferente", "0-1 años", "2-4 años", "5-7 años", "7 o más"],
-    sexo: ["Indiferente", "Macho", "Hembra"],
-    size: ["Indiferente","Pequeño", "Mediano", "Grande"],
-    personalidad: ["Energético", "Tranquilo", "Solitario", "Cariñoso"],
-    necesidades: ["Alimento, paseos, cuidado de salud e higiene", "Alimento, cuidado de salud e higiene", "Alimento"],
-    especial: ["Sí", "No"]
-  })
+  data() {
+    return {
+      user: {},
+    }
+  },
+  methods:{
+    async getUser(){
+      const id = localStorage.getItem("id");
+      const docs = await getDoc(doc(db, "users", id));
+      this.user = docs.data();
+      //FIX: PORQUE NO MUESTRA LA INFO??
+
+    }
+  },
+  watch:{
+    $getUser(){
+      this.getUser();
+    },
+  },
+  beforeMount() {
+    this.getUser();
+  }
 }
 </script>
 

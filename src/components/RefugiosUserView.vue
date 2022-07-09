@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <SearchBar/>
+      <!-- <SearchBar/> -->
       <v-card
           class="mx-auto"
       >
@@ -16,13 +16,15 @@
             </thead>
             <tbody>
             <tr
-                v-for="item in users"
-                :key="item"
+                v-for="(user, idx) in usersArray"
+                :key="user.name"
             >
-              <td class="text-left blue--text text--darken-4"> <v-btn text style="text-transform: none" class="text-left blue--text text--darken-4" to="/RefugiosAnswerView">{{ item }}</v-btn></td>
-              <td> <v-btn @click="show = !show" icon><v-icon style="color: lightblue;">
-                {{!show ? 'mdi-heart-outline' : 'mdi-heart' }}
-              </v-icon> </v-btn> </td>
+              <td class="text-left blue--text text--darken-4">
+                <v-btn text style="text-transform: none" class="text-left blue--text text--darken-4"
+                       to="/RefugiosAnswerView"
+                       @click="setId(idx)">
+                {{ user.name }} {{ user.surname }}
+              </v-btn></td>
             </tr>
             </tbody>
           </template>
@@ -34,15 +36,38 @@
 
 <script>
 
-import SearchBar from "@/components/SearchBar";
+//import SearchBar from "@/components/SearchBar";
+import {collection, getDocs} from "firebase/firestore";
+import db from "@/firebase/initFirebase";
 export default {
   name: "RefugiosUser",
-  components: {SearchBar},
+  components: {},
   data: () => ({
-    users: ["Sol Anselmo", "Andres Podgorny", "Juan Pablo Arias", "Camila Sierra", "Magdalena Flores", "Mateo Menghini"],
-    spacer: "\t\t\t",
-    show: false
+    fav: false,
+    usersArray: [],
+    usersId: [],
   }),
+  methods: {
+    async getUsers(){
+      const querySnapshot = await getDocs(collection(db, "users"));
+      querySnapshot.forEach((doc) => {
+        this.usersId.push(doc.id);
+        this.usersArray.push(doc.data());
+        console.log(this.usersArray)
+      });
+    },
+    setId(idx){
+      localStorage.setItem("id", this.usersId[idx]);
+    }
+  },
+  watch:{
+    $getUsers(){
+      this.getUsers();
+    }
+  },
+  beforeMount() {
+    this.getUsers();
+  }
 }
 </script>
 
