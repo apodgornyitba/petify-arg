@@ -89,7 +89,7 @@
           <v-col class="align-center text-center justify-center" cols="5">
             <v-select
                 style="width: 500px; margin-bottom: 15px"
-                v-model="paises[0]"
+                v-model="pais"
                 label="País"
                 :items="paises"
             ></v-select>
@@ -97,7 +97,7 @@
           <v-col class="align-center text-center justify-center" cols="5">
             <v-select
                 style="width: 500px; margin-bottom: 15px"
-                v-model="provincias[1]"
+                v-model="provincia"
                 label="Provincia"
                 :items="provincias"
             ></v-select>
@@ -185,7 +185,7 @@
                 <v-col class="align-center text-center justify-center" cols="5">
                   <v-select
                       style="width: 500px; margin-bottom: 15px"
-                      v-model="pais"
+                      v-model="paisRef"
                       label="País"
                       :items="paises"
                   ></v-select>
@@ -193,7 +193,7 @@
                 <v-col class="align-center text-center justify-center" cols="5">
                   <v-select
                       style="width: 500px; margin-bottom: 15px"
-                      v-model="provincia"
+                      v-model="provinciaRef"
                       label="Provincia"
                       :items="provincias"
                   ></v-select>
@@ -291,7 +291,9 @@ export default {
     postal: '',
     postalRef:'',
     pais: '',
+    paisRef: '',
     provincia: '',
+    provinciaRef: '',
 
     confirmPasswordRules: [v => !!v || "Ingrese una contraseña."],
     direccionRules: [v => !!v || "Ingrese una dirección."],
@@ -327,6 +329,16 @@ export default {
         adoptInfo: {
           chosenPet: '',
           numberOfOwners: '',
+          numberOfPets: '',
+          typeOfPets: '',
+          spaceAv: '',
+          space: '',
+          age: '',
+          gender: '',
+          size: '',
+          personality: '',
+          needs: '',
+          specialNeeds: '',
         },
         surname: this.surnameUser,
         username: this.displayNameUser,
@@ -346,10 +358,10 @@ export default {
       await setDoc(doc(db, "shelters", credentials.user.uid), {
         name: this.nameShelter,
         username: this.displayNameShelter,
-        country: this.pais,
-        province: this.provincia,
+        country: this.paisRef,
+        province: this.provinciaRef,
         address: this.direccion,
-        postal: this.postal,
+        postal: this.postalRef,
 
       });
       this.$updateShelter({shelter: credentials.user});
