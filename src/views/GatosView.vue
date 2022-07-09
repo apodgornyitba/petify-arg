@@ -2,8 +2,23 @@
   <div>
       <ToolBar/>
         <v-container>
-          <SearchBar/>
-          <!--HARDCODEO-->
+
+          <v-row class="align-left" style="margin-top: 20px; margin-bottom: 20px">
+            <v-col
+                v-for="(pet, idx) in petsArray"
+                :key="pet.name"
+            >
+              <div class="subheading pt-4">
+                {{pet.name}}
+              </div>
+              <a href="/elijoPerro">
+                <v-img :src="pet.imgLink" max-width="200px" height="200px" @click="setId(idx)"/>
+              </a>
+            </v-col>
+
+            <!--
+
+                <SearchBar/>
           <v-row class="align-left" style="margin-top: 20px; margin-bottom: 20px">
             <v-col>
               <div class="subheading pt-4">
@@ -34,7 +49,7 @@
                 Jose Luis
               </div>
               <v-img :src="require('../assets/gatito1.jpeg')" max-width="200px"/>
-            </v-col>
+            </v-col> -->
           </v-row>
         </v-container>
   </div>
@@ -43,10 +58,37 @@
 
 <script>
 import ToolBar from "@/components/Toolbar";
-import SearchBar from "@/components/SearchBar";
+import {collection, getDocs, query, where} from "firebase/firestore";
+import db from "@/firebase/initFirebase";
+//import SearchBar from "@/components/SearchBar";
 export default {
   name: "GatosView",
-  components: {SearchBar, ToolBar}
+  components: {ToolBar},
+  data: () => ({
+    petsArray: [],
+    petsId: [],
+  }),
+  methods: {
+    async getPets(){
+      const q = query(collection(db, "pets"), where("type", "==", "GATO"));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        this.petsId.push(doc.id);
+        this.petsArray.push(doc.data());
+      });
+    },
+    setId(idx){
+      localStorage.setItem("id", this.petsId[idx]);
+    }
+  },
+  watch:{
+    $getPets(){
+      this.getPets();
+    }
+  },
+  beforeMount() {
+    this.getPets();
+  }
 }
 </script>
 

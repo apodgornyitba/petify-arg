@@ -1,13 +1,13 @@
 <template>
   <div>
     <ToolBar/>
-    <v-container>
+    <!-- <v-container>
       <v-row>
       <v-col>
         <SearchBar/>
       </v-col>
       </v-row>
-    </v-container>
+    </v-container> -->
     <v-card>
       <v-tabs
           v-model="tab"
@@ -48,11 +48,11 @@ import ToolBar from "@/components/Toolbar";
 //import CargarDatos from "@/components/CargarDatos";
 import AdoptaPerros from "@/components/AdoptaPerrosLowerBody";
 import AdoptaGatos from "@/components/AdoptaGatosLowerBody";
-import SearchBar from "@/components/SearchBar";
+//import SearchBar from "@/components/SearchBar";
 
 export default {
   name: "AdoptView",
-  components: {SearchBar, AdoptaGatos, AdoptaPerros, ToolBar},
+  components: {AdoptaGatos, AdoptaPerros, ToolBar},
   //components: {CargarDatos, ToolBar},
   data () {
     return {

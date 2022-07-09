@@ -2,8 +2,8 @@
   <div>
       <ToolBar/>
     <v-container>
-      <SearchBar/>
-        <!-- <v-col>
+      <!-- <SearchBar/>
+        <v-col>
           <v-select label="Filtrar" :items="['Más consultados', 'Más cercanos', '...']"/>
         </v-col> -->
       <v-card
@@ -50,10 +50,10 @@
 
 <script>
 import ToolBar from "@/components/Toolbar";
-import SearchBar from "@/components/SearchBar";
+//import SearchBar from "@/components/SearchBar";
 export default {
   name: "RefugiosView",
-  components: {SearchBar, ToolBar},
+  components: {ToolBar},
   data: () => ({
     refugios: [
       {

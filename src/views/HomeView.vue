@@ -60,7 +60,6 @@
         </v-col>
       </v-row>
     </v-container>
-    <!--COMENTARIO: HARDCODEADO -->
       <v-container>
         <h1 class="text-center" >
           En adopción:
@@ -70,8 +69,10 @@
             v-for="(pet, idx) in petsArray"
             :key="pet.name"
           >
+            <div class="subheading pt-4">
+              {{pet.name}}
+            </div>
             <a href="/elijoPerro">
-
               <v-img :src="pet.imgLink" max-width="250px" height="250px" @click="setId(idx)">
               </v-img>
             </a>
