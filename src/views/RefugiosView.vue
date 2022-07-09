@@ -6,43 +6,42 @@
         <v-col>
           <v-select label="Filtrar" :items="['Más consultados', 'Más cercanos', '...']"/>
         </v-col> -->
+
       <v-card
           class="mx-auto"
       >
-        <v-list header>
-            <template v-for="(refugio,index) in refugios">
-              <v-list-item :key="refugio.name">
-            <v-list-item-avatar>
-              <a href="/PerfilRefugio">
-                <v-img
-                    :alt="`${refugio.name} avatar`"
-                    :src="require(`@/assets/Refugios/${refugio.avatar}`)"
-                ></v-img>
-              </a>
-            </v-list-item-avatar>
-
-            <v-list-item-content>
-              <v-list-item-title v-text="refugio.name"></v-list-item-title>
-            </v-list-item-content>
-
-            <v-list-item-icon>
-              <v-btn
+        <v-simple-table>
+          <template v-slot:default>
+            <thead>
+            <tr>
+              <th class="text-left blue--text text--darken-4">Refugios
+              </th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr
+                v-for="(shelter, idx) in sheltersArray"
+                :key="shelter.name"
+            >
+              <td class="text-left blue--text text--darken-4">
+                <v-btn text style="text-transform: none" class="text-left blue--text text--darken-4"
+                       to="/PerfilRefugio"
+                       @click="setId(idx)">
+                  {{ shelter.name }} {{ shelter.surname }}
+                </v-btn></td>
+              <td> <v-btn
                   icon
                   to="/denunciar"
               >
                 <v-icon :color="grey">
                   mdi-message-alert-outline
                 </v-icon>
-              </v-btn>
-
-            </v-list-item-icon>
-              </v-list-item>
-              <v-divider
-                  v-if="index< refugios.length - 1"
-                  :key="index"
-              ></v-divider>
-            </template>
-        </v-list>
+              </v-btn> </td>
+            </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
       </v-card>
     </v-container>
   </div>
@@ -50,38 +49,37 @@
 
 <script>
 import ToolBar from "@/components/Toolbar";
+import {collection, getDocs} from "firebase/firestore";
+import db from "@/firebase/initFirebase";
 //import SearchBar from "@/components/SearchBar";
 export default {
   name: "RefugiosView",
   components: {ToolBar},
   data: () => ({
-    refugios: [
-      {
-        avatar: 'patitas-al-rescate.png',
-        name: 'Patitas al rescate',
-      },
-        {
-        avatar: 'colitaFeliz.png',
-        name: 'Colita Feliz',
-      },
-      {
-        avatar: 'la-patita-feliz.png',
-        name: 'La patita feliz',
-      },
-      {
-        avatar: 'rescatando-huellitas.png',
-        name: 'Rescatando huellitas',
-      },
-      {
-        avatar: 'salvando-sus-vidas.png',
-        name: 'Salvando sus vidas',
-      },
-      {
-        avatar: 'zaguates.png',
-        name: 'Zaguates',
-      },
-    ],
+    sheltersArray: [],
+    sheltersId: [],
   }),
+  methods: {
+    async getShelters(){
+      const querySnapshot = await getDocs(collection(db, "shelters"));
+      querySnapshot.forEach((doc) => {
+        this.sheltersId.push(doc.id);
+        this.sheltersArray.push(doc.data());
+        console.log(this.sheltersArray)
+      });
+    },
+    setId(idx){
+      localStorage.setItem("id", this.sheltersId[idx]);
+    }
+  },
+  watch:{
+    $getShelters(){
+      this.getShelters();
+    }
+  },
+  beforeMount() {
+    this.getShelters();
+  }
 }
 </script>
 

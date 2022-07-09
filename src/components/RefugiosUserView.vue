@@ -43,7 +43,6 @@ export default {
   name: "RefugiosUser",
   components: {},
   data: () => ({
-    fav: false,
     usersArray: [],
     usersId: [],
   }),

@@ -11,14 +11,14 @@
         <v-col style="margin-left: 10px">
           <v-row>
           <h1 class="blue--text text--darken-4">
-            Patitas al rescate
+            {{ shelter.name }}
           </h1>
           </v-row>
           <v-row>
-          <h3 style="color: cornflowerblue">Contacto: @patitasalrescate</h3>
+          <h3 style="color: cornflowerblue">Contacto: @{{ shelter.username }}</h3>
       </v-row>
       <v-row>
-          <h3 style="color: cornflowerblue">Ubicación: Palermo, CABA</h3>
+          <h3 style="color: cornflowerblue">Ubicación: {{ shelter.address }}</h3>
       </v-row>
         </v-col>
         <v-col>
@@ -117,9 +117,33 @@
 <script>
 import ToolBar from "@/components/Toolbar";
 import GoogleMap from "@/components/GoogleMap";
+import {doc, getDoc} from "firebase/firestore";
+import db from "@/firebase/initFirebase";
 export default {
   name: "PerfilRefugios",
   components: {ToolBar, GoogleMap},
+  data() {
+    return {
+      shelter: {},
+    }
+  },
+  methods:{
+    async getShelter(){
+      const id = localStorage.getItem("id");
+      const docs = await getDoc(doc(db, "shelters", id));
+      this.shelter = docs.data();
+      //FIX: PORQUE NO MUESTRA LA INFO??
+
+    }
+  },
+  watch:{
+    $getShelter(){
+      this.getShelter();
+    },
+  },
+  beforeMount() {
+    this.getShelter();
+  }
 }
 </script>
 
