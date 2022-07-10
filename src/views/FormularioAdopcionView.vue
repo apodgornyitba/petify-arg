@@ -18,7 +18,7 @@
         <v-row>
           <v-col>
             <h4 class="font-weight-medium">
-              Por favor complete el siguiente formulario para iniciar el trámite de adopción de Nala,
+              Por favor complete el siguiente formulario para iniciar el trámite de adopción,
               recuerde que el mismo podría ser rechazado de no cumplir con lo requerido.
             </h4>
           </v-col>
@@ -133,7 +133,7 @@ export default {
     valid: true,
     nameRules: [
       v => !!v || "Este campo es obligatorio.",
-      v => (v && v.length <= 10) || "Superó el límite de 10 caracteres"
+      // v => (v && v.length <= 10) || "Superó el límite de 10 caracteres"
     ],
     phoneRules: [
       v => !!v || "Este campo es obligatorio.",
