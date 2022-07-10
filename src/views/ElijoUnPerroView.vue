@@ -12,7 +12,8 @@
     <!-- HARDCODEADO -->
     <v-container fluid>
       <v-row>
-        <v-col cols="6">
+
+        <v-col cols="8">
           <h1>
             {{pet.name}}:
           </h1>
@@ -125,6 +126,7 @@
             <v-icon size="40px">{{!show ? 'mdi-heart-outline' : 'mdi-heart' }}</v-icon>
 
             Favorito</v-btn>
+
 
         </v-row>
         </v-col>
