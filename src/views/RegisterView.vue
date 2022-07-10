@@ -350,9 +350,9 @@ export default {
         postal: this.postal,
 
       });
-      this.$updateUser({user: credentials.user});
       this.$store.commit("setIsLoggedIn");
       this.$setUserIsLoggedIn(true);
+      this.$updateUser({user: credentials.user});
       setTimeout(() => this.$router.push('/'), 1000);
     },
 
@@ -367,9 +367,9 @@ export default {
         postal: this.postalRef,
 
       });
-      this.$updateShelter({shelter: credentials.user});
       this.$store.commit("setIsLoggedIn");
       this.$setShelterIsLoggedIn(true);
+      this.$updateShelter({shelter: credentials.user});
       setTimeout(() => this.$router.push('/'), 1000);
     },
     habilitarusuario() {

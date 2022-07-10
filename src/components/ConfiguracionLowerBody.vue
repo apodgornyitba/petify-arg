@@ -30,7 +30,7 @@
         <v-col>
           <TextFields
               label="Confirmar contraseña"
-              :rules="confirmPasswordRules.concat(passwordConfirmationRule)"
+              :rules="confirmPasswordRules"
               required
               :type="show4 ? 'text' : 'password'"
               :append-icon="show4 ? 'mdi-eye' : 'mdi-eye-off'"
@@ -65,7 +65,6 @@ export default {
   components: {TextFields},
   data: () => ({
     valid: true,
-    auth: getAuth(),
     newEmail: '',
     newPassword: '',
     emailRules: [
@@ -78,15 +77,17 @@ export default {
     show4: false,
   }),
   methods: {
-    updateEmailAndPassword() {
-      const user = this.auth.currentUser;
-      updateEmail(user, this.newEmail).then(() => {
+    async updateEmailAndPassword() {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      console.log(user);
+      await updateEmail(user, this.newEmail).then(() => {
         // setTimeout(() => this.$router.push('/signin'), 1000);
       }).catch((error) => {
         console.log(error.message);
         return error.code;
       });
-      updatePassword(user, this.newPassword).then(() => {
+      await updatePassword(user, this.newPassword).then(() => {
       }).catch((error) => {
         console.log(error.message);
         return error.code;

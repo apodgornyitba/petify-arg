@@ -99,8 +99,8 @@ export default {
       }
       if (this.$isShelterLoggedIn) {
         this.$setShelterIsLoggedIn(false);
-
       }
+      setTimeout(() => this.$router.push('/'), 500);
     },
   }
 }
