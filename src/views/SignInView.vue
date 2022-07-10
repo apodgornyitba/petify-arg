@@ -141,19 +141,25 @@ export default {
   methods: {
     ...mapActions("user", {
       $updateUser: "update",
+      $setUserIsLoggedIn: "setIsLoggedIn",
     }),
     ...mapActions("shelter", {
-      $updateShelter: "update"
+      $updateShelter: "update",
+      $setShelterIsLoggedIn: "setIsLoggedIn",
     }),
     async signIn(){
       const auth = getAuth();
       await signInWithEmailAndPassword(auth, this.email, this.password).then((userCred) => {
         if(!this.$store.getters.isShelter) {
           this.$updateUser({user: userCred.user});
+          this.$setUserIsLoggedIn(true);
+          this.$setShelterIsLoggedIn(false);
         }else {
           this.$updateShelter({shelter: userCred.user});
+          this.$setUserIsLoggedIn(false);
+          this.$setShelterIsLoggedIn(true);
         }
-        this.$store.commit("setIsLoggedIn");
+        this.$store.commit("setIsLoggedIn", true);
         this.$router.push('/');
       }).catch((error) => {
         console.log(error.message);

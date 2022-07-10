@@ -14,10 +14,11 @@ export default {
         province: '',
         localidad: '',
         postal: '',
+        isLoggedIn: false,
     },
     getters: {
         isUserLoggedIn(state) {
-            return state.id !== '';
+            return state.isLoggedIn;
         },
         getId(state){
             return state.id;
@@ -56,6 +57,9 @@ export default {
     mutations: {
         setId(state, id){
             state.id = id;
+        },
+        setIsLoggedIn(state, bool){
+          state.isLoggedIn = bool;
         },
         setAdoptInfo(state, adoptInfo){
             state.adoptInfo = adoptInfo;
@@ -120,5 +124,8 @@ export default {
             commit("setLocalidad", '');
             commit("setPostal", '');
         },
+        setIsLoggedIn({commit}, bool) {
+            commit("setIsLoggedIn", bool);
+        }
     },
 }

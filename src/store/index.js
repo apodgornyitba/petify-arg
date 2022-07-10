@@ -28,8 +28,8 @@ export default new Vuex.Store({
     setIsShelter(state, bool){
       state.isShelter = bool;
     },
-    setIsLoggedIn(state){
-      state.isLoggedIn = !state.isLoggedIn;
+    setIsLoggedIn(state, bool){
+      state.isLoggedIn = bool;
     },
     setPetId(state, id){
       state.petId = id;

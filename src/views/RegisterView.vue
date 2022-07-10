@@ -306,9 +306,11 @@ export default {
   methods: {
     ...mapActions("user", {
       $updateUser: "update",
+      $setUserIsLoggedIn: "setIsLoggedIn",
     }),
     ...mapActions("shelter", {
       $updateShelter: "update",
+      $setShelterIsLoggedIn: "setIsLoggedIn",
     }),
     // passwordConfirmationRule() {
     //   return () =>
@@ -350,6 +352,7 @@ export default {
       });
       this.$updateUser({user: credentials.user});
       this.$store.commit("setIsLoggedIn");
+      this.$setUserIsLoggedIn(true);
       setTimeout(() => this.$router.push('/'), 1000);
     },
 
@@ -366,6 +369,7 @@ export default {
       });
       this.$updateShelter({shelter: credentials.user});
       this.$store.commit("setIsLoggedIn");
+      this.$setShelterIsLoggedIn(true);
       setTimeout(() => this.$router.push('/'), 1000);
     },
     habilitarusuario() {

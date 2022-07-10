@@ -29,42 +29,80 @@
         padless color="#2A537A"
         to="/signin"
     >Ingresá</v-btn>
+    <div
+        v-if="this.$store.getters.isLoggedIn"
+    >
+      <h2
+          v-if="this.$store.getters.isLoggedIn && this.$isUserLoggedIn"
+      >
+        Bienvenido {{this.$getName }}
+      </h2>
+      <h2
+          v-if="this.$store.getters.isLoggedIn && this.$isShelterLoggedIn"
+      >
+        Bienvenido {{this.$getShelterName }}
+      </h2>
+    </div>
+    <h2
+        v-if="this.$store.getters.isLoggedIn"
+        style="margin-right: 10px; margin-left: 10px"
+
+    >
+      |
+    </h2>
     <div>
-      <h2
-          v-if="this.$isUserLoggedIn"
-      >
-        Bienvenido {{this.$getName}}
-      </h2>
-      <h2
-          v-if="this.$isShelterLoggedIn"
-      >
-        Bienvenido {{this.$getShelterName}}
-      </h2>
+      <v-btn
+          v-if="this.$store.getters.isLoggedIn"
+          color="#689FD2"
+          class="white--text"
+          elevation="2"
+          large
+          raised
+          x-large
+          @click="logOut"
+      >Cerras Sesión</v-btn>
     </div>
   </v-app-bar>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: 'AppHeader',
-  data:() => ({
+  data: () => ({
     user: {},
   }),
   computed: {
     ...mapGetters("user", {
-            $getName: "getName",
-            $isUserLoggedIn: "isUserLoggedIn",
-          }),
-    ...mapGetters("shelter",{
-            $getShelterName: "getShelterName",
-            $isShelterLoggedIn: "isShelterLoggedIn",
-          }),
+      $getName: "getName",
+      $isUserLoggedIn: "isUserLoggedIn",
+    }),
+    ...mapGetters("shelter", {
+      $getShelterName: "getShelterName",
+      $isShelterLoggedIn: "isShelterLoggedIn",
+    }),
   },
-  methods:{
+  methods: {
+    ...mapActions("user", {
+      $updateUser: "update",
+      $setUserIsLoggedIn: "setIsLoggedIn",
+    }),
+    ...mapActions("shelter", {
+      $updateShelter: "update",
+      $setShelterIsLoggedIn: "setIsLoggedIn",
+    }),
+    logOut() {
+      this.$store.commit("setIsLoggedIn", false);
+      if (this.$isUserLoggedIn) {
+        this.$setUserIsLoggedIn(false);
+      }
+      if (this.$isShelterLoggedIn) {
+        this.$setShelterIsLoggedIn(false);
 
-  },
+      }
+    },
+  }
 }
 </script>
 

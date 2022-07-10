@@ -11,10 +11,11 @@ export default {
         province: '',
         address: '',
         postal: '',
+        isLoggedIn: false,
     },
     getters:{
         isShelterLoggedIn(state) {
-            return state.id !== '';
+            return state.isLoggedIn;
         },
         getId(state){
             return state.id;
@@ -47,6 +48,9 @@ export default {
     mutations:{
         setId(state, id){
             state.id = id;
+        },
+        setIsLoggedIn(state, bool){
+            state.isLoggedIn = bool;
         },
         setInfo(state, info){
             state.info = info;
@@ -100,6 +104,9 @@ export default {
             commit("setCountry", '');
             commit("setProvince", '');
             commit("setPostal", '');
+        },
+        setIsLoggedIn({commit}, bool) {
+            commit("setIsLoggedIn", bool);
         },
     }
 }
