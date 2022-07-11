@@ -91,8 +91,10 @@
               class="white--text"
               type="submit"
               :disabled="!valid"
+              @click="hidden = !hidden"
+
           >
-            Enviar
+            {{ hidden ? 'Enviar' : 'Enviado' }}
           </v-btn>
         </v-col>
 
@@ -130,6 +132,9 @@ export default {
     ToolBar,
   },
   data: () => ({
+    hidden: true,
+    // loader: null,
+    // loading: false,
     valid: true,
     nameRules: [
       v => !!v || "Este campo es obligatorio.",
@@ -179,7 +184,17 @@ export default {
       this.select1 = null
       this.select2 = null
     },
+    // hiddenB(){
+    //   this.hidden = !this.hidden
+    //   this.name = ''
+    //   this.phoneNumber = ''
+    //   this.email = ''
+    //   this.select1 = null
+    //   this.select2 = null
+    // },
   },
+
+
 }
 </script>
 
