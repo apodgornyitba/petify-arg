@@ -25,7 +25,11 @@
     </v-row>
     <v-row>
       <v-col align="center">
-        <v-btn padless color="#2A537A" class="white--text">
+        <v-btn padless color="#2A537A"
+               class="white--text"
+               type="submit"
+               :disabled="!valid"
+        >
           Enviar mensaje
         </v-btn>
       </v-col>

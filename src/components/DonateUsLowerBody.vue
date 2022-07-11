@@ -1,5 +1,10 @@
 <template>
   <v-container>
+    <v-form
+        ref="form"
+        v-model="valid"
+        lazy-validation
+    >
     <v-row>
       <v-col align="center">
         <h3>Les agradecemos las aportaciones a nuestra sitio que quieran hacer.</h3>
@@ -24,11 +29,16 @@
     </v-row>
     <v-row>
       <v-col align="center">
-        <v-btn padless color="#2A537A" class="white--text">
+        <v-btn padless color="#2A537A"
+               class="white--text"
+                type="submit"
+                :disabled="!valid"
+        >
           Enviar mensaje
         </v-btn>
       </v-col>
     </v-row>
+    </v-form>
   </v-container>
 </template>
 <script>
