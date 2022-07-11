@@ -3,12 +3,13 @@
              padless color="#EFEEF1"
              elevation="0"
   ><div class="d-flex align-center">
-    <a href="/">
+    <a @click="goHome">
     <v-img :src="require('../assets/petifyLogo.jpeg')"
            max-height="160"
            max-width="160"
+
   />
-      </a>
+    </a>
   </div>
     <v-spacer/>
     <!-- una vez que el usuario ingresa -->
@@ -102,6 +103,9 @@ export default {
       }
       setTimeout(() => this.$router.push('/'), 500);
     },
+    goHome(){
+      setTimeout(() => this.$router.push('/'), 500);
+    }
   }
 }
 </script>

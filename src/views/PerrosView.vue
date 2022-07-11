@@ -11,7 +11,7 @@
           <div class="subheading pt-4">
             {{pet.name}}
           </div>
-          <a href="/elijoPerro">
+          <a>
             <v-img :src="pet.imgLink" max-width="200px" height="200px" @click="setId(idx)"/>
           </a>
         </v-col>
@@ -78,6 +78,7 @@ export default {
     },
     setId(idx){
       localStorage.setItem("id", this.petsId[idx]);
+      setTimeout(() => this.$router.push('/elijoPerro'), 200);
     }
   },
   watch:{

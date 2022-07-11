@@ -208,19 +208,19 @@ export default {
         await updateDoc(userRef, {
           name: this.user.name,
           surname: this.user.surname,
-          country: this.country,
-          province: this.province,
-          localidad: this.localidad,
-          postal: this.postal,
+          country: this.user.country,
+          province: this.user.province,
+          localidad: this.user.localidad,
+          postal: this.user.postal,
         });
       } else if (this.$store.getters.isShelter){
         const userRef = doc(db, "shelters", this.$getShelterId);
         await updateDoc(userRef, {
           name: this.user.name,
-          country: this.country,
-          province: this.province,
-          address: this.address,
-          postal: this.postal,
+          country: this.user.country,
+          province: this.user.province,
+          address: this.user.address,
+          postal: this.user.postal,
         });
       }
     }
