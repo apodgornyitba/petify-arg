@@ -36,7 +36,7 @@
           ><v-icon size="40px">mdi-home-map-marker</v-icon>
             Refugios</v-btn>
         </v-col>
-        <v-col>
+        <!--<v-col>
           <v-btn
               v-if="!this.$store.getters.isLoggedIn"
               class="white--text"
@@ -57,7 +57,7 @@
                  to="/favoritos"
           ><v-icon size="40px">mdi-heart</v-icon>
             Favoritos</v-btn>
-        </v-col>
+        </v-col> -->
       </v-row>
     </v-container>
       <v-container>

@@ -23,6 +23,7 @@ import FavView from "@/views/FavView";
 import RefugiosAnswerView from "@/views/RefugiosAnswerView";
 import CargarDatos from "@/views/CargarDatos";
 import CambiarContrasenaOlvidada from "@/views/CambiarContrasenaOlvidada";
+import RefugiosMascotas from "@/views/RefugiosMascotas";
 
 Vue.use(VueRouter)
 
@@ -137,6 +138,11 @@ const routes = [
     path: '/CargarDatos',
     name: 'CargarDatos',
     component: CargarDatos
+  },
+  {
+    path: '/RefugiosMascotas',
+    name: 'RefugiosMascotasView',
+    component: RefugiosMascotas
   },
   // 404: Not found
   {

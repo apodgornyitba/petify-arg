@@ -52,7 +52,7 @@
                  padless color="#2A537A"
                  width="250"
                  height="40"
-                 to="/perros"
+                 to="/RefugiosMascotas"
           >
             Nuestras mascotas
             <v-icon right size="30px">mdi-paw</v-icon>
@@ -131,6 +131,7 @@ export default {
     async getShelter(){
       const id = localStorage.getItem("id");
       const docs = await getDoc(doc(db, "shelters", id));
+      localStorage.setItem("ShelterName", docs.data().name);
       this.shelter = docs.data();
       //FIX: PORQUE NO MUESTRA LA INFO??
 
