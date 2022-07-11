@@ -10,7 +10,7 @@
         <SelectFields
             v-model="ref"
             label="Nombre del refugio"
-            :items=refugios
+            :items=sheltersName
         />
       </v-col>
     </v-row>
@@ -19,7 +19,7 @@
         <SelectFields
             v-model="animal"
             label="Nombre del animal"
-            :items="animales"
+            :items="petsName"
         />
       </v-col>
     </v-row>
@@ -59,6 +59,8 @@
 <script>
 import TextFields from "@/components/TextFields";
 import SelectFields from "@/components/SelectFields";
+import {collection, getDocs} from "firebase/firestore";
+import db from "@/firebase/initFirebase";
 export default {
   name: "DonateAnimalLowerBody",
   components: {SelectFields, TextFields},
@@ -73,19 +75,38 @@ export default {
     ref: '',
     animal: '',
     help: '',
-    refugios: ["Patitas al rescate", "Colita Feliz", "La patita feliz", "La patita feliz", "Salvando sus vidas", "Zaguates"],
-    animales: ["Boris", "Nala" , "Sebastian", "Roma" ,"Mariana", "Tai" ,"Laura", "Mate" , "Jose Luis", "Salta"],
+    sheltersName: [],
+    petsName: [],
     tipos: ["QUIERO TRANSITAR", "QUIERO TRASPORTAR", "QUIERO DONAR ALIMENTO", "QUIERO DONAR UTILES"],
   }),
-
-  // methods: {
-  //   clear(){
-  //     this.refugios = null
-  //     this.animales = null
-  //     this.tipos = null
-  //     this.phoneNumber = ''
-  //   },
-  // },
+  methods: {
+    async getShelters(){
+      const querySnapshot = await getDocs(collection(db, "shelters"));
+      querySnapshot.forEach((doc) => {
+        this.sheltersName.push(doc.data().name);
+        console.log(this.sheltersName)
+      });
+    },
+      async getPets(){
+        const querySnapshot = await getDocs(collection(db, "pets"));
+        querySnapshot.forEach((doc) => {
+          this.petsName.push(doc.data().name);
+          console.log(this.petsName)
+        });
+      },
+  },
+  watch:{
+    $getShelters(){
+      this.getShelters();
+    },
+    $getPets(){
+      this.getPets();
+    }
+  },
+  beforeMount() {
+    this.getShelters();
+    this.getPets();
+  }
 }
 </script>
 

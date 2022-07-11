@@ -7,7 +7,7 @@
     >
     <v-row>
       <v-col align="center">
-      <SelectFields label="Nombre del refugio" :items=refugios  />
+      <SelectFields label="Nombre del refugio" :items=sheltersName  />
       </v-col>
     </v-row>
     <v-row>
@@ -41,6 +41,8 @@
 <script>
 import TextFields from "@/components/TextFields";
 import SelectFields from "@/components/SelectFields";
+import {collection, getDocs} from "firebase/firestore";
+import db from "@/firebase/initFirebase";
 export default {
   name: "DonateLowerBody",
   components: {SelectFields, TextFields},
@@ -51,9 +53,26 @@ export default {
       v => (v && v.length <= 10) || "Superó el límite de 10 caracteres",
       v => (v.length > 0 && /^[0-9]+$/.test(v)) || "Ingrese un teléfono válido (solo números).",
     ],
-    refugios: ["Patitas al rescate", "Colita Feliz", "La patita feliz", "La patita feliz", "Salvando sus vidas", "Zaguates"],
+    sheltersName: [],
     tipos: ["QUIERO DONAR DINERO", "QUIERO DONAR ALIMENTO", "QUIERO DONAR UTILES"]
-  })
+  }),
+  methods: {
+    async getShelters(){
+      const querySnapshot = await getDocs(collection(db, "shelters"));
+      querySnapshot.forEach((doc) => {
+        this.sheltersName.push(doc.data().name);
+        console.log(this.sheltersArray)
+      });
+    },
+  },
+  watch:{
+    $getShelters(){
+      this.getShelters();
+    }
+  },
+  beforeMount() {
+    this.getShelters();
+  }
 }
 </script>
 
