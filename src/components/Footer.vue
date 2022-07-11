@@ -41,6 +41,7 @@
               dark
               icon
               href="https://www.instagram.com/petify.arg/?igshid=YmMyMTA2M2Y="
+              target="_blank"
           >
             <v-icon dark size="24px" >
               mdi-instagram

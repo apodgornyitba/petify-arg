@@ -42,14 +42,16 @@
 
       <v-row>
         <v-col>
-        <v-btn
-            padless color="#2A537A"
-            class="white--text"
-            type="submit"
-            :disabled="!valid"
-        >
-          Enviar
-        </v-btn>
+          <v-btn
+              padless color="#2A537A"
+              class="white--text"
+              type="submit"
+              :disabled="!valid"
+              @click="enviar = !enviar"
+
+          >
+            {{ enviar ? 'Enviar' : 'Enviado' }}
+          </v-btn>
 <!--        <v-btn @click="clear">-->
 <!--          Vaciar-->
 <!--        </v-btn>-->
@@ -68,6 +70,7 @@ export default {
   name: "DenunciarView",
   components: {SelectFields, ToolBar},
   data: () => ({
+    enviar:true,
     valid: true,
     motivoRules: [
       v => !!v || "Este campo es obligatorio.",

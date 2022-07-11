@@ -91,10 +91,10 @@
               class="white--text"
               type="submit"
               :disabled="!valid"
-              @click="hidden = !hidden"
+              @click="enviar = !enviar"
 
           >
-            {{ hidden ? 'Enviar' : 'Enviado' }}
+            {{ enviar ? 'Enviar' : 'Enviado' }}
           </v-btn>
         </v-col>
 
@@ -132,7 +132,7 @@ export default {
     ToolBar,
   },
   data: () => ({
-    hidden: true,
+    enviar: true,
     // loader: null,
     // loading: false,
     valid: true,

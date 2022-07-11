@@ -17,6 +17,7 @@
               style="width: 500px"
               filled
               required
+              :disabled="!guardar"
           ></v-text-field>
         </v-col>
         <v-col>
@@ -29,6 +30,7 @@
               style="width: 500px"
               filled
               required
+              :disabled="!guardar"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -42,6 +44,7 @@
               v-model="user.country"
               label="País"
               :items="paises"
+              :disabled="!guardar"
           ></v-select>
 
         </v-col>
@@ -61,6 +64,7 @@
               v-model="user.province"
               label="Provincia"
               :items="provincias"
+              :disabled="!guardar"
           ></v-select>
         </v-col>
       </v-row>
@@ -74,6 +78,7 @@
               style="width: 500px; margin-bottom: 15px"
               filled
               required
+              :disabled="!guardar"
           ></v-text-field>
           <v-text-field
               v-if="this.$store.getters.isShelter"
@@ -83,6 +88,7 @@
               style="width: 500px; margin-bottom: 15px"
               filled
               required
+              :disabled="!guardar"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -96,15 +102,28 @@
               style="width: 500px; margin-bottom: 15px"
               filled
               required
+              :disabled="!guardar"
           ></v-text-field>
         </v-col>
-        <v-col cols="4">
+
+        <v-col>
           <v-btn
               padless color="#2A537A"
               class="white--text"
-              :disabled="!valid"
-              @click="updateProf"
-          >Guardar</v-btn>
+              @click="guardar = true"
+              v-if="!guardar"
+          >
+            Editar
+          </v-btn>
+        </v-col>
+        <v-col cols="4">
+
+          <v-btn padless color="#2A537A"
+                 class="white--text"
+                 :disabled="!valid || !guardar"
+                 @click="updateProf"
+
+          >{{ guardar? 'Guardar' : 'Guardado' }}</v-btn>
         </v-col>
       </v-row>
       </v-form>
@@ -124,6 +143,7 @@ import db from "../firebase/initFirebase"
 export default {
   name: "SobreMi",
   data: () => ({
+    guardar: true,
     paises: ["Argentina",],
     provincias: ["CABA",],
     valid: true,
@@ -203,6 +223,7 @@ export default {
       }
     },
     async updateProf() {
+      this.guardar = !this.guardar;
       if (!this.$store.getters.isShelter) {
         const userRef = doc(db, "users", this.$getUserId);
         await updateDoc(userRef, {

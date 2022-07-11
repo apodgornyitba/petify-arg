@@ -20,6 +20,7 @@
                   label="Mascota deseada"
                   :items="mascota_deseada"
                   v-model="adoptInfo.chosenPet"
+                  :disabled="!guardar"
               ></v-select>
             </v-col>
           </v-row>
@@ -32,6 +33,7 @@
                   label="Futuro/s dueño/s"
                   :items="count_owners"
                   v-model="adoptInfo.numberOfOwners"
+                  :disabled="!guardar"
               ></v-select>
               <!-- <SelectFields  v-model="adoptInfo.numberOfOwners" label="Futuro/s dueño/s" :items=count_owners></SelectFields> -->
             </v-col>
@@ -45,6 +47,7 @@
                   label="Cantidad de mascota/s actual/es"
                   :items="count_mascotas"
                   v-model="adoptInfo.numberOfPets"
+                  :disabled="!guardar"
               ></v-select>
               <!--  <SelectFields label="Cantidad de mascota/s actual/es" :items=count_mascotas></SelectFields> -->
             </v-col>
@@ -58,6 +61,7 @@
                   label="Tipo de mascota/s previa/s"
                   :items="mascota_previa"
                   v-model="adoptInfo.typeOfPets"
+                  :disabled="!guardar"
               ></v-select>
               <!-- <SelectFields label="Tipo de mascota/s previa/s" :items=mascota_previa></SelectFields> -->
             </v-col>
@@ -71,6 +75,7 @@
                   label="Espacio disponible (m2)"
                   :items="espacio_disponible"
                   v-model="adoptInfo.spaceAv"
+                  :disabled="!guardar"
               ></v-select>
               <!-- <SelectFields label="Espacio disponible (m2)" :items=espacio_disponible></SelectFields> -->
             </v-col>
@@ -84,6 +89,7 @@
                   label="Espacio alrededor"
                   :items="espacio_alrededor"
                   v-model="adoptInfo.space"
+                  :disabled="!guardar"
               ></v-select>
               <!-- <SelectFields label="Espacio alrededor" :items=espacio_alrededor></SelectFields> -->
             </v-col>
@@ -102,6 +108,7 @@
                   label="Preferencia de edad"
                   :items="edad"
                   v-model="adoptInfo.age"
+                  :disabled="!guardar"
               ></v-select>
               <!-- <SelectFields label="Preferencia de edad" :items=edad></SelectFields> -->
             </v-col>
@@ -115,6 +122,7 @@
                   label="Preferencia de sexo"
                   :items="sexo"
                   v-model="adoptInfo.gender"
+                  :disabled="!guardar"
               ></v-select>
               <!-- <SelectFields label="Preferencia de sexo" :items=sexo></SelectFields> -->
             </v-col>
@@ -128,6 +136,7 @@
                   label="Preferencia de tamaño"
                   :items="sizes"
                   v-model="adoptInfo.size"
+                  :disabled="!guardar"
               ></v-select>
               <!-- <SelectFields label="Preferencia de tamaño" :items=size></SelectFields> -->
             </v-col>
@@ -141,6 +150,7 @@
                   label="Personalidad"
                   :items="personalidad"
                   v-model="adoptInfo.personality"
+                  :disabled="!guardar"
               ></v-select>
               <!-- <SelectFields label="Personalidad" :items=personalidad></SelectFields> -->
             </v-col>
@@ -154,6 +164,7 @@
                   label="Necesidades"
                   :items="necesidades"
                   v-model="adoptInfo.needs"
+                  :disabled="!guardar"
               ></v-select>
               <!-- <SelectFields label="Necesidades" :items=necesidades></SelectFields> -->
             </v-col>
@@ -167,6 +178,7 @@
                   label="Adopción con necesidades especiales"
                   :items="especial"
                   v-model="adoptInfo.specialNeeds"
+                  :disabled="!guardar"
               ></v-select>
               <!-- <SelectFields label="Adopción con necesidades especiales" :items=especial></SelectFields> -->
             </v-col>
@@ -175,10 +187,22 @@
       </v-row>
       <v-row class="justify-center align-center text-center">
         <v-col>
+          <v-btn
+              padless color="#2A537A"
+              class="white--text"
+              @click="guardar = true"
+              v-if="!guardar"
+          >
+            Editar
+          </v-btn>
+        </v-col>
+        <v-col>
           <v-btn padless color="#2A537A"
                  class="white--text"
+                 :disabled="!guardar"
                  @click="updateProf"
-          >Guardar</v-btn>
+
+          >{{ guardar? 'Guardar' : 'Guardado' }}</v-btn>
           <v-img ></v-img>
         </v-col>
       </v-row>
@@ -197,6 +221,7 @@ export default {
   name: "AdopcionLowerBody",
   components: {},
   data: () => ({
+    guardar: true,
     mascota_deseada: ["Perro", "Gato"],
     count_owners:  ["1", "2", "3", "4", "5 o más"],
     count_mascotas: ["0", "1", "2", "3", "4", "5 o más"],
@@ -269,6 +294,7 @@ export default {
       }
     },
     async updateProf(){
+      this.guardar = !this.guardar;
       console.log(this.chosenPet);
       console.log((this.adoptInfo.chosenPet));
       console.log(this.numberOfOwners);

@@ -29,12 +29,22 @@
     </v-row>
     <v-row>
       <v-col align="center">
-        <v-btn padless color="#2A537A"
-               class="white--text"
-                type="submit"
-                :disabled="!valid"
+<!--        <v-btn padless color="#2A537A"-->
+<!--               class="white&#45;&#45;text"-->
+<!--                type="submit"-->
+<!--                :disabled="!valid"-->
+<!--        >-->
+<!--          Enviar mensaje-->
+<!--        </v-btn>-->
+        <v-btn
+            padless color="#2A537A"
+            class="white--text"
+            type="submit"
+            :disabled="!valid"
+            @click="enviar = !enviar"
+
         >
-          Enviar mensaje
+          {{ enviar ? 'Enviar mensaje' : 'Enviado' }}
         </v-btn>
       </v-col>
     </v-row>
@@ -48,6 +58,7 @@ export default {
   name: "DonateUsLowerBody",
   components: {SelectFields, TextFields},
   data: () => ({
+    enviar: true,
     valid: true,
     phoneRules: [
       v => !!v || "Este campo es obligatorio.",

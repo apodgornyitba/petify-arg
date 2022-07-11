@@ -16,6 +16,7 @@
               filled
               v-model="newPassword"
               label="Nueva contraseña"
+              :disabled="!cambiar"
               :rules="passwordRules"
               :type="show3 ? 'text' : 'password'"
               required
@@ -30,6 +31,7 @@
               label="Confirmar contraseña"
               :rules="confirmPasswordRules"
               required
+              :disabled="!cambiar"
               :type="show4 ? 'text' : 'password'"
               :append-icon="show4 ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show4 = !show4"
@@ -41,10 +43,20 @@
           <v-btn
               padless color="#2A537A"
               class="white--text"
-              @click="updateEmailAndPassword"
-              :disabled="!valid"
+              @click="cambiar = true"
+              v-if="!cambiar"
           >
-            Cambiar
+            Editar
+          </v-btn>
+        </v-col>
+        <v-col>
+          <v-btn
+              padless color="#2A537A"
+              class="white--text"
+              @click="updateEmailAndPassword"
+              :disabled="!valid || !cambiar"
+          >
+            {{ cambiar? 'Cambiar' : 'Listo' }}
           </v-btn>
         </v-col>
       </v-row>
@@ -62,6 +74,7 @@ export default {
   name: "ConfiguracionLB",
   components: {},
   data: () => ({
+    cambiar: true,
     valid: true,
     newEmail: '',
     newPassword: '',
@@ -71,7 +84,8 @@ export default {
       v => /.+@.+/.test(v) || "Email inválido."
     ],
     passwordRules: [v => !!v || "Ingrese una contraseña."],
-    confirmPasswordRules: [v => !!v || "Ingrese una contraseña."],
+    confirmPasswordRules: [v => !!v || "Ingrese una contraseña.",
+      v => v === this.newPassword || "Las contraseñas no coinciden."],
     show3: false,
     show4: false,
   }),
@@ -85,6 +99,7 @@ export default {
   },
   methods: {
     async updateEmailAndPassword() {
+      this.cambiar = !this.cambiar;
       const auth = getAuth();
       const user = auth.currentUser;
       console.log(user);
