@@ -54,14 +54,10 @@
     <div>
       <v-btn
           v-if="this.$store.getters.isLoggedIn"
-          color="#689FD2"
-          class="white--text"
-          elevation="2"
-          large
-          raised
-          x-large
+          text
+          padless color="#2A537A"
           @click="logOut"
-      >Cerras Sesión</v-btn>
+      >Cerrar Sesión</v-btn>
     </div>
   </v-app-bar>
 </template>

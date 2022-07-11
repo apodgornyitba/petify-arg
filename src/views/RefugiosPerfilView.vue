@@ -3,12 +3,12 @@
     <ToolBar/>
     <v-container>
       <v-row style="margin-top: 30px; margin-right: 10px; margin-bottom: 20px">
-          <v-img  max-height="150"
+         <!-- <v-img  max-height="150"
                   max-width="150"
                   style="border-radius: 50%"
                   :src="require('@/assets/Refugios/patitas-al-rescate.png')"
-          />
-        <v-col style="margin-left: 10px">
+          /> -->
+        <v-col style="margin-left: 50px">
           <v-row>
           <h1 class="blue--text text--darken-4">
             {{ shelter.name }}
@@ -23,19 +23,19 @@
         </v-col>
         <v-col>
           <v-row>
-<!--          <v-btn-->
-<!--              v-if="!this.$store.getters.isLoggedIn"-->
-<!--              class="white&#45;&#45;text"-->
-<!--              elevation="0"-->
-<!--              padless color="red"-->
-<!--              width="150"-->
-<!--              height="40"-->
-<!--              to="/signin"-->
-<!--          >Denunciar-->
-<!--            <v-icon> mdi-message-alert-outline</v-icon>-->
-<!--          </v-btn>  v-if="this.$store.getters.isLoggedIn" esto va abajo en la 38-->
+          <v-btn
+              v-if="!this.$store.getters.isLoggedIn"
+              class="white--text"
+              elevation="0"
+              padless color="red"
+              width="150"
+              height="40"
+              to="/signin"
+          >Denunciar
+            <v-icon> mdi-message-alert-outline</v-icon>
+          </v-btn>
             <v-btn
-
+                v-if="this.$store.getters.isLoggedIn"
                 class="white--text"
                 elevation="0"
                 padless color="red"
@@ -60,7 +60,7 @@
           </v-row>
 
 
-      <v-row style="margin-top: 20px">
+      <!--<v-row style="margin-top: 20px">
           <v-btn class="white--text"
                  elevation="0"
                  padless color="#2A537A"
@@ -71,23 +71,23 @@
             Nuestros tránsitos
             <v-icon right size="30px">mdi-home-map-marker</v-icon>
           </v-btn>
-      </v-row>
+      </v-row> -->
       <v-row style="margin-top: 20px">
-<!--          <v-btn-->
-<!--              v-if="!this.$store.getters.isLoggedIn"-->
-<!--              class="white&#45;&#45;text"-->
-<!--                 elevation="0"-->
-<!--                 padless color="#2A537A"-->
-<!--                 width="250"-->
-<!--                 height="40"-->
-<!--                to="/signin"-->
-<!--          >-->
-<!--            Quiero ayudar-->
-<!--            <v-icon right size="30px">mdi-handshake</v-icon>-->
-<!--          </v-btn>-->
-<!--        v-if="this.$store.getters.isLoggedIn" esto va en la linea 90-->
-        <v-btn
+          <v-btn
+              v-if="!this.$store.getters.isLoggedIn"
+              class="white--text"
+                 elevation="0"
+                 padless color="#2A537A"
+                 width="250"
+                 height="40"
+                to="/signin"
+          >
+            Quiero ayudar
+            <v-icon right size="30px">mdi-handshake</v-icon>
+          </v-btn>
 
+        <v-btn
+            v-if="this.$store.getters.isLoggedIn" esto va en la linea
             class="white--text"
                elevation="0"
                padless color="#2A537A"
