@@ -26,15 +26,14 @@
             >
               <td class="text-left blue--text text--darken-4">
                 <v-btn text style="text-transform: none" class="text-left blue--text text--darken-4"
-                       to="/PerfilRefugio"
                        @click="setId(idx)">
-                  {{ shelter.name }} {{ shelter.surname }}
+                  {{ shelter.name }}
                 </v-btn></td>
               <td> <v-btn
                   icon
                   to="/denunciar"
               >
-                <v-icon :color="grey">
+                <v-icon>
                   mdi-message-alert-outline
                 </v-icon>
               </v-btn> </td>
@@ -69,7 +68,9 @@ export default {
       });
     },
     setId(idx){
+      console.log(this.sheltersId[idx])
       localStorage.setItem("id", this.sheltersId[idx]);
+      setTimeout(() => this.$router.push('/PerfilRefugio'), 200);
     }
   },
   watch:{
