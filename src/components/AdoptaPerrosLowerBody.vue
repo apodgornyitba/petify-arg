@@ -12,43 +12,10 @@
           <div class="subheading pt-4">
             {{pet.name}}
           </div>
-          <a href="/elijoPerro">
+          <a>
                 <v-img :src="pet.imgLink" max-width="200px" height="200px" @click="setId(idx)"/>
           </a>
         </v-col>
-<!--        <v-col>-->
-<!--          <div class="subheading pt-4">-->
-<!--            Nala-->
-<!--          </div>-->
-<!--            <a href="/elijoPerro">-->
-<!--              <v-img :src="require('../assets/perrito1.jpg')" max-width="200px"/>-->
-<!--            </a>-->
-
-<!--        </v-col>-->
-<!--        <v-col>-->
-<!--          <div class="subheading pt-4">-->
-<!--            Roma-->
-<!--          </div>-->
-<!--          <v-img :src="require('../assets/perrito2.jpg')" max-width="200px"/>-->
-<!--        </v-col>-->
-<!--        <v-col>-->
-<!--          <div class="subheading pt-4">-->
-<!--            Tai-->
-<!--          </div>-->
-<!--          <v-img :src="require('../assets/perrito3.jpg')" max-width="200px"/>-->
-<!--        </v-col>-->
-<!--        <v-col>-->
-<!--          <div class="subheading pt-4">-->
-<!--            Mate-->
-<!--          </div>-->
-<!--          <v-img :src="require('../assets/perrito5.jpg')" max-width="200px"/>-->
-<!--        </v-col>-->
-<!--        <v-col>-->
-<!--          <div class="subheading pt-4">-->
-<!--            Salta-->
-<!--          </div>-->
-<!--          <v-img :src="require('../assets/perrito6.jpg')" max-width="200px"/>-->
-<!--        </v-col>-->
       </v-row>
     </v-container>
   </div>
@@ -79,6 +46,8 @@ export default {
     },
     setId(idx){
       localStorage.setItem("id", this.petsId[idx]);
+      setTimeout(() => this.$router.push('/elijoPerro'), 200);
+
     }
   },
   watch:{
