@@ -78,13 +78,21 @@ export default {
   methods: {
     sendEmail() {
       try {
-        emailjs.send('service_l002xcc', "template_vmrtpkg", {username: 'anon'}, "9NintuMJFVoZp7lWB");
+        // let msg = document.querySelector(".message");
+        // sendmail(msg.value);
+        emailjs.send('service_l002xcc', "template_vmrtpkg", {from_name: 'anonymous user', message: "message" }, "9NintuMJFVoZp7lWB");
       } catch (error) {
         console.log({error});
       }
     },
   }
 }
+
+// function sendmail(msg) {
+//   emailjs.send("service_l002xcc", "template_vmrtpk", {
+//     message: msg
+//   });
+// }
 
 </script>
 
