@@ -25,6 +25,7 @@
         </v-row>
 
       <v-row class="center">
+
         <v-col>
           <TextFields
               v-model="name"
@@ -123,6 +124,7 @@
 import ToolBar from "@/components/Toolbar";
 import TextFields from "@/components/TextFields";
 import SelectFields from "@/components/SelectFields";
+import * as emailjs from "emailjs-com";
 
 export default {
   name: "FormularioAdopcion",
@@ -183,7 +185,26 @@ export default {
       this.email = ''
       this.select1 = null
       this.select2 = null
+
     },
+    sendEmail(e) {
+      try {
+        emailjs.sendForm('service_l002xcc', 'template_vmrtpkg', e.target,
+            'YOUR_USER_ID', {
+              name: this.name,
+              email: this.email,
+              message: this.message
+            })
+
+      } catch(error) {
+        console.log({error})
+      }
+      // Reset form field
+      this.name = ''
+      this.email = ''
+      this.message = ''
+    },
+
     // hiddenB(){
     //   this.hidden = !this.hidden
     //   this.name = ''
