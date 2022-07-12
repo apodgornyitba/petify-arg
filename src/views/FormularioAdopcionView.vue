@@ -116,7 +116,6 @@
       </v-form>
     </v-container>
   </div>
-  <!-- COMENTARIO: si el refufio del perro ingresa un formularioa que ps de enviar en nuetro, ingrese al google forms del mismo -->
 </template>
 
 

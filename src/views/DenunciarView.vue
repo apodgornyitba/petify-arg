@@ -38,7 +38,6 @@
                     <v-btn
                         padless color="#2A537A"
                         class="white--text"
-                        type="sendEmail"
                         @click="sendEmail()"
 
                     >
@@ -82,7 +81,7 @@ export default {
       try {
         // let msg = document.querySelector(".message");
         // sendmail(msg.value);
-        emailjs.send('service_l002xcc', "template_vmrtpkg", {from_name: 'anonymous user', message: "message" }, "9NintuMJFVoZp7lWB");
+        emailjs.send('service_l002xcc', "template_vmrtpkg", {from_name: 'anonymous user', message: this.message} , "9NintuMJFVoZp7lWB");
       } catch (error) {
         console.log({error});
       }
