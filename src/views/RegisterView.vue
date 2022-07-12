@@ -245,7 +245,7 @@
 
 <script>
 
-import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
+import {getAuth, createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth';
 import {doc, setDoc} from "firebase/firestore";
 import db from "../firebase/initFirebase";
 import {mapActions} from "vuex";
@@ -264,7 +264,7 @@ export default {
     valid: true,
     nameRules: [
       v => !!v || "Este campo es obligatorio.",
-      v => (v && v.length <= 20) || "Superó el límite de 10 caracteres"
+      v => (v && v.length <= 20) || "Superó el límite de 20 caracteres"
     ],
     emailRules: [
       v => !!v || "Ingrese su mail.",
@@ -285,6 +285,11 @@ export default {
     emailShelter: '',
     passwordShelter: '',
     confirmPasswordShelter: '',
+
+    actionCodeSettings : {
+      url: 'https://petify-arg.web.app/',
+      handleCodeInApp: true,
+    },
 
     localidad: '',
     direccion: '',
@@ -323,6 +328,7 @@ export default {
       } else {
         this.registerShelter(auth, this.emailShelter, this.passwordShelter);
       }
+      setTimeout(() => this.$router.push('/'), 1000);
     },
     async registerUser(auth, email, password){
       const credentials = await createUserWithEmailAndPassword(auth, email, password);
@@ -353,7 +359,7 @@ export default {
       this.$store.commit("setIsLoggedIn");
       this.$setUserIsLoggedIn(true);
       this.$updateUser({user: credentials.user});
-      setTimeout(() => this.$router.push('/'), 1000);
+      await sendEmailVerification(credentials.user, this.actionCodeSettings);
     },
 
     async registerShelter(auth, email, password){
@@ -370,7 +376,7 @@ export default {
       this.$store.commit("setIsLoggedIn");
       this.$setShelterIsLoggedIn(true);
       this.$updateShelter({shelter: credentials.user});
-      setTimeout(() => this.$router.push('/'), 1000);
+      await sendEmailVerification(credentials.user, this.actionCodeSettings);
     },
     habilitarusuario() {
       this.usuario = true;
