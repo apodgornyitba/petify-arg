@@ -21,7 +21,6 @@
             >
               <td class="text-left blue--text text--darken-4">
                 <v-btn text style="text-transform: none" class="text-left blue--text text--darken-4"
-                       to="/RefugiosAnswerView"
                        @click="setId(idx)">
                 {{ user.name }} {{ user.surname }}
               </v-btn></td>
@@ -57,6 +56,7 @@ export default {
     },
     setId(idx){
       localStorage.setItem("id", this.usersId[idx]);
+      setTimeout(() => this.$router.push('/RefugiosAnswerView'), 1000);
     }
   },
   watch:{
