@@ -41,7 +41,7 @@
       <h2
           v-if="this.$store.getters.isLoggedIn && this.$isShelterLoggedIn"
       >
-        Bienvenido {{this.$getShelterName }}
+        Hola {{this.$getShelterName }}
       </h2>
     </div>
     <h2

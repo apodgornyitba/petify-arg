@@ -45,7 +45,7 @@
           <v-col class="align-center text-center justify-center" cols="5">
             <v-text-field
                 v-model="displayNameUser"
-                :counter="10"
+                :counter="20"
                 :rules="nameRules"
                 label="Nombre de usuario"
                 required
@@ -144,7 +144,7 @@
                 <v-text-field
                     v-model="displayNameShelter"
                     label="Nombre de usuario"
-                    :counter="10"
+                    :counter="20"
                     :rules="nameRules"
                     required
                 ></v-text-field>
@@ -264,7 +264,7 @@ export default {
     valid: true,
     nameRules: [
       v => !!v || "Este campo es obligatorio.",
-      v => (v && v.length <= 10) || "Superó el límite de 10 caracteres"
+      v => (v && v.length <= 20) || "Superó el límite de 10 caracteres"
     ],
     emailRules: [
       v => !!v || "Ingrese su mail.",
