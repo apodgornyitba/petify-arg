@@ -38,6 +38,7 @@
                     <v-btn
                         padless color="#2A537A"
                         class="white--text"
+                        type="sendEmail"
                         @click="sendEmail()"
 
                     >
@@ -77,6 +78,7 @@ export default {
   }),
   methods: {
     sendEmail() {
+      this.enviar = !this.enviar;
       try {
         // let msg = document.querySelector(".message");
         // sendmail(msg.value);
