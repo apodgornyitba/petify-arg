@@ -29,14 +29,17 @@
                        @click="setId(idx)">
                   {{ shelter.name }}
                 </v-btn></td>
-              <td> <v-btn
-                  icon
-                  to="/denunciar"
-              >
-                <v-icon>
-                  mdi-message-alert-outline
-                </v-icon>
-              </v-btn> </td>
+              <td/>
+<!--              <td> <v-btn-->
+<!--                  icon-->
+<!--                  to="/denunciar"-->
+<!--              >-->
+<!--                <v-icon>-->
+<!--                  mdi-message-alert-outline-->
+<!--                </v-icon>-->
+<!--              </v-btn>-->
+
+<!--              </td>-->
             </tr>
             </tbody>
           </template>
