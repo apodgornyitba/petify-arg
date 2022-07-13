@@ -8,6 +8,9 @@
       </v-row>
       <v-row class="align-center text-center justify-center">
         <v-col>
+          <v-alert class="align-center text-center justify-center" style="margin-top: 10px">
+            Verifique su mail para confirmar la cuenta - No se olvide de revisar su casilla de spam
+          </v-alert>
         <v-btn-toggle
             mandatory
             tile
