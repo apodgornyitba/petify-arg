@@ -77,7 +77,7 @@ export default {
     async getPets(){
       const name = localStorage.getItem("ShelterName")
       const q = query(collection(db, "pets"), where("shelter", "==", name));
-      console.log(name);
+      // console.log(name);
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         this.petsId.push(doc.id);

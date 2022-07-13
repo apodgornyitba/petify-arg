@@ -192,11 +192,11 @@ export default {
     async getUser(){
       if(!this.$store.getters.isShelter) {
         if (this.$getUserId) {
-          console.log("UserId:", this.$getUserId);
+          // console.log("UserId:", this.$getUserId);
           const docs = await getDoc(doc(db, "users", this.$getUserId));
           this.user = docs.data();
-          console.log("User:", this.user);
-          console.log("User Name:", this.user.name);
+          // console.log("User:", this.user);
+          // console.log("User Name:", this.user.name);
           this.email = this.$getEmail;
           this.id = this.$getUserId;
           this.country = this.$getCountry;
@@ -206,13 +206,13 @@ export default {
         }
       }else if (this.$store.getters.isShelter){
         if(this.$getShelterId){
-          console.log("ShelterId:", this.$getUserId);
+          // console.log("ShelterId:", this.$getUserId);
 
           const docs = await getDoc(doc(db, "shelters", this.$getShelterId));
           this.user = docs.data();
 
-          console.log("Shelter:", this.user);
-          console.log("Shelter Name:", this.user.name);
+          // console.log("Shelter:", this.user);
+          // console.log("Shelter Name:", this.user.name);
 
           this.id = this.$getShelterId;
           this.country = this.$getShelterCountry;

@@ -7,38 +7,51 @@
     >
     <v-row>
       <v-col align="center">
-        <SelectFields
+        <v-select
+            outlined
+            filled
+            style="width: 500px"
             v-model="ref"
             label="Nombre del refugio"
-            :items=sheltersName
-        />
+            :items="sheltersName"
+        ></v-select>
       </v-col>
     </v-row>
     <v-row>
       <v-col align="center">
-        <SelectFields
+        <v-select
+            outlined
+            filled
+            style="width: 500px"
             v-model="animal"
             label="Nombre del animal"
             :items="petsName"
-        />
+        ></v-select>
       </v-col>
     </v-row>
     <v-row>
       <v-col align="center">
-        <SelectFields
+        <v-select
+            outlined
+            filled
+            style="width: 500px"
             v-model="help"
-            :items=tipos
             label="Tipo de ayuda"
-        />
+            :items="tipos"
+        ></v-select>
       </v-col>
     </v-row>
     <v-row>
       <v-col align="center">
-        <TextFields
+        <v-text-field
+            outlined
+            filled
+            style="width: 500px"
             v-model="phoneNumber"
             label="Número de teléfono"
             :rules="phoneRules"
-        />
+            required
+        ></v-text-field>
       </v-col>
     </v-row>
     <v-row>
@@ -46,9 +59,8 @@
         <v-btn
             padless color="#2A537A"
             class="white--text"
-            type="submit"
             :disabled="!valid"
-            @click="enviar = !enviar"
+            @click="sendMessage"
 
         >
           {{ enviar ? 'Enviar mensaje' : 'Enviado' }}
@@ -59,13 +71,13 @@
   </v-container>
 </template>
 <script>
-import TextFields from "@/components/TextFields";
-import SelectFields from "@/components/SelectFields";
+// import TextFields from "@/components/TextFields";
+// import SelectFields from "@/components/SelectFields";
 import {collection, getDocs} from "firebase/firestore";
 import db from "@/firebase/initFirebase";
 export default {
   name: "DonateAnimalLowerBody",
-  components: {SelectFields, TextFields},
+  components: {/*SelectFields, TextFields*/},
   data: () => ({
     enviar: true,
     valid: true,
@@ -87,16 +99,27 @@ export default {
       const querySnapshot = await getDocs(collection(db, "shelters"));
       querySnapshot.forEach((doc) => {
         this.sheltersName.push(doc.data().name);
-        console.log(this.sheltersName)
+        // console.log(this.sheltersName)
       });
     },
       async getPets(){
         const querySnapshot = await getDocs(collection(db, "pets"));
         querySnapshot.forEach((doc) => {
           this.petsName.push(doc.data().name);
-          console.log(this.petsName)
+          // console.log(this.petsName)
         });
       },
+    sendMessage(){
+      this.enviar = !this.enviar;
+      setTimeout(() => {
+        this.enviar = !this.enviar;
+        this.ref = '';
+        this.animal = '';
+        this.help = '';
+        this.phoneNumber = '';
+      }, 2000);
+
+    },
   },
   watch:{
     $getShelters(){

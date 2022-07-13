@@ -120,7 +120,7 @@ export default {
       querySnapshot.forEach((doc) => {
         this.petsId.push(doc.id);
         this.petsArray.push(doc.data());
-        console.log(this.petsArray)
+        // console.log(this.petsArray)
       });
     },
     setId(idx){

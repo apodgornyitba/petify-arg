@@ -261,64 +261,64 @@ export default {
   methods:{
     async getUser(){
       if (this.$getUserId) {
-        console.log("UserId:", this.$getId);
+        // console.log("UserId:", this.$getId);
         const docs = await getDoc(doc(db, "users", this.$getId));
         this.adoptInfo = docs.data().user.adoptInfo;
         // this.adoptInfo = this.user.adoptInfo;
-        console.log("adoptInfo:", this.adoptInfo);
+        // console.log("adoptInfo:", this.adoptInfo);
         //FIX: TENGO QUE AGREGARLAS ACA?
         this.chosenPet = this.adoptInfo.chosenPet;
-        console.log("ChosenPet:", this.adoptInfo.chosenPet);
+        // console.log("ChosenPet:", this.adoptInfo.chosenPet);
         this.numberOfOwners = this.adoptInfo.numberOfOwners;
-        console.log("numberOfOwners:", this.adoptInfo.numberOfOwners);
+        // console.log("numberOfOwners:", this.adoptInfo.numberOfOwners);
         this.numberOfPets = this.adoptInfo.numberOfPets;
-        console.log("numberOfPets:", this.adoptInfo.numberOfPets);
+        // console.log("numberOfPets:", this.adoptInfo.numberOfPets);
         this.typeOfPets = this.adoptInfo.typeOfPets;
-        console.log("typeOfPets:", this.adoptInfo.typeOfPets);
+        // console.log("typeOfPets:", this.adoptInfo.typeOfPets);
         this.spaceAv = this.adoptInfo.spaceAv;
-        console.log("spaceAv:", this.adoptInfo.spaceAv);
+        // console.log("spaceAv:", this.adoptInfo.spaceAv);
         this.chosenPet = this.adoptInfo.space;
-        console.log("space:", this.adoptInfo.space);
+        // console.log("space:", this.adoptInfo.space);
         this.age = this.adoptInfo.age;
-        console.log("age:", this.adoptInfo.age);
+        // console.log("age:", this.adoptInfo.age);
         this.gender = this.adoptInfo.gender;
-        console.log("gender:", this.adoptInfo.gender);
+        // console.log("gender:", this.adoptInfo.gender);
         this.size = this.adoptInfo.size;
-        console.log("ChosenPet:", this.adoptInfo.size);
+        // console.log("ChosenPet:", this.adoptInfo.size);
         this.personality= this.adoptInfo.personality;
-        console.log("ChosenPet:", this.adoptInfo.personality);
+        // console.log("ChosenPet:", this.adoptInfo.personality);
         this.needs = this.adoptInfo.needs;
-        console.log("ChosenPet:", this.adoptInfo.needs);
+        // console.log("ChosenPet:", this.adoptInfo.needs);
         this.specialNeeds = this.adoptInfo.specialNeeds;
-        console.log("ChosenPet:", this.adoptInfo.specialNeeds);
+        // console.log("ChosenPet:", this.adoptInfo.specialNeeds);
       }
     },
     async updateProf(){
       this.guardar = !this.guardar;
-      console.log(this.chosenPet);
-      console.log((this.adoptInfo.chosenPet));
-      console.log(this.numberOfOwners);
-      console.log((this.adoptInfo.numberOfOwners));
-      console.log(this.numberOfPets);
-      console.log((this.adoptInfo.numberOfPets));
-      console.log(this.typeOfPets);
-      console.log((this.adoptInfo.typeOfPets));
-      console.log(this.spaceAv);
-      console.log((this.adoptInfo.spaceAv));
-      console.log(this.space);
-      console.log((this.adoptInfo.space));
-      console.log(this.age);
-      console.log((this.adoptInfo.age));
-      console.log(this.gender);
-      console.log((this.adoptInfo.gender));
-      console.log(this.size);
-      console.log((this.adoptInfo.size));
-      console.log(this.personality);
-      console.log((this.adoptInfo.personality));
-      console.log(this.needs);
-      console.log((this.adoptInfo.needs));
-      console.log(this.specialNeeds);
-      console.log((this.adoptInfo.specialNeeds));
+      // console.log(this.chosenPet);
+      // console.log((this.adoptInfo.chosenPet));
+      // console.log(this.numberOfOwners);
+      // console.log((this.adoptInfo.numberOfOwners));
+      // console.log(this.numberOfPets);
+      // console.log((this.adoptInfo.numberOfPets));
+      // console.log(this.typeOfPets);
+      // console.log((this.adoptInfo.typeOfPets));
+      // console.log(this.spaceAv);
+      // console.log((this.adoptInfo.spaceAv));
+      // console.log(this.space);
+      // console.log((this.adoptInfo.space));
+      // console.log(this.age);
+      // console.log((this.adoptInfo.age));
+      // console.log(this.gender);
+      // console.log((this.adoptInfo.gender));
+      // console.log(this.size);
+      // console.log((this.adoptInfo.size));
+      // console.log(this.personality);
+      // console.log((this.adoptInfo.personality));
+      // console.log(this.needs);
+      // console.log((this.adoptInfo.needs));
+      // console.log(this.specialNeeds);
+      // console.log((this.adoptInfo.specialNeeds));
       const userRef = doc(db, "users", this.$getId);
       await updateDoc(userRef, {
         adoptInfo:{

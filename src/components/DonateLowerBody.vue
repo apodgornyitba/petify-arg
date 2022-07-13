@@ -7,20 +7,43 @@
     >
     <v-row>
       <v-col align="center">
-      <SelectFields label="Nombre del refugio" :items=sheltersName  />
+        <v-select
+            outlined
+            filled
+            style="width: 500px"
+            v-model="selectedName"
+            label="Nombre del refugio"
+            :items="sheltersName"
+        ></v-select>
       </v-col>
     </v-row>
     <v-row>
       <v-col align="center">
-        <SelectFields :items=tipos label="Tipo de ayuda"/>
+        <v-select
+            outlined
+            filled
+            style="width: 500px"
+            v-model="selectedType"
+            label="Tipo de ayuda"
+            :items="tipos"
+        ></v-select>
       </v-col>
     </v-row>
     <v-row>
       <v-col align="center">
-        <TextFields
+<!--        <TextFields-->
+<!--            label="Número de teléfono"-->
+<!--            :rules="phoneRules"-->
+<!--        />-->
+        <v-text-field
+            outlined
+            filled
+            style="width: 500px"
+            v-model="phoneNumber"
             label="Número de teléfono"
             :rules="phoneRules"
-        />
+            required
+        ></v-text-field>
       </v-col>
     </v-row>
     <v-row>
@@ -28,9 +51,8 @@
         <v-btn
             padless color="#2A537A"
             class="white--text"
-            type="submit"
             :disabled="!valid"
-            @click="enviar = !enviar"
+            @click="sendMessage"
 
         >
           {{ enviar ? 'Enviar mensaje' : 'Enviado' }}
@@ -42,16 +64,19 @@
 </template>
 
 <script>
-import TextFields from "@/components/TextFields";
-import SelectFields from "@/components/SelectFields";
+// import TextFields from "@/components/TextFields";
+// import SelectFields from "@/components/SelectFields";
 import {collection, getDocs} from "firebase/firestore";
 import db from "@/firebase/initFirebase";
 export default {
   name: "DonateLowerBody",
-  components: {SelectFields, TextFields},
+  components: {/*SelectFields, TextFields*/},
   data: () => ({
     enviar: true,
     valid: true,
+    selectedName: '',
+    selectedType: '',
+    phoneNumber: '',
     phoneRules: [
       v => !!v || "Este campo es obligatorio.",
       v => (v && v.length <= 10) || "Superó el límite de 10 caracteres",
@@ -65,8 +90,18 @@ export default {
       const querySnapshot = await getDocs(collection(db, "shelters"));
       querySnapshot.forEach((doc) => {
         this.sheltersName.push(doc.data().name);
-        console.log(this.sheltersArray)
+        // console.log(this.sheltersArray)
       });
+    },
+    sendMessage(){
+      this.enviar = !this.enviar;
+      setTimeout(() => {
+        this.enviar = !this.enviar;
+        this.selectedName = '';
+        this.selectedType = '';
+        this.phoneNumber = '';
+      }, 2000);
+
     },
   },
   watch:{

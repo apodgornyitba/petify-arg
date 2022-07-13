@@ -85,7 +85,10 @@ export default {
       } catch (error) {
         console.log({error});
       }
-      this.message = '';
+      setTimeout(() => {
+        this.enviar = !this.enviar;
+        this.message = '';
+      }, 2000);
     },
   }
 }

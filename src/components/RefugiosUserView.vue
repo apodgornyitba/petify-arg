@@ -51,7 +51,7 @@ export default {
       querySnapshot.forEach((doc) => {
         this.usersId.push(doc.id);
         this.usersArray.push(doc.data());
-        console.log(this.usersArray)
+        // console.log(this.usersArray)
       });
     },
     setId(idx){

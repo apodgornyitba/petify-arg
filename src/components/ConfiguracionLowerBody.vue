@@ -102,7 +102,7 @@ export default {
       this.cambiar = !this.cambiar;
       const auth = getAuth();
       const user = auth.currentUser;
-      console.log(user);
+      // console.log(user);
       await updateEmail(user, this.newEmail).then(() => {
         // setTimeout(() => this.$router.push('/signin'), 1000);
       }).catch((error) => {

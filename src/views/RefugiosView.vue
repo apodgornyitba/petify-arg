@@ -64,11 +64,11 @@ export default {
       querySnapshot.forEach((doc) => {
         this.sheltersId.push(doc.id);
         this.sheltersArray.push(doc.data());
-        console.log(this.sheltersArray)
+        // console.log(this.sheltersArray)
       });
     },
     setId(idx){
-      console.log(this.sheltersId[idx])
+      // console.log(this.sheltersId[idx])
       localStorage.setItem("id", this.sheltersId[idx]);
       setTimeout(() => this.$router.push('/PerfilRefugio'), 200);
     }

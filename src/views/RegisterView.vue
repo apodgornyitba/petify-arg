@@ -225,7 +225,6 @@
       </v-row>
       <v-row class="align-center text-center justify-center">
         <v-col class="align-center text-center justify-center" cols="5">
-          <!-- COMENTARIO: FALTA CODEAR EL BOTON PARA GUARDAR LA INFO Y QUE VUELVA A LA PAGINA PRINCIPAL -->
           <v-btn
               color="#689FD2"
               class="white--text"
@@ -287,7 +286,7 @@ export default {
     confirmPasswordShelter: '',
 
     actionCodeSettings : {
-      url: 'https://petify-arg.web.app/',
+      url: 'https://petify-arg.web.app/signin',
       handleCodeInApp: true,
     },
 
@@ -328,7 +327,7 @@ export default {
       } else {
         this.registerShelter(auth, this.emailShelter, this.passwordShelter);
       }
-      setTimeout(() => this.$router.push('/'), 1000);
+      setTimeout(() => this.$router.push('/signin'), 1500);
     },
     async registerUser(auth, email, password){
       const credentials = await createUserWithEmailAndPassword(auth, email, password);
@@ -356,9 +355,9 @@ export default {
         postal: this.postal,
 
       });
-      this.$store.commit("setIsLoggedIn");
       this.$setUserIsLoggedIn(true);
       this.$updateUser({user: credentials.user});
+      this.$store.commit("setIsLoggedIn");
       await sendEmailVerification(credentials.user, this.actionCodeSettings);
     },
 
@@ -373,9 +372,9 @@ export default {
         postal: this.postalRef,
 
       });
-      this.$store.commit("setIsLoggedIn");
       this.$setShelterIsLoggedIn(true);
       this.$updateShelter({shelter: credentials.user});
+      this.$store.commit("setIsLoggedIn");
       await sendEmailVerification(credentials.user, this.actionCodeSettings);
     },
     habilitarusuario() {

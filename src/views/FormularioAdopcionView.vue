@@ -27,59 +27,94 @@
       <v-row class="center">
 
         <v-col>
-          <TextFields
+          <v-text-field
+              outlined
+              filled
+              style="width: 500px"
               v-model="name"
-              :rules="nameRules"
               label="Nombre"
+              :rules="nameRules"
               required
-          ></TextFields>
+          ></v-text-field>
         </v-col>
 
         <v-col>
-          <TextFields
+          <v-text-field
+              outlined
+              filled
+              style="width: 500px"
               v-model="phoneNumber"
               label="Número de teléfono"
               :rules="phoneRules"
-          />
+              required
+          ></v-text-field>
         </v-col>
 
         <v-col>
-          <TextFields
+          <v-text-field
+              outlined
+              filled
+              style="width: 500px"
               v-model="email"
               label="E-mail"
               :rules="emailRules"
               required
-          ></TextFields>
+          ></v-text-field>
         </v-col>
 
         <v-col>
-          <SelectFields
+          <v-select
+              outlined
+              filled
+              style="width: 500px"
               v-model="select2"
-              label="Cuán importante considera pasear a su mascota?" :items=items2></SelectFields>
+              label="Cuán importante considera pasear a su mascota?"
+              :items="items2"
+          ></v-select>
         </v-col>
 
         <v-col>
-          <SelectFields
+          <v-select
+              outlined
+              filled
+              style="width: 500px"
               v-model="select1"
-              label="Tiene mascotas?"  :items=items1></SelectFields>
+              label="Tiene mascotas?"
+              :items="items1"
+          ></v-select>
         </v-col>
 
         <v-col>
-          <SelectFields
-              v-model="select1"
-              label="El perro dormiría adentro o afuera de la casa?"  :items=items3></SelectFields>
+          <v-select
+              outlined
+              filled
+              style="width: 500px"
+              v-model="select3"
+              label="El perro dormiría adentro o afuera de la casa?"
+              :items="items3"
+          ></v-select>
         </v-col>
 
         <v-col>
-          <SelectFields
-              v-model="select1"
-              label="Tiene patio?"  :items=items1></SelectFields>
+          <v-select
+              outlined
+              filled
+              style="width: 500px"
+              v-model="select4"
+              label="Tiene patio?"
+              :items="items1"
+          ></v-select>
         </v-col>
 
         <v-col>
-          <SelectFields
-              v-model="select1"
-              label="Quien está a cargo de tu vivienda?"  :items=items4></SelectFields>
+          <v-select
+              outlined
+              filled
+              style="width: 500px"
+              v-model="select5"
+              label="Quien está a cargo de tu vivienda?"
+              :items="items4"
+          ></v-select>
         </v-col>
       </v-row>
 
@@ -90,9 +125,8 @@
           <v-btn
               padless color="#2A537A"
               class="white--text"
-              type="submit"
               :disabled="!valid"
-              @click="enviar = !enviar"
+              @click="sendMessage"
 
           >
             {{ enviar ? 'Enviar' : 'Enviado' }}
@@ -121,15 +155,15 @@
 
 <script>
 import ToolBar from "@/components/Toolbar";
-import TextFields from "@/components/TextFields";
-import SelectFields from "@/components/SelectFields";
-import * as emailjs from "emailjs-com";
+// import TextFields from "@/components/TextFields";
+// import SelectFields from "@/components/SelectFields";
+// import * as emailjs from "emailjs-com";
 
 export default {
   name: "FormularioAdopcion",
   components: {
-    TextFields,
-    SelectFields,
+    /*TextFields,
+    SelectFields,*/
     ToolBar,
   },
   data: () => ({
@@ -155,6 +189,9 @@ export default {
     email: '',
     select1: '',
     select2: '',
+    select3: '',
+    select4: '',
+    select5: '',
     items1: [
       'Sí',
       'No',
@@ -179,39 +216,30 @@ export default {
 
   methods: {
     clear(){
-      this.name = ''
-      this.phoneNumber = ''
-      this.email = ''
-      this.select1 = null
-      this.select2 = null
+      this.name = '';
+      this.phoneNumber = '';
+      this.email = '';
+      this.select1 = '';
+      this.select2 = '';
+      this.select3 = '';
+      this.select4 = '';
+      this.select5 = '';
 
     },
-    sendEmail(e) {
-      try {
-        emailjs.sendForm('service_l002xcc', 'template_vmrtpkg', e.target,
-            'YOUR_USER_ID', {
-              name: this.name,
-              email: this.email,
-              message: this.message
-            })
-
-      } catch(error) {
-        console.log({error})
-      }
-      // Reset form field
-      this.name = ''
-      this.email = ''
-      this.message = ''
+    sendMessage() {
+      this.enviar = !this.enviar;
+      setTimeout(() => {
+        this.enviar = !this.enviar;
+        this.name = '';
+        this.phoneNumber = '';
+        this.email = '';
+        this.select1 = '';
+        this.select2 = '';
+        this.select3 = '';
+        this.select4 = '';
+        this.select5 = '';
+      }, 2000);
     },
-
-    // hiddenB(){
-    //   this.hidden = !this.hidden
-    //   this.name = ''
-    //   this.phoneNumber = ''
-    //   this.email = ''
-    //   this.select1 = null
-    //   this.select2 = null
-    // },
   },
 
 
