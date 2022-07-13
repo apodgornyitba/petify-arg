@@ -137,7 +137,6 @@
           <v-col>
           <v-btn
             @click="clear"
-            type="clear"
             padless color="#2A537A"
             class="white--text"
           >
