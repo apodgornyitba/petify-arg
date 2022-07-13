@@ -80,7 +80,9 @@
           raised
           x-large
           @click="registerPet"
-      >Registrar</v-btn>
+      >
+        {{ enviar ? 'Registrar' : 'Registrado' }}
+      </v-btn>
     </v-container>
   </div>
 </template>
@@ -104,6 +106,7 @@ export default {
     description: '',
     health: '',
     type: '',
+    enviar: true,
   }),
   computed:{
     ...mapGetters("shelter", {
@@ -123,6 +126,15 @@ export default {
           type: this.type,
           shelter: this.$getShelterName,
         });
+      this.enviar = !this.enviar;
+      setTimeout(() => {
+        this.enviar = !this.enviar;
+        this.name = '';
+        this.imgLink = '';
+        this.description = '';
+        this.health = '';
+        this.type = '';
+      }, 2000);
     },
   }
 }
