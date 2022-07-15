@@ -21,7 +21,7 @@
             </h4>
           </v-col>
         </v-row>
-        <v-row class="align-center">
+        <v-row class="align-center text-center justify-center">
           <template>
             <div class="form">
               <form ref="form" onsubmit="sendEmail()">
@@ -111,7 +111,6 @@ export default {
   margin: auto;
   text-align: center;
   border-radius: 5px;
-  background-color: #f2f2f2;
   padding: 20px;
   width: 50%;
 }
